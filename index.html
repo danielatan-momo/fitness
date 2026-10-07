@@ -1,0 +1,3316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Daniela · 90-Day Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0F1F3D;
+  --navy-mid: #1E3A5F;
+  --navy-soft: #2E4F7A;
+  --page: #F8F6F2;
+  --paper: #FFFFFF;
+  --ink: #1A1A2E;
+  --ink-mid: #4A5568;
+  --ink-soft: #718096;
+  --ink-faint: #A0AEC0;
+  --rule: #E8E4DC;
+  --rule-strong: #CBD5E0;
+  --green: #2D6A4F;
+  --green-light: #EBF5F0;
+  --green-mid: rgba(45,106,79,0.18);
+  --amber: #C17A24;
+  --amber-light: #FDF3E3;
+  --amber-mid: rgba(193,122,36,0.18);
+  --red: #9B2335;
+  --red-light: #FDF0F1;
+  --red-mid: rgba(155,35,53,0.15);
+  --slate: #4A5568;
+  --shadow: 0 1px 8px rgba(15,31,61,0.08);
+  --shadow-md: 0 4px 20px rgba(15,31,61,0.1);
+  --r: 8px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 60px 60px 50px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 40%, rgba(45,106,79,0.12) 100%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 960px; margin: 0 auto; position: relative; }
+.hero-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-kicker::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--green);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 62px);
+  font-weight: 700;
+  color: var(--page);
+  line-height: 1.05;
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+.hero-sub {
+  font-size: 13px;
+  color: rgba(248,246,242,0.5);
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+.hero-stats {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(248,246,242,0.1);
+  border-radius: var(--r);
+  overflow: hidden;
+  width: fit-content;
+}
+.hero-stat {
+  padding: 16px 28px;
+  border-right: 1px solid rgba(248,246,242,0.08);
+}
+.hero-stat:last-child { border-right: none; }
+.hs-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--page);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hs-lbl {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(248,246,242,0.35);
+  text-transform: uppercase;
+}
+
+/* ── PHASE BAR ── */
+.phase-bar {
+  background: var(--navy-mid);
+  display: flex;
+  max-width: 100%;
+}
+.phase-seg {
+  flex: 1;
+  padding: 14px 20px;
+  border-right: 1px solid rgba(248,246,242,0.06);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.phase-seg:last-child { border-right: none; }
+.phase-seg:hover, .phase-seg.active { background: var(--green); }
+.phase-seg.p2:hover, .phase-seg.p2.active { background: var(--amber); }
+.phase-seg.p3:hover, .phase-seg.p3.active { background: var(--navy-soft); }
+.ps-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248,246,242,0.4);
+  margin-bottom: 3px;
+}
+.ps-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--page);
+  font-style: italic;
+}
+
+/* ── NAV ── */
+.nav {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  padding: 0 60px;
+  overflow-x: auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.tab {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 16px 14px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--ink-faint);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.tab.active { color: var(--green); border-bottom-color: var(--green); }
+.tab:hover:not(.active) { color: var(--ink-mid); }
+
+/* ── MAIN ── */
+.main { max-width: 960px; margin: 0 auto; padding: 44px 40px 80px; }
+.section { display: none; }
+.section.active { display: block; }
+
+/* section header */
+.sec-h {
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+}
+.sec-h h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.sec-h p { font-size: 13px; color: var(--ink-soft); }
+
+/* ── WEEK GRID ── */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.wday {
+  border-radius: var(--r);
+  border: 1px solid var(--rule);
+  padding: 12px 8px;
+  text-align: center;
+  background: var(--paper);
+}
+.wday.lower { border-top: 3px solid var(--amber); }
+.wday.upper { border-top: 3px solid var(--green); }
+.wday.full { border-top: 3px solid var(--navy); }
+.wday.cycle { border-top: 3px solid #2B7FBF; }
+.wday.rest { opacity: 0.4; }
+.wd-day {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.wd-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.lower .wd-name { color: var(--amber); }
+.upper .wd-name { color: var(--green); }
+.full .wd-name { color: var(--navy); }
+.cycle .wd-name { color: #2B7FBF; }
+.rest .wd-name { color: var(--ink-faint); }
+.wd-sub { font-size: 10px; color: var(--ink-soft); margin-top: 3px; line-height: 1.4; }
+
+/* ── SESSION CARDS ── */
+.session {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.session-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+.s-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 34px;
+}
+.s-num.lo { color: var(--amber); }
+.s-num.up { color: var(--green); }
+.s-num.fb { color: var(--navy); }
+.s-num.cy { color: #2B7FBF; }
+.s-name {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink);
+}
+.s-meta { font-size: 12px; color: var(--ink-soft); margin-top: 3px; }
+.s-tag {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tag-lo { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-mid); }
+.tag-up { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
+.tag-fb { background: #EEF2FF; color: var(--navy); border: 1px solid rgba(15,31,61,0.15); }
+.tag-cy { background: #E8F4FD; color: #2B7FBF; border: 1px solid rgba(43,127,191,0.2); }
+.session-body { padding: 6px 24px 22px; }
+
+/* note box */
+.note {
+  border-radius: 6px;
+  padding: 11px 14px;
+  font-size: 12px;
+  line-height: 1.65;
+  display: flex;
+  gap: 10px;
+  margin: 14px 0;
+}
+.note-g { background: var(--green-light); border: 1px solid var(--green-mid); color: #1A4A30; }
+.note-a { background: var(--amber-light); border: 1px solid var(--amber-mid); color: #6A3A08; }
+.note-r { background: var(--red-light); border: 1px solid var(--red-mid); color: #6A0D1A; }
+.note-b { background: #EEF2FF; border: 1px solid rgba(15,31,61,0.15); color: var(--navy); }
+
+/* ── EX TABLE ── */
+.ex-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.ex-table th {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--rule);
+}
+.ex-row td {
+  padding: 13px 10px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.ex-row:last-child td { border-bottom: none; }
+.ex-row:hover td { background: var(--page); }
+.ex-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--rule-strong);
+  width: 30px;
+  padding-top: 10px !important;
+  line-height: 1;
+}
+.ex-n.ss {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  padding-top: 14px !important;
+}
+.ex-name { font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.ex-cue { font-size: 12px; color: var(--ink-mid); line-height: 1.6; }
+.ax { color: #8B2500; font-style: italic; font-size: 11px; display: block; margin-top: 4px; }
+.ll { color: var(--green); font-style: italic; font-size: 11px; display: block; margin-top: 3px; }
+.ex-sets {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green);
+  white-space: nowrap;
+  width: 90px;
+}
+.ex-wt {
+  font-size: 11px;
+  color: var(--ink-soft);
+  width: 130px;
+  vertical-align: top;
+}
+.wt-badge {
+  display: inline-block;
+  background: var(--amber-light);
+  border: 1px solid var(--amber-mid);
+  color: var(--amber);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
+.prog { font-size: 10px; color: var(--ink-soft); margin-top: 3px; line-height: 1.5; }
+.prog strong { color: var(--green); }
+
+/* ss divider */
+.ss-div td {
+  background: var(--amber-light);
+  padding: 5px 10px 5px 12px !important;
+  border-left: 2px solid var(--amber);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+/* core block header */
+.core-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0 8px;
+  border-top: 1px solid var(--rule);
+  margin-top: 16px;
+}
+.core-hdr-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--navy);
+  flex-shrink: 0;
+}
+.core-hdr-txt {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* ── DIET ── */
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.macro-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.mc-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.mc-lbl { font-size: 11px; color: var(--ink-soft); font-weight: 500; }
+.mc-note { font-size: 10px; color: var(--ink-faint); margin-top: 4px; }
+
+.meal-block {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.meal-hdr {
+  background: var(--navy);
+  color: var(--page);
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.meal-hdr h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.meal-hdr span { font-size: 10px; opacity: 0.4; }
+.meal-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 1px solid var(--rule);
+}
+.meal-row:last-child { border-bottom: none; }
+.meal-time {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  padding: 13px 14px;
+  border-right: 1px solid var(--rule);
+  background: var(--green-light);
+}
+.meal-content { padding: 12px 16px; }
+.meal-name { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+.meal-detail { font-size: 12px; color: var(--ink-mid); line-height: 1.6; }
+.macros { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.mac {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.mac-p { background: var(--green-light); color: var(--green); }
+.mac-f { background: var(--amber-light); color: var(--amber); }
+.mac-c { background: #EEF2FF; color: var(--navy); }
+
+/* ── SUPPLEMENT TABLE ── */
+.supp-table { width: 100%; border-collapse: collapse; }
+.supp-table th {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink-soft);
+  text-align: left; padding: 8px 12px;
+  border-bottom: 2px solid var(--rule);
+}
+.supp-table td { padding: 11px 12px; border-bottom: 1px solid var(--rule); font-size: 13px; vertical-align: top; }
+.supp-table tr:last-child td { border-bottom: none; }
+.have { color: var(--green); font-weight: 700; font-size: 11px; }
+.add { color: var(--amber); font-weight: 700; font-size: 11px; }
+
+/* ── MILESTONE ── */
+.ms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.ms-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.ms-hdr {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--rule);
+}
+.ms-hdr h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.ms-hdr p { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+.ms-body { padding: 14px 18px; }
+.ms-item {
+  display: flex;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 12px;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+.ms-item:last-child { border-bottom: none; }
+.ms-item strong { color: var(--ink); font-weight: 600; }
+.ph1-hdr { border-top: 3px solid var(--green); }
+.ph1-hdr h4 { color: var(--green); }
+.ph2-hdr { border-top: 3px solid var(--amber); }
+.ph2-hdr h4 { color: var(--amber); }
+.ph3-hdr { border-top: 3px solid var(--navy); }
+.ph3-hdr h4 { color: var(--navy); }
+.beyond-hdr { border-top: 3px solid var(--red); }
+.beyond-hdr h4 { color: var(--red); }
+
+/* ── KETO GUIDE ── */
+.keto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.keto-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.keto-card h4 { font-weight: 700; font-size: 13px; margin-bottom: 10px; color: var(--ink); }
+.keto-item {
+  display: flex; gap: 8px;
+  font-size: 12px; color: var(--ink-mid);
+  padding: 5px 0; border-bottom: 1px solid var(--rule); line-height: 1.5;
+}
+.keto-item:last-child { border-bottom: none; }
+.keto-item span:first-child { font-size: 13px; flex-shrink: 0; }
+
+/* ── PROGRESS TABLE ── */
+.prog-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.prog-table th {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-soft);
+  text-align: left; padding: 8px 12px;
+  border-bottom: 2px solid var(--rule);
+}
+.prog-table td { padding: 11px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.prog-table tr:last-child td { border-bottom: none; }
+.prog-table td:first-child { font-weight: 600; color: var(--ink); }
+.w-now { font-weight: 700; color: var(--red); font-size: 12px; }
+.w-4 { font-weight: 600; color: var(--amber); font-size: 12px; }
+.w-8 { font-weight: 600; color: var(--green); font-size: 12px; }
+.w-12 { font-weight: 700; color: var(--navy); font-size: 12px; }
+
+/* ── BACK HEALTH ── */
+.bh-item {
+  display: flex; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+}
+.bh-item:last-child { border-bottom: none; }
+.bh-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; color: var(--rule-strong);
+  min-width: 26px; line-height: 1; padding-top: 2px;
+}
+.bh-name { font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.bh-cue { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
+.bh-sets { font-size: 11px; font-weight: 700; color: var(--navy); white-space: nowrap; min-width: 80px; text-align: right; }
+
+/* ── GENERAL CARDS ── */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 20px 24px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+@media(max-width: 640px) {
+  .hero { padding: 36px 20px 32px; }
+  .hero-stats { flex-wrap: wrap; }
+  .hero-stat { padding: 12px 18px; }
+  .nav { padding: 0 16px; }
+  .main { padding: 28px 16px 60px; }
+  .week-grid { grid-template-columns: repeat(4, 1fr); }
+  .macro-grid { grid-template-columns: 1fr 1fr; }
+  .ms-grid { grid-template-columns: 1fr; }
+  .keto-grid { grid-template-columns: 1fr; }
+  .phase-bar { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">90-Day Programme · October–December 2026</div>
+    <h1>Stronger.<br>Leaner.<br>Clearer.</h1>
+    <p class="hero-sub">Built for perimenopause. Home weights, cycling, real food. Three phases — fat adaptation, strength building, peak conditioning. No fluff, no guessing.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hs-val">59kg</div><div class="hs-lbl">Start Weight</div></div>
+      <div class="hero-stat"><div class="hs-val">27%</div><div class="hs-lbl">Start Body Fat</div></div>
+      <div class="hero-stat"><div class="hs-val">54–55kg</div><div class="hs-lbl">Target Weight</div></div>
+      <div class="hero-stat"><div class="hs-val">22–24%</div><div class="hs-lbl">Target Body Fat</div></div>
+      <div class="hero-stat"><div class="hs-val">47F</div><div class="hs-lbl">Perimenopause</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE BAR -->
+<div class="phase-bar">
+  <div class="phase-seg active" onclick="showPhase('p1',this)">
+    <div class="ps-label">Phase 1 · Oct · Weeks 1–4</div>
+    <div class="ps-name">Fat Adaptation</div>
+  </div>
+  <div class="phase-seg p2" onclick="showPhase('p2',this)">
+    <div class="ps-label">Phase 2 · Nov · Weeks 5–8</div>
+    <div class="ps-name">Strength Build</div>
+  </div>
+  <div class="phase-seg p3" onclick="showPhase('p3',this)">
+    <div class="ps-label">Phase 3 · Dec · Weeks 9–13</div>
+    <div class="ps-name">Peak & Hold</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="tab active" onclick="showTab('overview')">Overview</button>
+  <button class="tab" onclick="showTab('lower')">Lower · Mon</button>
+  <button class="tab" onclick="showTab('upper')">Upper · Wed</button>
+  <button class="tab" onclick="showTab('fullbody')">Full Body · Fri</button>
+  <button class="tab" onclick="showTab('cycling')">Cycling · Thu</button>
+  <button class="tab" onclick="showTab('active-rest')">Active Rest</button>
+  <button class="tab" onclick="showTab('diet')">Diet & Keto</button>
+  <button class="tab" onclick="showTab('supplements')">Supplements</button>
+  <button class="tab" onclick="showTab('progression')">Weights & Progress</button>
+  <button class="tab" onclick="showTab('milestones')">Milestones</button>
+  <button class="tab" onclick="showTab('backhealth')">Back Health</button>
+  <button class="tab" onclick="showTab('tracker')">📊 Macro Tracker</button>
+</nav>
+
+<div class="main">
+
+<!-- ══ OVERVIEW ══ -->
+<div class="section active" id="overview">
+  <div class="sec-h">
+    <h2>Programme Overview</h2>
+    <p>3 weights sessions + 1 cycling + 3 rest/active days. Train 10am fasted. All weights at home.</p>
+  </div>
+
+  <div class="note note-r">
+    <span>⚠️</span>
+    <div><strong>Sciatica protocol — always active:</strong> No conventional deadlifts. No good mornings. No sit-ups or crunches. No twisting under load. No leg press with low foot placement. Stop any exercise immediately if radiating leg or glute pain occurs. Right side gets extra attention in all core work.</div>
+  </div>
+
+  <div class="note note-a" style="margin-bottom:20px;">
+    <span>🍷</span>
+    <div><strong>On wine:</strong> Built in at 1–2 glasses, 2–3 nights/week. Red preferred (Pinot Noir, Merlot — lower sugar). Never on an empty stomach. Never the night before a weights session if you can help it. This will slow fat loss by approximately 20–30% compared to no alcohol. That's your call — but you should know the cost.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <h3 style="margin-bottom:14px;">Weekly Structure</h3>
+    <div class="week-grid">
+      <div class="wday lower"><div class="wd-day">Mon</div><div class="wd-name">Lower</div><div class="wd-sub">Glutes · Quads · Hamstrings · Core</div></div>
+      <div class="wday rest"><div class="wd-day">Tue</div><div class="wd-name">Rest</div><div class="wd-sub">Walk + Yoga</div></div>
+      <div class="wday upper"><div class="wd-day">Wed</div><div class="wd-name">Upper</div><div class="wd-sub">Pull · Push · Arms · Core</div></div>
+      <div class="wday cycle"><div class="wd-day">Thu</div><div class="wd-name">Cycling</div><div class="wd-sub">Zone 2 · 45–75 min</div></div>
+      <div class="wday full"><div class="wd-day">Fri</div><div class="wd-name">Full Body</div><div class="wd-sub">Compound · Integrated</div></div>
+      <div class="wday rest"><div class="wd-day">Sat</div><div class="wd-name">Rest</div><div class="wd-sub">Walk + Yoga</div></div>
+      <div class="wday rest"><div class="wd-day">Sun</div><div class="wd-name">Full Rest</div><div class="wd-sub">Recovery</div></div>
+    </div>
+    <div class="note note-g" style="margin-bottom:0;">
+      <span>💡</span>
+      <div><strong>DOMS logic:</strong> Mon lower → worst DOMS hits Tue (rest ✅). Wed upper → worst DOMS hits Thu (cycling = upper body resting ✅). Fri full body → worst DOMS hits Sat (rest ✅). Cycling Thu morning — upper body recovering from Wed, legs fresh from Mon.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+    <div class="card">
+      <h3 style="margin-bottom:10px;">Session Duration</h3>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:2;">
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:6px 0;"><span>Lower Body (Mon)</span><span style="font-weight:700;color:var(--amber);">50–60 min</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:6px 0;"><span>Upper Body (Wed)</span><span style="font-weight:700;color:var(--green);">50–60 min</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:6px 0;"><span>Full Body (Fri)</span><span style="font-weight:700;color:var(--navy);">55–65 min</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:6px 0;"><span>Cycling (Thu)</span><span style="font-weight:700;color:#2B7FBF;">45–75 min</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:6px 0;"><span>Walk (Tue/Sat)</span><span style="font-weight:700;color:var(--ink-mid);">25–40 min</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span>Yoga (Tue/Sat)</span><span style="font-weight:700;color:var(--ink-mid);">20–30 min</span></div>
+      </div>
+      <div class="note note-b" style="margin-top:12px;margin-bottom:0;font-size:11px;">
+        <span>⏱</span><div>Cortisol spikes significantly past 60 min of training at perimenopause. Shorter, harder sessions are not a compromise — they're the correct approach hormonally.</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:10px;">RPE Guide</h3>
+      <p style="font-size:12px;color:var(--ink-mid);margin-bottom:12px;">All working sets target RPE 8 — you could do 2 more reps if you had to, but it would be hard. Progress weight when any set drops to RPE 6–7.</p>
+      <div style="font-size:12px;line-height:2.2;">
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:4px 0;"><span>RPE 5–6</span><span style="color:var(--green);font-weight:600;">Too easy → increase weight</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:4px 0;"><span>RPE 7</span><span style="color:var(--amber);font-weight:600;">One more week then increase</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:4px 0;background:var(--green-light);padding-left:6px;border-radius:4px;"><strong>RPE 8 ✓</strong><span style="color:var(--green);font-weight:700;">Target — 2 reps in reserve</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>RPE 9–10</span><span style="color:var(--red);font-weight:600;">Too heavy → reduce load</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:12px;">Phase Overview</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:13px;">
+      <div style="border-left:3px solid var(--green);padding-left:14px;">
+        <div style="font-weight:700;color:var(--green);margin-bottom:6px;">Phase 1 · October</div>
+        <div style="color:var(--ink-mid);line-height:1.8;">Strict keto + IF. Fat adaptation. Foundation strength — master the movements. Lower weight, strict form. Reset metabolism. Expect low energy Week 1–2 (keto flu).</div>
+      </div>
+      <div style="border-left:3px solid var(--amber);padding-left:14px;">
+        <div style="font-weight:700;color:var(--amber);margin-bottom:6px;">Phase 2 · November</div>
+        <div style="color:var(--ink-mid);line-height:1.8;">Low carb maintained. Progressive overload begins in earnest. Weights increase weekly. Energy better. Body composition visibly changing. Introduce harder variations.</div>
+      </div>
+      <div style="border-left:3px solid var(--navy);padding-left:14px;">
+        <div style="font-weight:700;color:var(--navy);margin-bottom:6px;">Phase 3 · December</div>
+        <div style="color:var(--ink-mid);line-height:1.8;">Peak strength phase. Hold leanness through festive season. Maintain habits under social pressure. Week 13 deload before Christmas. Assess and plan next cycle.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOWER BODY · MON ══ -->
+<div class="section" id="lower">
+  <div class="sec-h">
+    <h2>Lower Body — Monday</h2>
+    <p>Glutes, quads, hamstrings, calves · Home · 50–60 min · Largest muscle groups first in the week for maximum metabolic impact</p>
+  </div>
+
+  <div class="note note-a">
+    <span>🔥</span>
+    <div><strong>Phase progression:</strong> Ph1 (Wk1–4): Learn movements, strict form, lighter load. Ph2 (Wk5–8): Increase load, introduce split squats. Ph3 (Wk9–13): Heavier load, pauses, tempo work, barbell where possible. Exercise variations noted per phase.</div>
+  </div>
+
+  <div class="session">
+    <div class="session-head">
+      <div class="s-num lo">M</div>
+      <div>
+        <div class="s-name">Lower Body · Glute, Quad & Hamstring Focus</div>
+        <div class="s-meta">Home · Barbell + DBs + bands · 50–60 min · All 3 phases</div>
+      </div>
+      <span class="s-tag tag-lo">Lower · Mon</span>
+    </div>
+    <div class="session-body">
+      <table class="ex-table">
+        <tr><th width="30"></th><th>Exercise</th><th width="90">Sets × Reps</th><th width="130">Load Guide</th></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n" style="font-size:9px;color:var(--green);font-weight:700;letter-spacing:.1em;">WU</td>
+          <td>
+            <div class="ex-name">Glute Activation Circuit — Non-Negotiable</div>
+            <div class="ex-cue">Clamshells (band) × 15 each → Side-lying hip abduction × 15 each → Glute bridge × 20. Cold glutes = lower back compensation on every lift that follows. 5 minutes. Always.</div>
+          </td>
+          <td class="ex-sets">1 round</td>
+          <td><div class="ex-wt"><div class="wt-badge">Band + BW</div></div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">1</td>
+          <td>
+            <div class="ex-name">Goblet Squat → Barbell Front Squat (Ph2+)</div>
+            <div class="ex-cue">Ph1: DB goblet squat. Hold DB at chest, sit down between legs, 2-sec pause at bottom. Heels flat. Chest tall throughout. Ph2+: Progress to barbell front squat when goblet feels controlled at RPE 7.<br>
+            <span class="ax">🎯 AX: "The DB counterbalances your weight forward — teaches correct squat mechanics before loading the spine. Don't rush to the barbell."</span><br>
+            <span class="ll">💜 LL: "Squat pattern is your main lower movement. Build it patiently."</span></div>
+          </td>
+          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 12–16kg DB</div>
+            <div class="prog">Ph2: 18–22kg DB or barbell<br>Ph3: <strong>Barbell 25–30kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">2</td>
+          <td>
+            <div class="ex-name">Romanian Deadlift (DB) → Barbell RDL (Ph2+)</div>
+            <div class="ex-cue">DBs at sides. Hinge at hip — push glutes back, flat back. Lower to mid-shin. 4-sec lowering. Drive hips forward to stand. Safe for sciatica: DBs at sides = zero axial spinal compression. Your primary hip hinge and posterior chain builder. Replaces conventional deadlift permanently.<br>
+            <span class="ax">🎯 AX: "Feel the hamstring stretch at the bottom — if you don't feel it, push your hips further back rather than lowering the weights deeper."</span></div>
+          </td>
+          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 10–14kg DBs</div>
+            <div class="prog">Ph2: 14–18kg DBs<br>Ph3: <strong>Barbell 25–35kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ss-div"><td colspan="4">Superset — Hip Isolation. No rest between. 75s after both.</td></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">A</td>
+          <td>
+            <div class="ex-name">Seated Band Hip Abduction</div>
+            <div class="ex-cue">Sit on bench edge, short band above knees. Push knees apart. Lean slightly forward — shifts load from TFL to glute med. 2-sec hold, 3-sec return.<br>
+            <span class="ax">🎯 AX: "Forward lean is the key. Feel it move from the side of the hip to the back of the hip — that's glute med engaging."</span></div>
+          </td>
+          <td class="ex-sets">3 × 20</td>
+          <td class="ex-wt"><div class="wt-badge">Medium-heavy band</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">B</td>
+          <td>
+            <div class="ex-name">Donkey Kick (All Fours)</div>
+            <div class="ex-cue">Hands and knees, spine neutral. Kick leg straight back — foot flexed, squeeze glute 1-sec at hip level. Don't raise above hip. Horizontal spine = QL cannot compensate. Pure glute max isolation.<br>
+            <span class="ax">🎯 AX: "Hip level is the ceiling. The moment you go higher, your lower back arches. You lose the glute and gain a back injury."</span></div>
+          </td>
+          <td class="ex-sets">3 × 20 ea</td>
+          <td class="ex-wt"><div class="wt-badge">BW → ankle band Ph2</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">3</td>
+          <td>
+            <div class="ex-name">Bulgarian Split Squat (DB) → Ph2 introduction</div>
+            <div class="ex-cue">Ph1: Reverse lunge (bodyweight only — learn pattern). Ph2+: Rear foot on bench, DBs at sides. Upright torso = quad emphasis. 3-sec lowering. The most effective single-leg compound exercise with home equipment. Doubles effective load — 14kg DBs feel like 28kg squat.<br>
+            <span class="ll">💜 LL: "Split squats are your best friend with limited equipment. Unilateral load is the solution to not having heavy enough weights."</span></div>
+          </td>
+          <td class="ex-sets">3 × 10 ea<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: BW reverse lunge</div>
+            <div class="prog">Ph2: 8–12kg DBs<br>Ph3: <strong>14–18kg DBs</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">4</td>
+          <td>
+            <div class="ex-name">Single-Leg Glute Bridge → Elevated (Ph2+)</div>
+            <div class="ex-cue">Ph1: Back flat, one foot on floor. Drive through heel. 2-sec hold at top, 4-sec lowering. Ph2: Foot elevated on bench — greater range. Ph3: Add DB across hips. Zero spinal compression — the safe hip thrust alternative for sciatica history.<br>
+            <span class="ax">🎯 AX: "Pelvis level throughout — non-working hip must not drop. That drop signals glute weakness, not hamstring weakness."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12 ea</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: Bodyweight</div>
+            <div class="prog">Ph2: Foot elevated<br>Ph3: <strong>+ 8–12kg DB</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">5</td>
+          <td>
+            <div class="ex-name">Lying DB Hamstring Curl</div>
+            <div class="ex-cue">Face down on mat. Hold DB between both feet (ankle grip). Curl heels toward glutes — 2-sec hold, 4-sec lowering. Dorsiflex feet throughout (toes toward shins) — isolates hamstring, removes gastrocnemius. Start lighter than you think — the leverage is awkward until you find the grip.<br>
+            <span class="ax">🎯 AX: "4-second lowering. Dropping the weight means the concentric was vanity. The eccentric is where the muscle adapts."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 4–6kg DB</div>
+            <div class="prog">Ph2: 6–8kg<br>Ph3: <strong>8–10kg</strong></div>
+          </td>
+        </tr>
+
+        <!-- CORE FINISHER -->
+        <tr><td colspan="4">
+          <div class="core-hdr"><div class="core-hdr-dot"></div><div class="core-hdr-txt">Core Finisher — Anti-Extension · 10 min</div></div>
+        </td></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C1</td>
+          <td>
+            <div class="ex-name">Dead Bug — Double Leg</div>
+            <div class="ex-cue">Both legs at 90°. Lower both legs toward floor simultaneously — stop when lower back lifts. Press back firmly into floor the entire time. Harder than alternating version. Build the range over weeks.</div>
+          </td>
+          <td class="ex-sets">3 × 8</td>
+          <td class="ex-wt"><div class="wt-badge">Bodyweight</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C2</td>
+          <td>
+            <div class="ex-name">Ab Wheel Rollout (from knees)</div>
+            <div class="ex-cue">Kneel on mat, grip wheel. Roll forward — back stays completely flat. Pull back using lats and core. Start with a small range — only go as far as you can without arching. Build range weekly. Most honest anti-extension exercise available.<br>
+            <span class="ax">🎯 AX: "The moment your lower back arches, your core has failed. That is your current limit. Stop there and build from it."</span></div>
+          </td>
+          <td class="ex-sets">3 × 8–10</td>
+          <td class="ex-wt"><div class="wt-badge">Bodyweight</div><div class="prog">Ph3: <strong>Full range</strong></div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C3</td>
+          <td>
+            <div class="ex-name">Farmer's Carry (Heavy DBs)</div>
+            <div class="ex-cue">Heaviest DBs available. Walk 30 steps. Stand tall — don't lean. Core braces to protect spine under bilateral vertical load. Trains deep stabilisers that static exercises can't reach.</div>
+          </td>
+          <td class="ex-sets">3 × 30 steps</td>
+          <td class="ex-wt"><div class="wt-badge">Heaviest available</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ UPPER BODY · WED ══ -->
+<div class="section" id="upper">
+  <div class="sec-h">
+    <h2>Upper Body — Wednesday</h2>
+    <p>Pull dominant · Shoulders · Arms · Core · Home · 50–60 min · Pull:Push ratio 3:2 — corrects forward cycling posture</p>
+  </div>
+
+  <div class="session">
+    <div class="session-head">
+      <div class="s-num up">W</div>
+      <div>
+        <div class="s-name">Upper Body · Pull Dominant + Shoulder Health</div>
+        <div class="s-meta">Home · Pull-up bar + pulley + DBs + bands + bench · 50–60 min</div>
+      </div>
+      <span class="s-tag tag-up">Upper · Wed</span>
+    </div>
+    <div class="session-body">
+      <table class="ex-table">
+        <tr><th width="30"></th><th>Exercise</th><th width="90">Sets × Reps</th><th width="130">Load Guide</th></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n" style="font-size:9px;color:var(--green);font-weight:700;">WU</td>
+          <td>
+            <div class="ex-name">Face Pull (Band) + Shoulder CARs</div>
+            <div class="ex-cue">Band at eye height. Pull thumbs to ears, elbows high, rotate hands outward at the end. 2 × 20. Then 5 slow shoulder circles each arm each direction. Mandatory every upper session — corrects forward-head posture that cycling creates.<br>
+            <span class="ax">🎯 AX: "External rotation at the end is the entire movement. Without it, it's just a bad row."</span></div>
+          </td>
+          <td class="ex-sets">2 × 20</td>
+          <td class="ex-wt"><div class="wt-badge">Light band</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">1</td>
+          <td>
+            <div class="ex-name">Lat Pulldown (Pull-up Bar Pulley) → Assisted Pull-Up (Ph3)</div>
+            <div class="ex-cue">Scapula depresses FIRST before arms pull. Pull bar to upper chest. Chest tall. 3-sec lowering. Ph3: Attempt band-assisted pull-ups — set 1 assisted, sets 2–4 pulldown. Primary lat builder — track this weight every session.<br>
+            <span class="ax">🎯 AX: "Elbows to hips, not hands to chest. Arms are hooks — lats do the work."</span><br>
+            <span class="ll">💜 LL: "When all 4 sets feel RPE 7 or below — add weight next session. Don't wait until it feels easy."</span></div>
+          </td>
+          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 15–20kg</div>
+            <div class="prog">Ph2: 20–25kg<br>Ph3: <strong>25–32kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">2</td>
+          <td>
+            <div class="ex-name">Chest-Supported DB Row (Face Down on Bench)</div>
+            <div class="ex-cue">Bench at 30°. Lie face down. Arms hang fully between reps — full lat stretch. Row DBs to hips. Squeeze shoulder blades at top. 3-sec lowering. Zero lower back involvement — the safest bilateral row for sciatica history.<br>
+            <span class="ax">🎯 AX: "Full lat stretch between reps — don't hold tension at the bottom. The stretch is half the exercise."</span></div>
+          </td>
+          <td class="ex-sets">4 × 12<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 5–7kg ea</div>
+            <div class="prog">Ph2: 7–10kg<br>Ph3: <strong>10–14kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ss-div"><td colspan="4">Superset — Shoulder complex. 90s after both.</td></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">A</td>
+          <td>
+            <div class="ex-name">Seated DB Lateral Raise</div>
+            <div class="ex-cue">Seated — zero momentum. Slight forward lean (10°). Raise to shoulder height only. Lead with pinkies (slight pronation). 3-sec lowering. Seated removes all cheating.<br>
+            <span class="ax">🎯 AX: "Pour water from a jug at the top — that wrist rotation maximises medial deltoid."</span></div>
+          </td>
+          <td class="ex-sets">3 × 15</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 3–4kg</div>
+            <div class="prog">Ph2: 4–5kg<br>Ph3: <strong>5–7kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">B</td>
+          <td>
+            <div class="ex-name">Band Pull-Apart (Shoulder Height)</div>
+            <div class="ex-cue">Arms fully straight — any elbow bend takes it to biceps. Pull to chest. Rear delt and teres minor — defines the armpit and bra-line area. Pairs with lateral raise to hit all three delt heads in one superset.</div>
+          </td>
+          <td class="ex-sets">3 × 20</td>
+          <td class="ex-wt"><div class="wt-badge">Medium band</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">3</td>
+          <td>
+            <div class="ex-name">Seated DB Shoulder Press (Back Supported)</div>
+            <div class="ex-cue">Back against wall or bench. Press to full extension. 3-sec lowering. Seated with back support always — standing OHP loads the lumbar under fatigue. Ph2+: Arnold press replaces standard press.<br>
+            <span class="ax">🎯 AX: "Press up and slightly in — the natural arc. Straight up creates impingement over time."</span></div>
+          </td>
+          <td class="ex-sets">3 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 6–8kg ea</div>
+            <div class="prog">Ph2: 8–10kg<br>Ph3: <strong>10–12kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ss-div"><td colspan="4">Superset — Arm complex. 90s after both.</td></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">A</td>
+          <td>
+            <div class="ex-name">Incline DB Curl (45° bench)</div>
+            <div class="ex-cue">Full bicep stretch at bottom — this is the point. Full supination at top. No swing. Jeff's preferred bicep variation for complete long-head development.<br>
+            <span class="ax">🎯 AX: "The stretch at the bottom is the whole point. Feel it or recline the bench further."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 4–5kg</div>
+            <div class="prog">Ph2: 5–7kg<br>Ph3: <strong>7–9kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">B</td>
+          <td>
+            <div class="ex-name">Overhead DB Tricep Extension</div>
+            <div class="ex-cue">Hold one DB overhead, both hands. Lower behind head — full long-head stretch. Press up. The only exercise that loads the tricep long head in a fully stretched position.<br>
+            <span class="ax">🎯 AX: "Feel the stretch in the long head at the bottom. Don't rush past it."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 8–10kg</div>
+            <div class="prog">Ph2: 10–12kg<br>Ph3: <strong>12–14kg</strong></div>
+          </td>
+        </tr>
+
+        <!-- CORE FINISHER -->
+        <tr><td colspan="4">
+          <div class="core-hdr"><div class="core-hdr-dot"></div><div class="core-hdr-txt">Core Finisher — Anti-Rotation · 10 min</div></div>
+        </td></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C1</td>
+          <td>
+            <div class="ex-name">Pallof Press (Band — Anti-Rotation)</div>
+            <div class="ex-cue">Band at belly height. Press straight out — hold 2 sec — return. Zero rotation. The harder you resist the band's pull, the more core fires.<br>
+            <span class="ax">🎯 AX: "Your goal is total stillness. That resistance is everything."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12 ea</td>
+          <td class="ex-wt"><div class="wt-badge">Medium band</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C2</td>
+          <td>
+            <div class="ex-name">Hollow Body Hold</div>
+            <div class="ex-cue">Arms overhead, legs extended at 45°. Press lower back into floor — hold. If back arches: raise legs higher. Ph2: lower legs to 30°. Ph3: add light DB overhead.</div>
+          </td>
+          <td class="ex-sets">3 × 20–30s</td>
+          <td class="ex-wt"><div class="wt-badge">BW → DB Ph3</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C3</td>
+          <td>
+            <div class="ex-name">Side Plank (Right side priority)</div>
+            <div class="ex-cue">Right side holds 10s longer every set — directly addresses right QL weakness driving your sciatica pattern. Ph1: elbow + knee. Ph2: elbow + feet. Ph3: add hip dip.</div>
+          </td>
+          <td class="ex-sets">R: 3×35s<br>L: 3×25s</td>
+          <td class="ex-wt"><div class="wt-badge">BW progression</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FULL BODY · FRI ══ -->
+<div class="section" id="fullbody">
+  <div class="sec-h">
+    <h2>Full Body — Friday</h2>
+    <p>Compound integration · Cycling carry-over · Home · 55–65 min · Movements that transfer directly to on-bike power and core stability</p>
+  </div>
+
+  <div class="session">
+    <div class="session-head">
+      <div class="s-num fb">F</div>
+      <div>
+        <div class="s-name">Full Body · Compound Integration + Core Power</div>
+        <div class="s-meta">Home · Barbell + DBs + bands + bench · 55–65 min</div>
+      </div>
+      <span class="s-tag tag-fb">Full Body · Fri</span>
+    </div>
+    <div class="session-body">
+      <table class="ex-table">
+        <tr><th width="30"></th><th>Exercise</th><th width="90">Sets × Reps</th><th width="130">Load Guide</th></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n" style="font-size:9px;color:var(--navy);font-weight:700;">WU</td>
+          <td>
+            <div class="ex-name">Skipping Rope + Bodyweight Squat Flow</div>
+            <div class="ex-cue">3 min easy skipping (alternate feet, no jumps) → 10 slow bodyweight squats (3-sec down) → 10 arm circles each direction → 5 hip CARs each side. Full body primer in 5 minutes.</div>
+          </td>
+          <td class="ex-sets">5 min</td>
+          <td class="ex-wt"><div class="wt-badge">Bodyweight</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">1</td>
+          <td>
+            <div class="ex-name">Barbell Floor Press</div>
+            <div class="ex-cue">Lie on floor, knees bent. Lower until upper arms touch floor — PAUSE 1 sec. Press. The floor limits range, protecting the shoulder. Dead-stop eliminates momentum. Your primary chest compound.<br>
+            <span class="ax">🎯 AX: "Dead-stop at the bottom — don't bounce. That pause is the hardest and most effective part."</span><br>
+            <span class="ll">💜 LL: "Treat this as a main movement. Two warm-up sets before working sets."</span></div>
+          </td>
+          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: ~15–20kg</div>
+            <div class="prog">Ph2: 20–25kg<br>Ph3: <strong>25–32kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">2</td>
+          <td>
+            <div class="ex-name">Barbell Bent-Over Row (45° hinge)</div>
+            <div class="ex-cue">Hinge forward 45° — back flat. Pull bar to lower ribcage. 3-sec lowering. Equal sets to floor press — push/pull balance. Stop the set if lower back fatigues before lats.<br>
+            <span class="ax">🎯 AX: "Elbows drive toward hips — not flared. Bar hits lower rib, not belly button."</span></div>
+          </td>
+          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: ~15–20kg</div>
+            <div class="prog">Ph2: 20–25kg<br>Ph3: <strong>25–32kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">3</td>
+          <td>
+            <div class="ex-name">DB Step-Up (Knee height — quad emphasis)</div>
+            <div class="ex-cue">Use a sturdy chair or bench. Full foot contact on step. Drive up through whole foot. Full hip extension at top. 3-sec lowering. Direct cycling carry-over — mimics the pedal-down motion under load.<br>
+            <span class="ll">💜 LL: "Unilateral loading again — your 12kg DBs feel like a 24kg squat. This is how you work around limited equipment."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12 ea<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 8–10kg DBs</div>
+            <div class="prog">Ph2: 10–14kg<br>Ph3: <strong>14–18kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ss-div"><td colspan="4">Superset — Upper arm isolation. 90s after both.</td></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">A</td>
+          <td>
+            <div class="ex-name">Zottman Curl</div>
+            <div class="ex-cue">Curl up with palms supinated. At the top — rotate to pronated (palms down). Lower 4-sec in pronated position. Hits biceps up, brachialis and brachioradialis down. Three elbow flexors in one movement.<br>
+            <span class="ll">💜 LL: "Most complete arm exercise with a single dumbbell."</span></div>
+          </td>
+          <td class="ex-sets">3 × 10</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 4–5kg</div>
+            <div class="prog">Ph2: 5–7kg<br>Ph3: <strong>7–9kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ss">B</td>
+          <td>
+            <div class="ex-name">Skull Crushers (DB on bench)</div>
+            <div class="ex-cue">Lie flat. Lower DBs toward forehead — elbows STATIONARY, only forearms move. 3-sec lowering. Tricep long head in stretched position.<br>
+            <span class="ax">🎯 AX: "Upper arms vertical and still. If they drift back, you've lost the movement."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 6–8kg ea</div>
+            <div class="prog">Ph2: 8–10kg<br>Ph3: <strong>10–12kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">4</td>
+          <td>
+            <div class="ex-name">Standing DB Woodchop (High to Low — Diagonal)</div>
+            <div class="ex-cue">Hold one DB with both hands at shoulder height on one side. Rotate and pull diagonally down to opposite hip — controlled rotation from the hips, not the lumbar. 3-sec return. Only loaded rotational exercise in the programme — direct cycling stability transfer.<br>
+            <span class="ax">🎯 AX: "Rotate from the hips — not the lower back. Think hip turn, not spine twist."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12 ea</td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 4–6kg</div>
+            <div class="prog">Ph2: 6–8kg<br>Ph3: <strong>8–10kg</strong></div>
+          </td>
+        </tr>
+
+        <!-- CORE FINISHER -->
+        <tr><td colspan="4">
+          <div class="core-hdr"><div class="core-hdr-dot"></div><div class="core-hdr-txt">Core Finisher — Posterior Chain + Stability · 10 min</div></div>
+        </td></tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C1</td>
+          <td>
+            <div class="ex-name">McGill Big 3 — Quick Round</div>
+            <div class="ex-cue">Curl-up × 8 (8-sec holds) → Bird-dog × 6 each (10-sec holds) → Side plank × 20s each (right first). Always ends the week. Posterior core maintenance — never skipped after a full-body session.</div>
+          </td>
+          <td class="ex-sets">1 round</td>
+          <td class="ex-wt"><div class="wt-badge">Bodyweight</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C2</td>
+          <td>
+            <div class="ex-name">Reverse Hyperextension (Face Down on Bench)</div>
+            <div class="ex-cue">Hips at bench edge, legs hanging. Raise legs to horizontal — no higher. 2-sec hold, 3-sec lowering. Strengthens spinal erectors while decompressing the disc simultaneously. Jeff's top pick for sciatica history.</div>
+          </td>
+          <td class="ex-sets">3 × 12</td>
+          <td class="ex-wt"><div class="wt-badge">BW → ankle band Ph2</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">C3</td>
+          <td>
+            <div class="ex-name">Body Saw (Towel on Floor)</div>
+            <div class="ex-cue">Forearm plank, feet on folded towel. Push body backward by extending forearms — slide feet away — pull back. Moving plank forces constant core readjustment. Build range progressively — short range first.</div>
+          </td>
+          <td class="ex-sets">3 × 10</td>
+          <td class="ex-wt"><div class="wt-badge">Bodyweight</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CYCLING ══ -->
+<div class="section" id="cycling">
+  <div class="sec-h">
+    <h2>Cycling — Thursday</h2>
+    <p>Zone 2 aerobic base · 10am morning · Road bike or trainer · 45–75 min</p>
+  </div>
+
+  <div class="session">
+    <div class="session-head">
+      <div class="s-num cy">T</div>
+      <div>
+        <div class="s-name">Road Cycling / Bike Trainer · Zone 2</div>
+        <div class="s-meta">Outdoor road or home trainer · 45–75 min · Upper body recovering from Wed · Legs fresh</div>
+      </div>
+      <span class="s-tag tag-cy">Cycling · Thu</span>
+    </div>
+    <div class="session-body">
+      <div class="note note-g">
+        <span>🚴</span>
+        <div><strong>Why Zone 2:</strong> On keto/low carb, Zone 2 (conversational pace, 60–70% max HR) maximises fat oxidation — you're burning fat as fuel, not glycogen. Going harder pushes you into Zone 3–4 where you need carbs you don't have. Zone 2 also builds mitochondrial density and aerobic base without cortisol spike.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;font-size:13px;">
+        <div class="card" style="margin-bottom:0;">
+          <h3 style="font-size:15px;margin-bottom:10px;">Phase 1 — October</h3>
+          <div style="color:var(--ink-mid);line-height:1.9;">
+            <strong>Duration:</strong> 45–55 min<br>
+            <strong>Intensity:</strong> Zone 2 strictly — you can hold a full conversation<br>
+            <strong>Why shorter:</strong> Keto adaptation means lower energy available. Don't push.<br>
+            <strong>Electrolytes:</strong> Essential before and during — keto depletes sodium fast
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:0;">
+          <h3 style="font-size:15px;margin-bottom:10px;">Phase 2–3 — Nov/Dec</h3>
+          <div style="color:var(--ink-mid);line-height:1.9;">
+            <strong>Duration:</strong> 60–75 min<br>
+            <strong>Intensity:</strong> Zone 2 base + one 5-min Zone 3 push mid-ride<br>
+            <strong>Progression:</strong> Add 1× longer ride (90 min) per month on Sat/Sun ad-hoc<br>
+            <strong>Core focus:</strong> Deliberate core engagement on the bike — tight abs, stable pelvis
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACTIVE REST ══ -->
+<div class="section" id="active-rest">
+  <div class="sec-h">
+    <h2>Active Rest — Tuesday & Saturday</h2>
+    <p>Walk + Yoga · Recovery without full rest · Parasympathetic nervous system activation</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <div class="card">
+      <h3 style="margin-bottom:12px;">Walk — 25–40 min</h3>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.9;">
+        <strong style="color:var(--ink);">Pace:</strong> Easy conversational pace — not a power walk<br>
+        <strong style="color:var(--ink);">Best timing:</strong> After dinner (7–8pm) — improves blood sugar management and aids sleep<br>
+        <strong style="color:var(--ink);">On keto (Oct):</strong> Post-dinner walk meaningfully reduces blood glucose spikes even on a very low carb diet<br>
+        <strong style="color:var(--ink);">Core cue on walk:</strong> Slight glute squeeze with each step — passive glute activation
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px;">Yoga — 20–30 min</h3>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.9;">
+        <strong style="color:var(--ink);">Style:</strong> Mobility-focused — not hot yoga, not power yoga<br>
+        <strong style="color:var(--ink);">Priority poses:</strong> Pigeon pose (right side longer — piriformis), low lunge, cat-cow, thread the needle, child's pose, supine twist (gentle)<br>
+        <strong style="color:var(--ink);">Avoid:</strong> Deep twists under load, any forward fold with rounded back, camel pose<br>
+        <strong style="color:var(--ink);">Timing:</strong> Morning or evening — your call
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DIET ══ -->
+<div class="section" id="diet">
+  <div class="sec-h">
+    <h2>Diet & Nutrition</h2>
+    <p>Phase 1: Strict keto + IF · Phase 2–3: Low carb + IF maintained</p>
+  </div>
+
+  <!-- PHASE 1 KETO -->
+  <div class="card">
+    <h3 style="margin-bottom:6px;">Phase 1 — Strict Keto · October · Weeks 1–4</h3>
+    <p style="font-size:12px;color:var(--ink-soft);margin-bottom:16px;">Fasting window: 10pm → break fast post-workout ~11–11:30am. Coffee at 10am (black, single espresso) is fine fasted.</p>
+
+    <div class="macro-grid">
+      <div class="macro-card" style="border-top:3px solid var(--green);">
+        <div class="mc-val" style="color:var(--green);">130g+</div>
+        <div class="mc-lbl">Protein daily</div>
+        <div class="mc-note">Perimenopause raises MPS threshold</div>
+      </div>
+      <div class="macro-card" style="border-top:3px solid var(--amber);">
+        <div class="mc-val" style="color:var(--amber);">65–75g</div>
+        <div class="mc-lbl">Fat daily</div>
+        <div class="mc-note">Primary fuel source on keto</div>
+      </div>
+      <div class="macro-card" style="border-top:3px solid var(--navy);">
+        <div class="mc-val" style="color:var(--navy);">&lt;20g</div>
+        <div class="mc-lbl">Net carbs daily</div>
+        <div class="mc-note">Strict keto threshold</div>
+      </div>
+      <div class="macro-card" style="border-top:3px solid var(--red);">
+        <div class="mc-val" style="color:var(--red);">~1,500</div>
+        <div class="mc-lbl">Calories daily</div>
+        <div class="mc-note">Slight deficit for fat loss</div>
+      </div>
+    </div>
+
+    <div class="keto-grid">
+      <div class="keto-card">
+        <h4>✅ Eat freely</h4>
+        <div class="keto-item"><span>🥩</span><span>Beef (Monday only), chicken, fish, eggs, pork</span></div>
+        <div class="keto-item"><span>🐟</span><span>Salmon, mackerel, sardines — 3–4× per week for omega-3 + cholesterol</span></div>
+        <div class="keto-item"><span>🥑</span><span>Avocado, olive oil, macadamia, almonds, walnuts</span></div>
+        <div class="keto-item"><span>🥦</span><span>All leafy greens, broccolini, zucchini, asparagus, cauliflower, cucumber</span></div>
+        <div class="keto-item"><span>🧀</span><span>Full-fat Greek yoghurt (plain), hard cheese (small amounts)</span></div>
+        <div class="keto-item"><span>🫒</span><span>Bone broth — excellent for electrolytes and gut health on keto</span></div>
+      </div>
+      <div class="keto-card">
+        <h4>❌ Strict keto avoids</h4>
+        <div class="keto-item"><span>🍞</span><span>All bread, pasta, rice, noodles, oats</span></div>
+        <div class="keto-item"><span>🍎</span><span>Most fruit — berries only (small handful max)</span></div>
+        <div class="keto-item"><span>🥛</span><span>Milk, sweetened yoghurt, flavoured drinks</span></div>
+        <div class="keto-item"><span>🧃</span><span>All juices, soft drinks, sports drinks, sweeteners (spike insulin)</span></div>
+        <div class="keto-item"><span>🥜</span><span>Cashews, peanuts (higher carb nuts — choose macadamia/almonds)</span></div>
+        <div class="keto-item"><span>🫙</span><span>All sauces with sugar — oyster sauce, teriyaki, sweet chilli, hoisin</span></div>
+      </div>
+    </div>
+
+    <div class="note note-a">
+      <span>☕</span>
+      <div><strong>Coffee:</strong> Single espresso at 10am before training — black only. No milk (breaks fast, insulin response). This is fine and actually beneficial fasted — caffeine enhances fat oxidation during training.</div>
+    </div>
+
+    <div class="meal-block" style="margin-top:16px;">
+      <div class="meal-hdr"><h4>Sample Training Day — Keto (October)</h4><span>~1,520 kcal · 135g protein · &lt;20g net carbs</span></div>
+      <div class="meal-row">
+        <div class="meal-time">10 AM</div>
+        <div class="meal-content">
+          <div class="meal-name">Pre-Training (fasted)</div>
+          <div class="meal-detail">Black espresso + electrolytes in water. Nothing else. Train at 10am.</div>
+        </div>
+      </div>
+      <div class="meal-row">
+        <div class="meal-time">11:30 AM</div>
+        <div class="meal-content">
+          <div class="meal-name">Break Fast — Salmon + Eggs + Greens</div>
+          <div class="meal-detail">2 eggs scrambled in olive oil · 150g grilled salmon · Large handful spinach + rocket · ½ avocado · Himalayan salt + black pepper</div>
+          <div class="macros"><span class="mac mac-p">55g protein</span><span class="mac mac-f">32g fat</span><span class="mac mac-c">4g net carbs</span></div>
+        </div>
+      </div>
+      <div class="meal-row">
+        <div class="meal-time">4:30 PM</div>
+        <div class="meal-content">
+          <div class="meal-name">Protein + Fat Snack</div>
+          <div class="meal-detail">Plain full-fat Greek yoghurt 150g · 1 scoop unflavoured protein powder · Handful almonds + walnuts · 1 tbsp ground flaxseed (cholesterol protocol)</div>
+          <div class="macros"><span class="mac mac-p">40g protein</span><span class="mac mac-f">18g fat</span><span class="mac mac-c">6g net carbs</span></div>
+        </div>
+      </div>
+      <div class="meal-row">
+        <div class="meal-time">7:30 PM</div>
+        <div class="meal-content">
+          <div class="meal-name">Dinner — Chicken + Roasted Veg</div>
+          <div class="meal-detail">200g chicken thigh (skin on) · Roasted broccolini + zucchini + asparagus in olive oil · Cauliflower rice · Garlic + herbs · No sauces with sugar</div>
+          <div class="macros"><span class="mac mac-p">48g protein</span><span class="mac mac-f">22g fat</span><span class="mac mac-c">8g net carbs</span></div>
+        </div>
+      </div>
+      <div class="meal-row">
+        <div class="meal-time">9 PM</div>
+        <div class="meal-content">
+          <div class="meal-name">Herbal Tea + Supplements</div>
+          <div class="meal-detail">Chamomile or passionflower tea · Magnesium glycinate + supplements. Fluids stop after this. Legs elevated 30 min before bed.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note note-r" style="margin-top:14px;">
+      <span>🥂</span>
+      <div><strong>Wine on keto:</strong> Dry red or white only — no sweet wine, no champagne, no cocktails. 1–2 glasses maximum. Wine does not kick you out of ketosis (minimal carbs) but alcohol IS metabolised before fat, which pauses fat burning for 2–4 hours. Drink with dinner, not before. Never on an empty stomach on keto — the effect is much stronger.</div>
+    </div>
+
+    <div class="note note-b" style="margin-top:10px;margin-bottom:0;">
+      <span>⚡</span>
+      <div><strong>Keto flu — Weeks 1–2:</strong> Headache, fatigue, brain fog, irritability are normal. Your body is switching fuel systems. Salt your food aggressively, take electrolytes daily, drink bone broth. Symptoms resolve by Day 7–10. Push through — fat adaptation takes 3–4 weeks and it's worth it.</div>
+    </div>
+  </div>
+
+  <!-- PHASE 2-3 -->
+  <div class="card">
+    <h3 style="margin-bottom:12px;">Phase 2–3 — Low Carb Maintained · November–December</h3>
+    <div class="macro-grid">
+      <div class="macro-card" style="border-top:3px solid var(--green);">
+        <div class="mc-val" style="color:var(--green);">130g+</div>
+        <div class="mc-lbl">Protein daily</div>
+        <div class="mc-note">Unchanged — perimenopause priority</div>
+      </div>
+      <div class="macro-card" style="border-top:3px solid var(--amber);">
+        <div class="mc-val" style="color:var(--amber);">55–65g</div>
+        <div class="mc-lbl">Fat daily</div>
+        <div class="mc-note">Slightly reduced from keto phase</div>
+      </div>
+      <div class="macro-card" style="border-top:3px solid var(--navy);">
+        <div class="mc-val" style="color:var(--navy);">40–55g</div>
+        <div class="mc-lbl">Net carbs daily</div>
+        <div class="mc-note">Enough for training performance</div>
+      </div>
+      <div class="macro-card" style="border-top:3px solid var(--red);">
+        <div class="mc-val" style="color:var(--red);">~1,550</div>
+        <div class="mc-lbl">Calories daily</div>
+        <div class="mc-note">Slight deficit maintained</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--ink-mid);line-height:1.9;margin-top:4px;">
+      <strong style="color:var(--ink);">What changes from October:</strong> You can add small amounts of sweet potato, oats (40g), berries more freely, and legumes. IF window maintained — still 10am–8pm. Beef still Monday only. Salmon/fatty fish still 3–4× per week. Psyllium husk 1 tbsp at first meal daily (cholesterol protocol — ongoing).<br><br>
+      <strong style="color:var(--ink);">December social eating:</strong> One higher-carb meal per week is fine. Don't abandon IF completely. If you overeat at a dinner — the next morning fast until noon and resume. Don't compensate with extra training — that raises cortisol.<br><br>
+      <strong style="color:var(--ink);">Cholesterol ongoing:</strong> Ground flaxseed 1 tbsp daily, omega-3 fish 3–4×/week, nuts daily (plant sterols), olive oil over all other cooking fats.
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUPPLEMENTS ══ -->
+<div class="section" id="supplements">
+  <div class="sec-h">
+    <h2>Supplements</h2>
+    <p>What you have · What to add · Exact timing for maximum effect</p>
+  </div>
+
+  <div class="card">
+    <table class="supp-table">
+      <tr><th width="160">Supplement</th><th width="60">Status</th><th>Why · Evidence</th><th width="140">Timing</th></tr>
+      <tr>
+        <td><strong>Creatine monohydrate</strong></td>
+        <td><span class="have">YOU HAVE</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Strongest supplement evidence for perimenopause — supports muscle protein synthesis, bone density, and cognitive clarity. 3–5g daily consistently. Safe and cheap.</td>
+        <td style="font-size:12px;">3–5g any time daily. Consistent timing matters more than when.</td>
+      </tr>
+      <tr>
+        <td><strong>Magnesium glycinate</strong></td>
+        <td><span class="have">YOU HAVE</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Sleep quality improvement + reduction in nocturia (night waking to urinate) in perimenopausal women. Glycinate form is best absorbed. Not oxide.</td>
+        <td style="font-size:12px;">300–400mg 30–60 min before bed. Always with food or herbal tea.</td>
+      </tr>
+      <tr>
+        <td><strong>Electrolytes</strong></td>
+        <td><span class="have">YOU HAVE</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);"><strong>Critical on keto.</strong> Sodium, potassium, and magnesium all deplete rapidly when carbs are low. Keto flu is largely an electrolyte deficiency. Essential every day in October.</td>
+        <td style="font-size:12px;">During training session + one other time daily (morning or afternoon). Not at night.</td>
+      </tr>
+      <tr>
+        <td><strong>Vitamin B Complex</strong></td>
+        <td><span class="have">YOU HAVE</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Energy metabolism — B2, B6, B12 especially important for perimenopause. Supports cognitive function and reduces fatigue.</td>
+        <td style="font-size:12px;">With first meal (post-workout break fast ~11:30am). B vitamins are water-soluble — take with food.</td>
+      </tr>
+      <tr>
+        <td><strong>Vitamin C</strong></td>
+        <td><span class="have">YOU HAVE</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Immune support + cortisol regulation post-training. Antioxidant — reduces exercise-induced inflammation. 500–1000mg is the useful range.</td>
+        <td style="font-size:12px;">500–1000mg with first meal. Not immediately before training (may blunt some adaptation signals).</td>
+      </tr>
+      <tr>
+        <td><strong>Vaginal probiotic</strong></td>
+        <td><span class="have">YOU HAVE</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Oestrogen decline directly affects vaginal microbiome. Keep taking as directed — this is a smart and often overlooked perimenopause supplement.</td>
+        <td style="font-size:12px;">As directed on product. Usually before bed.</td>
+      </tr>
+      <tr>
+        <td><strong>Omega-3 (EPA+DHA)</strong></td>
+        <td><span class="add">ADD</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Anti-inflammatory, reduces LDL cholesterol, supports brain clarity ("clearer mind" is your goal), reduces exercise-induced soreness. High priority if fatty fish is under 3× per week.</td>
+        <td style="font-size:12px;">2g EPA+DHA with a meal — ideally dinner. Fish oil burps: freeze the capsule before taking.</td>
+      </tr>
+      <tr>
+        <td><strong>Vitamin D3 + K2</strong></td>
+        <td><span class="add">ADD</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Oestrogen decline accelerates bone density loss — this is your most important long-term protection. D3 supports calcium absorption; K2 directs calcium to bones not arteries. Singapore sun is often not enough.</td>
+        <td style="font-size:12px;">2000–4000 IU D3 + 100–200mcg K2 with a fat-containing meal (fat-soluble). Get D levels checked by GP.</td>
+      </tr>
+      <tr>
+        <td><strong>Psyllium husk</strong></td>
+        <td><span class="add">ADD · FOOD</span></td>
+        <td style="font-size:12px;color:var(--ink-mid);">Soluble fibre — binds LDL in the gut before absorption. Can reduce LDL by 5–10% alone. Also helps gut motility which can slow on keto.</td>
+        <td style="font-size:12px;">1 tbsp in 300ml water with first meal. Drink immediately + follow with another full glass. Every day.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="note note-b">
+    <span>🩺</span>
+    <div><strong>GP visit — strongly recommended:</strong> Nocturia disrupting sleep is a treatable perimenopause symptom. Have D3 levels checked. Have cholesterol retested after 8 weeks of dietary changes. The conversation about HRT is worth having — recent evidence has significantly revised the risk-benefit picture for women in early perimenopause.</div>
+  </div>
+</div>
+
+<!-- ══ PROGRESSION ══ -->
+<div class="section" id="progression">
+  <div class="sec-h">
+    <h2>Weights & Progression</h2>
+    <p>Starting loads · 12-week targets · Progression rules</p>
+  </div>
+
+  <div class="note note-a">
+    <span>⚠️</span>
+    <div><strong>Equipment limit note:</strong> With ~35kg total plates + one barbell, your upper body and single-leg work has plenty of load headroom. Lower body bilateral barbell work (squats, RDL) will approach the equipment limit around Week 6–8. Solution: prioritise unilateral movements (split squats, step-ups, single-leg bridges) which double the effective load, and use tempo (4-sec lowering) to increase difficulty without more weight.</div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:14px;">12-Week Progression Targets</h3>
+    <table class="prog-table">
+      <tr><th>Exercise</th><th>Now (estimate)</th><th>Week 4</th><th>Week 8</th><th>Week 12–13</th><th>Rule</th></tr>
+      <tr><td>Lat Pulldown</td><td><span class="w-now">~15–20kg</span></td><td><span class="w-4">20–22kg</span></td><td><span class="w-8">25–27kg</span></td><td><span class="w-12">28–32kg</span></td><td style="font-size:11px;color:var(--ink-soft);">+2.5kg when all 4 sets RPE ≤7</td></tr>
+      <tr><td>Chest-Supported Row</td><td><span class="w-now">~5–6kg ea</span></td><td><span class="w-4">7–8kg</span></td><td><span class="w-8">9–11kg</span></td><td><span class="w-12">12–14kg</span></td><td style="font-size:11px;color:var(--ink-soft);">+1kg increments</td></tr>
+      <tr><td>DB Incline Curl</td><td><span class="w-now">~4–5kg</span></td><td><span class="w-4">5–6kg</span></td><td><span class="w-8">6–7kg</span></td><td><span class="w-12">7–9kg</span></td><td style="font-size:11px;color:var(--ink-soft);">+1kg when RPE 7</td></tr>
+      <tr><td>Lateral Raise</td><td><span class="w-now">~3kg</span></td><td><span class="w-4">4kg</span></td><td><span class="w-8">5kg</span></td><td><span class="w-12">6–7kg</span></td><td style="font-size:11px;color:var(--ink-soft);">Slow progression — don't rush</td></tr>
+      <tr><td>Goblet Squat → Barbell</td><td><span class="w-now">~12–14kg</span></td><td><span class="w-4">16–18kg</span></td><td><span class="w-8">Barbell 20–25kg</span></td><td><span class="w-12">Barbell 25–32kg</span></td><td style="font-size:11px;color:var(--ink-soft);">Transition to barbell Wk5+</td></tr>
+      <tr><td>DB RDL → Barbell</td><td><span class="w-now">~10–12kg ea</span></td><td><span class="w-4">14–16kg ea</span></td><td><span class="w-8">Barbell 25–30kg</span></td><td><span class="w-12">Barbell 30–35kg</span></td><td style="font-size:11px;color:var(--ink-soft);">Transition to barbell Wk5+</td></tr>
+      <tr><td>Bulgarian Split Squat</td><td><span class="w-now">Bodyweight only</span></td><td><span class="w-4">6–8kg ea</span></td><td><span class="w-8">10–12kg ea</span></td><td><span class="w-12">14–18kg ea</span></td><td style="font-size:11px;color:var(--ink-soft);">Ph2 introduction — progress fast</td></tr>
+      <tr><td>Barbell Floor Press</td><td><span class="w-now">~15–18kg</span></td><td><span class="w-4">18–22kg</span></td><td><span class="w-8">22–27kg</span></td><td><span class="w-12">27–32kg</span></td><td style="font-size:11px;color:var(--ink-soft);">+2.5kg when RPE 7</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:12px;">Deload Protocol</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:12px;">
+      <div style="background:var(--green-light);border-radius:6px;padding:12px 14px;">
+        <strong style="color:var(--green);">Week 5 — Mini Deload</strong><br>
+        <span style="color:#1A4A30;">After 4 weeks of keto adaptation + strength foundation. Reduce all weights by 15% for 3 days. Week 4 Friday → Week 5 is lighter. Then reload Week 6.</span>
+      </div>
+      <div style="background:var(--amber-light);border-radius:6px;padding:12px 14px;">
+        <strong style="color:var(--amber);">Week 9 — Full Deload</strong><br>
+        <span style="color:#6A3A08;">After 8 weeks continuous training. Reduce all weights by 20% for one full week. Same exercises, strict form focus. Non-optional.</span>
+      </div>
+      <div style="background:#EEF2FF;border-radius:6px;padding:12px 14px;">
+        <strong style="color:var(--navy);">Week 13 — Final Deload</strong><br>
+        <span style="color:var(--navy);">Before Christmas. Light week. Assess all lifts. Set new starting weights for next cycle. Celebrate the 90 days.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MILESTONES ══ -->
+<div class="section" id="milestones">
+  <div class="sec-h">
+    <h2>Milestones & Expectations</h2>
+    <p>Realistic targets for perimenopause · Monthly check-in metrics</p>
+  </div>
+
+  <div class="note note-r">
+    <span>📌</span>
+    <div><strong>Perimenopause reality:</strong> Fat loss is 20–40% slower than at 35. The scale can fluctuate ±2kg week to week from hormonal water retention — this is not fat gain. Body measurements and strength numbers are more reliable progress indicators. A great month looks like: weights up, measurements down, energy better, sleep improving.</div>
+  </div>
+
+  <div class="ms-grid">
+    <div class="ms-card">
+      <div class="ms-hdr ph1-hdr">
+        <h4>Month 1 — October</h4>
+        <p>Keto adaptation · Foundation · Reset</p>
+      </div>
+      <div class="ms-body">
+        <div class="ms-item"><span>⚡</span><div><strong>Energy:</strong> Low in Weeks 1–2 (keto flu). Better from Week 3 as fat adaptation settles.</div></div>
+        <div class="ms-item"><span>⚖️</span><div><strong>Scale:</strong> Expect −1.5–2.5kg quickly (water + glycogen). Real fat loss begins Week 3. Don't read into Week 1–2 numbers.</div></div>
+        <div class="ms-item"><span>📏</span><div><strong>Measurements:</strong> Waist may reduce 0.5–1cm from inflammation reduction alone.</div></div>
+        <div class="ms-item"><span>💪</span><div><strong>Strength:</strong> Learn the movements. Focus on form not load. Weights will feel easy — that's correct.</div></div>
+        <div class="ms-item"><span>😴</span><div><strong>Sleep:</strong> Begin nocturia protocol — legs elevated, fluids stop after herbal tea.</div></div>
+        <div class="ms-item"><span>🎯</span><div><strong>Win condition:</strong> 4 sessions/week consistently. Keto strictly followed. That's it.</div></div>
+      </div>
+    </div>
+
+    <div class="ms-card">
+      <div class="ms-hdr ph2-hdr">
+        <h4>Month 2 — November</h4>
+        <p>Visible change · Strength building · Energy returns</p>
+      </div>
+      <div class="ms-body">
+        <div class="ms-item"><span>⚖️</span><div><strong>Scale:</strong> −2–3.5kg from start. Real fat loss now visible. Scale will stall some weeks — normal.</div></div>
+        <div class="ms-item"><span>📏</span><div><strong>Waist:</strong> −1–2cm from start. Clothes noticeably looser around the waist.</div></div>
+        <div class="ms-item"><span>💪</span><div><strong>Strength:</strong> Meaningfully stronger on all lifts. Bulgarian split squat introduced and progressing. Lat pulldown above 22kg.</div></div>
+        <div class="ms-item"><span>⚡</span><div><strong>Energy:</strong> Noticeably better than October. Clearer mind. Less afternoon slump.</div></div>
+        <div class="ms-item"><span>🚴</span><div><strong>Cycling:</strong> Faster and more powerful on the bike — strength training carry-over is real.</div></div>
+        <div class="ms-item"><span>🩸</span><div><strong>Cholesterol:</strong> Get a retest. 8 weeks of dietary changes should show measurable LDL reduction.</div></div>
+      </div>
+    </div>
+
+    <div class="ms-card">
+      <div class="ms-hdr ph3-hdr">
+        <h4>Month 3 — December</h4>
+        <p>Peak strength · Leanest yet · Hold through festive</p>
+      </div>
+      <div class="ms-body">
+        <div class="ms-item"><span>⚖️</span><div><strong>Scale:</strong> −3–4.5kg from start (54.5–56kg). Perimenopause makes 5kg in 90 days very difficult — this is honest.</div></div>
+        <div class="ms-item"><span>📏</span><div><strong>Body fat:</strong> ~23–24% (from 27%). 20% is a 6-month target, not 90-day.</div></div>
+        <div class="ms-item"><span>📏</span><div><strong>Waist:</strong> −2–4cm total from start. Hip and thigh definition visible.</div></div>
+        <div class="ms-item"><span>💪</span><div><strong>Strength:</strong> Barbell RDL at 30–35kg. Lat pulldown 28–32kg. Split squat 14–16kg. Measurably strong.</div></div>
+        <div class="ms-item"><span>🦴</span><div><strong>Long-term:</strong> Bone density protecting. The most important invisible result of 3 months of heavy lifting.</div></div>
+        <div class="ms-item"><span>🎯</span><div><strong>Festive:</strong> One higher-carb social meal per week — not the whole week. IF maintained. Don't compensate with extra training.</div></div>
+      </div>
+    </div>
+
+    <div class="ms-card">
+      <div class="ms-hdr beyond-hdr">
+        <h4>Beyond 90 Days</h4>
+        <p>What the foundation makes possible</p>
+      </div>
+      <div class="ms-body">
+        <div class="ms-item"><span>🎯</span><div><strong>20% body fat:</strong> Achievable at 4–6 months with consistent training + diet. Not 90 days — be honest with yourself on the timeline.</div></div>
+        <div class="ms-item"><span>💪</span><div><strong>5kg target:</strong> Achievable at 4–5 months. The 90-day plan gets you 3–4kg of it.</div></div>
+        <div class="ms-item"><span>🔄</span><div><strong>Next cycle:</strong> Repeat the programme at higher starting weights. The second cycle produces faster results than the first.</div></div>
+        <div class="ms-item"><span>🩺</span><div><strong>GP visit:</strong> You now have 3 months of real data. The conversation about perimenopause management and HRT is worth having with numbers in hand.</div></div>
+        <div class="ms-item"><span>🚴</span><div><strong>Cycling goal:</strong> Add structured cycling training in cycle 2 — longer rides, one interval session per week. The strength base you've built will make this significantly more effective.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:12px;">Monthly Check-In Metrics — Measure these consistently</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;color:var(--ink-mid);">
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;"><span>📏</span><span>Waist at narrowest (relaxed, not sucked in)</span></div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;"><span>📏</span><span>Hips at widest (across glutes)</span></div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;"><span>📏</span><span>Mid-thigh both legs</span></div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;"><span>📏</span><span>Upper arm both sides</span></div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;"><span>⚖️</span><span>Scale weight — average of 3 consecutive mornings</span></div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;"><span>📸</span><span>Progress photo — same lighting, same clothing, same angle</span></div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;"><span>💪</span><span>Lat pulldown max (clean form) · RDL max · Split squat max</span></div>
+      <div style="padding:8px 0;display:flex;gap:8px;"><span>😴</span><span>Sleep quality 1–10 · Nocturia episodes per night average</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BACK HEALTH ══ -->
+<div class="section" id="backhealth">
+  <div class="sec-h">
+    <h2>Back Health & Sciatica Protocol</h2>
+    <p>20–25 min · Any rest day · 3–4× per week is better than once done perfectly</p>
+  </div>
+
+  <div class="note note-b">
+    <span>🦴</span>
+    <div>Treat this as physio, not a workout. Right side gets extra time throughout — right piriformis tightness compresses the sciatic nerve on your problem side. Do this on Tuesday and Saturday at minimum. It can follow yoga or be standalone.</div>
+  </div>
+
+  <div class="session">
+    <div class="session-head">
+      <div class="s-num" style="color:var(--navy);">P</div>
+      <div>
+        <div class="s-name">Sciatica & Posterior Chain — Full Session</div>
+        <div class="s-meta">Mat · Bench · No load required · 20–25 min</div>
+      </div>
+      <span class="s-tag" style="background:#EEF2FF;color:var(--navy);border:1px solid rgba(15,31,61,0.15);">Physio · Any Day</span>
+    </div>
+    <div class="session-body">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);padding:14px 0 8px;border-bottom:1px solid var(--rule);">Part A — McGill Big 3 · 7 min</div>
+      <div class="bh-item">
+        <div class="bh-n">1</div>
+        <div style="flex:1;">
+          <div class="bh-name">McGill Curl-Up</div>
+          <div class="bh-cue">One knee bent, one flat. Hands under lumbar curve. Lift head and shoulders only — eyes to ceiling, NOT knees. Hold 8–10 sec. Bracing, not crunching. Spine stays completely neutral.</div>
+        </div>
+        <div class="bh-sets">3 × 8 · 8s holds</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">2</div>
+        <div style="flex:1;">
+          <div class="bh-name">Side Plank · Right Side Priority</div>
+          <div class="bh-cue">Right side holds 10–15 sec longer every set. Right QL weakness is driving the right-side bias — this directly addresses it.</div>
+        </div>
+        <div class="bh-sets">R: 3×40s · L: 3×25s</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">3</div>
+        <div style="flex:1;">
+          <div class="bh-name">Bird-Dog · 10-sec holds</div>
+          <div class="bh-cue">All fours, spine neutral. Extend opposite arm and leg. Hold 10 sec — breathe normally. Longer holds recruit deep multifidus fibres. These protect the sciatic nerve.</div>
+        </div>
+        <div class="bh-sets">3 × 6 ea · 10s</div>
+      </div>
+
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);padding:14px 0 8px;border-top:1px solid var(--rule);margin-top:4px;">Part B — Strengthening · 6 min</div>
+      <div class="bh-item">
+        <div class="bh-n">4</div>
+        <div style="flex:1;">
+          <div class="bh-name">Reverse Hyperextension (Face Down on Bench)</div>
+          <div class="bh-cue">Hips at bench edge, legs hanging. Raise to horizontal only — no higher. 2-sec hold, 3-sec lowering. Strengthens erectors while decompressing the disc. Jeff's top pick for this history.</div>
+        </div>
+        <div class="bh-sets">3 × 12</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">5</div>
+        <div style="flex:1;">
+          <div class="bh-name">Superman Hold</div>
+          <div class="bh-cue">Face down. Arms overhead. Lift arms AND legs simultaneously — think long not high. Hold 3 sec. Full posterior chain from thoracic to glutes.</div>
+        </div>
+        <div class="bh-sets">3 × 10 · 3s holds</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">6</div>
+        <div style="flex:1;">
+          <div class="bh-name">Suitcase Carry · Right Side First</div>
+          <div class="bh-cue">Heavy DB in ONE hand. Walk 20 steps. Resist leaning toward the weight — that resistance is the exercise. Start slightly lighter on right side. Trains QL as stabiliser, not compensator.</div>
+        </div>
+        <div class="bh-sets">3 × 20 steps ea</div>
+      </div>
+
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);padding:14px 0 8px;border-top:1px solid var(--rule);margin-top:4px;">Part C — Right Side Correction · 4 min</div>
+      <div class="bh-item">
+        <div class="bh-n">7</div>
+        <div style="flex:1;">
+          <div class="bh-name">Clamshell · Right Side Extra Set</div>
+          <div class="bh-cue">Stronger right piriformis and glute med = less sciatic nerve compression. One extra set on the right every session.</div>
+        </div>
+        <div class="bh-sets">R: 3 × 20 · L: 2 × 20</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">8</div>
+        <div style="flex:1;">
+          <div class="bh-name">Single-Leg Glute Bridge · Right Side Extra Set</div>
+          <div class="bh-cue">Weak right glute → right QL compensates → right-side pain. Strengthen the right glute and the pattern gradually unwinds.</div>
+        </div>
+        <div class="bh-sets">R: 3 × 15 · L: 2 × 15</div>
+      </div>
+
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);padding:14px 0 8px;border-top:1px solid var(--rule);margin-top:4px;">Part D — Nerve Mobility · Always Last · 5 min</div>
+      <div class="bh-item">
+        <div class="bh-n">9</div>
+        <div style="flex:1;">
+          <div class="bh-name">Sciatic Nerve Floss</div>
+          <div class="bh-cue">Sitting upright. Extend one leg + look up simultaneously — hold 2 sec. Bend knee + look down — hold 2 sec. Mild stretch only. Stop if tingling.</div>
+        </div>
+        <div class="bh-sets">2 × 10 ea · slow</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">10</div>
+        <div style="flex:1;">
+          <div class="bh-name">Piriformis Stretch (Figure-4) · Right Priority</div>
+          <div class="bh-cue">On back. Cross right ankle over left knee. Pull left knee toward chest. Breathe into it. Right side always first, always longer.</div>
+        </div>
+        <div class="bh-sets">R: 60s · L: 45s</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">11</div>
+        <div style="flex:1;">
+          <div class="bh-name">Hip Flexor Stretch (Kneeling Lunge)</div>
+          <div class="bh-cue">Kneeling lunge. Tuck tailbone (posterior pelvic tilt) — deepens the psoas stretch. Cyclists are chronically tight here. This directly relieves lumbar anterior tilt = less disc pressure.</div>
+        </div>
+        <div class="bh-sets">60s each side</div>
+      </div>
+      <div class="bh-item">
+        <div class="bh-n">12</div>
+        <div style="flex:1;">
+          <div class="bh-name">Cat-Cow → Child's Pose</div>
+          <div class="bh-cue">10 slow cat-cows (3 sec each direction) — then child's pose 60 sec. Always last. Leave every session feeling longer, not tighter.</div>
+        </div>
+        <div class="bh-sets">10 reps + 60s hold</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MACRO TRACKER ══ -->
+<div class="section" id="tracker">
+  <div class="sec-h">
+    <h2>Daily Macro Tracker</h2>
+    <p>Log your food · Track against keto or low carb targets · Resets each day</p>
+  </div>
+
+  <style>
+    /* ── TRACKER STYLES ── */
+    .phase-toggle { display:flex; gap:8px; margin-bottom:20px; }
+    .pt-btn {
+      flex:1; padding:12px 16px; border-radius:var(--r);
+      border:2px solid var(--rule); background:var(--paper);
+      cursor:pointer; font-family:'Inter',sans-serif;
+      font-size:12px; font-weight:700; text-transform:uppercase;
+      letter-spacing:0.07em; color:var(--ink-soft); transition:all .18s;
+    }
+    .pt-btn.active-p1 { border-color:var(--green); background:var(--green-light); color:var(--green); }
+    .pt-btn.active-p2 { border-color:var(--amber); background:var(--amber-light); color:var(--amber); }
+
+    .macro-bars { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+    .mbar-card {
+      background:var(--paper); border:1px solid var(--rule);
+      border-radius:var(--r); padding:16px 18px; box-shadow:var(--shadow);
+    }
+    .mbar-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+    .mbar-name { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; }
+    .mbar-vals { font-size:12px; color:var(--ink-soft); }
+    .mbar-vals strong { color:var(--ink); font-size:14px; }
+    .mbar-track {
+      height:10px; border-radius:5px;
+      background:var(--rule); overflow:visible; position:relative;
+    }
+    .mbar-fill {
+      height:100%; border-radius:5px;
+      transition:width .4s ease, background .3s;
+      max-width:100%;
+    }
+    .mbar-pct { font-size:10px; color:var(--ink-soft); margin-top:5px; }
+    .cal-card {
+      background:var(--navy); color:var(--page);
+      border-radius:var(--r); padding:18px 22px;
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:20px;
+    }
+    .cal-main { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1; }
+    .cal-sub { font-size:11px; opacity:.5; margin-top:4px; letter-spacing:.06em; text-transform:uppercase; }
+    .cal-remain { text-align:right; }
+    .cal-remain-val { font-size:22px; font-weight:700; }
+    .cal-remain-val.over { color:#FF6B6B; }
+    .cal-remain-lbl { font-size:10px; opacity:.45; text-transform:uppercase; letter-spacing:.06em; }
+
+    /* search */
+    .food-search-box {
+      background:var(--paper); border:1px solid var(--rule);
+      border-radius:var(--r); padding:20px 22px;
+      margin-bottom:16px; box-shadow:var(--shadow);
+    }
+    .food-search-box h4 { font-size:13px; font-weight:700; margin-bottom:14px; color:var(--navy); }
+    .search-row { display:flex; gap:8px; margin-bottom:12px; }
+    .search-row input, .search-row select {
+      flex:1; padding:10px 14px; border:1px solid var(--rule);
+      border-radius:6px; font-family:'Inter',sans-serif;
+      font-size:13px; color:var(--ink); background:var(--page);
+      outline:none; transition:border .15s;
+    }
+    .search-row input:focus, .search-row select:focus { border-color:var(--green); }
+    .search-row input { flex:2; }
+    .btn-green {
+      padding:10px 18px; background:var(--green); color:white;
+      border:none; border-radius:6px; font-family:'Inter',sans-serif;
+      font-size:12px; font-weight:700; cursor:pointer;
+      letter-spacing:.05em; text-transform:uppercase; transition:opacity .15s;
+      white-space:nowrap;
+    }
+    .btn-green:hover { opacity:.88; }
+    .btn-ghost {
+      padding:10px 14px; background:none; color:var(--ink-soft);
+      border:1px solid var(--rule); border-radius:6px;
+      font-family:'Inter',sans-serif; font-size:12px; cursor:pointer;
+      transition:all .15s;
+    }
+    .btn-ghost:hover { border-color:var(--ink-mid); color:var(--ink); }
+
+    /* search results */
+    .search-results {
+      border:1px solid var(--rule); border-radius:6px;
+      max-height:220px; overflow-y:auto; display:none;
+      background:var(--paper);
+    }
+    .sr-item {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 14px; border-bottom:1px solid var(--rule);
+      cursor:pointer; transition:background .12s; font-size:13px;
+    }
+    .sr-item:last-child { border-bottom:none; }
+    .sr-item:hover { background:var(--green-light); }
+    .sr-name { font-weight:600; color:var(--ink); }
+    .sr-macros { font-size:11px; color:var(--ink-soft); }
+    .sr-add { font-size:10px; font-weight:700; color:var(--green); text-transform:uppercase; }
+
+    /* manual entry */
+    .manual-grid {
+      display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr auto;
+      gap:8px; align-items:end; margin-top:12px;
+    }
+    .manual-grid input {
+      padding:9px 12px; border:1px solid var(--rule);
+      border-radius:6px; font-family:'Inter',sans-serif;
+      font-size:12px; color:var(--ink); background:var(--page); outline:none;
+    }
+    .manual-grid input:focus { border-color:var(--amber); }
+    .manual-grid label {
+      font-size:9px; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px;
+      display:block;
+    }
+    .tab-divider {
+      display:flex; gap:0; border:1px solid var(--rule);
+      border-radius:6px; overflow:hidden; margin-bottom:16px;
+      width:fit-content;
+    }
+    .td-btn {
+      padding:8px 16px; background:var(--page); border:none;
+      font-family:'Inter',sans-serif; font-size:11px; font-weight:600;
+      text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft);
+      cursor:pointer; transition:all .15s;
+    }
+    .td-btn.active { background:var(--navy); color:white; }
+
+    /* meal selector */
+    .meal-select {
+      padding:9px 12px; border:1px solid var(--rule);
+      border-radius:6px; font-family:'Inter',sans-serif;
+      font-size:12px; color:var(--ink); background:var(--page);
+      outline:none; min-width:130px;
+    }
+    .meal-select:focus { border-color:var(--green); }
+
+    /* log */
+    .food-log { background:var(--paper); border:1px solid var(--rule); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow); }
+    .log-header {
+      background:var(--navy); color:var(--page);
+      padding:12px 18px; display:flex;
+      justify-content:space-between; align-items:center;
+    }
+    .log-header h4 { font-size:12px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+    .log-section-hdr {
+      background:var(--page); padding:8px 18px;
+      font-size:10px; font-weight:700; letter-spacing:.12em;
+      text-transform:uppercase; color:var(--ink-soft);
+      border-bottom:1px solid var(--rule);
+    }
+    .log-item {
+      display:grid;
+      grid-template-columns:1fr 60px 60px 60px 60px 28px 28px;
+      gap:6px; align-items:center;
+      padding:10px 18px; border-bottom:1px solid var(--rule);
+      font-size:12px;
+    }
+    .log-item:last-child { border-bottom:none; }
+    .log-item:hover { background:var(--page); }
+    .li-name { font-weight:600; color:var(--ink); }
+    .li-portion { font-size:11px; color:var(--ink-soft); }
+    .li-macro { text-align:right; font-size:12px; color:var(--ink-mid); }
+    .li-macro.prot { color:var(--green); font-weight:600; }
+    .li-macro.fat { color:var(--amber); font-weight:600; }
+    .li-macro.carb { color:var(--navy); font-weight:600; }
+    .li-del, .li-edit {
+      width:26px; height:26px; border-radius:50%;
+      border:1px solid var(--rule); background:none;
+      cursor:pointer; font-size:13px;
+      display:flex; align-items:center; justify-content:center;
+      transition:all .15s; padding:0;
+    }
+    .li-del { color:var(--ink-soft); }
+    .li-del:hover { background:var(--red-light); border-color:var(--red); color:var(--red); }
+    .li-edit { color:var(--ink-soft); }
+    .li-edit:hover { background:var(--green-light); border-color:var(--green); color:var(--green); }
+    .edit-row {
+      background:var(--green-light);
+      border-bottom:1px solid var(--green-mid);
+      padding:12px 18px;
+      display:flex; gap:8px; align-items:flex-end; flex-wrap:wrap;
+    }
+    .edit-row input, .edit-row select {
+      padding:7px 10px; border:1px solid var(--rule);
+      border-radius:6px; font-family:'Inter',sans-serif;
+      font-size:12px; color:var(--ink); background:var(--paper);
+      outline:none;
+    }
+    .edit-row input:focus, .edit-row select:focus { border-color:var(--green); }
+    .edit-row label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); display:block; margin-bottom:3px; }
+    .edit-preview { font-size:11px; color:var(--ink-mid); align-self:center; flex:1; min-width:140px; }
+    .log-totals {
+      display:grid;
+      grid-template-columns:1fr 60px 60px 60px 60px 28px 28px;
+      gap:8px; padding:12px 18px;
+      background:var(--navy); color:var(--page); font-size:12px;
+      font-weight:700;
+    }
+    .lt-label { color:rgba(248,246,242,.6); }
+    .lt-val { text-align:right; }
+    .empty-log {
+      padding:32px 18px; text-align:center;
+      color:var(--ink-faint); font-size:13px;
+    }
+
+    /* net carb explainer */
+    .nc-note {
+      font-size:11px; color:var(--ink-soft);
+      background:var(--page); border:1px solid var(--rule);
+      border-radius:6px; padding:8px 12px; margin-top:8px;
+    }
+  </style>
+
+  <!-- STORAGE STATUS BANNER — updated dynamically on load and after each save -->
+  <div id="storageBanner" class="note" style="display:none;margin-bottom:16px;line-height:1.65;">
+    <span>💾</span>
+    <div id="storageBannerText"></div>
+  </div>
+
+  <!-- DATE NAVIGATION -->
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+    <label style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);">View day:</label>
+    <select id="historyPicker" onchange="loadDate(this.value)"
+      style="padding:9px 14px;border:1px solid var(--rule);border-radius:6px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);background:var(--page);outline:none;flex:1;max-width:280px;">
+      <option value="">Loading…</option>
+    </select>
+    <button class="btn-ghost" onclick="returnToToday()">↩ Back to Today</button>
+  </div>
+
+  <!-- READONLY NOTICE for past days -->
+  <div id="historyNote" class="note note-a" style="display:none;margin-bottom:14px;">
+    <span>📖</span>
+    <div><strong>Viewing a past day — read only.</strong> Adding or removing food will affect today's log. <button onclick="returnToToday()" style="background:none;border:none;color:var(--amber);font-weight:700;cursor:pointer;text-decoration:underline;font-size:13px;">Return to today</button> to edit.</div>
+  </div>
+
+  <!-- PHASE TOGGLE -->
+  <div class="phase-toggle">
+    <button class="pt-btn active-p1" id="btnP1" onclick="setPhase('keto')">
+      🥑 Phase 1 · Strict Keto<br>
+      <span style="font-size:10px;font-weight:400;text-transform:none;">&lt;20g net carbs · 130g protein · 65–75g fat · 1,500 kcal</span>
+    </button>
+    <button class="pt-btn" id="btnP2" onclick="setPhase('lowcarb')">
+      🍗 Phase 2–3 · Low Carb<br>
+      <span style="font-size:10px;font-weight:400;text-transform:none;">40–55g net carbs · 130g protein · 55–65g fat · 1,550 kcal</span>
+    </button>
+  </div>
+
+  <!-- MACRO RATIONALE -->
+  <div class="note note-b" style="margin-bottom:16px;font-size:12px;">
+    <span>ℹ️</span>
+    <div>
+      <strong>Why these targets differ from standard keto (70–80% fat):</strong> Your macros are customised for fat loss + muscle building at perimenopause — not standard keto maintenance.
+      <strong>Carbs are identical</strong> (&lt;20g net = ketosis, same threshold). <strong>Protein is higher</strong> (130g vs ~60g standard) because perimenopause raises the muscle protein synthesis threshold — you need roughly double the protein of a 30-year-old to achieve the same muscle response. <strong>Fat is lower</strong> because you're in a caloric deficit — your stored body fat fills the energy gap. High dietary fat while dieting slows body fat burning. You are still in ketosis. The ratio is optimised for <em>your</em> goals, not the textbook chart.
+    </div>
+  </div>
+
+  <!-- CALORIE SUMMARY -->
+  <div class="cal-card" id="calCard">
+    <div>
+      <div class="cal-main" id="calConsumed">0</div>
+      <div class="cal-sub">kcal consumed</div>
+    </div>
+    <div style="text-align:center;opacity:.3;font-size:22px;">→</div>
+    <div style="text-align:center;">
+      <div style="font-size:13px;opacity:.5;margin-bottom:2px;">Target</div>
+      <div style="font-size:20px;font-weight:700;" id="calTarget">1,500</div>
+    </div>
+    <div style="text-align:center;opacity:.3;font-size:22px;">→</div>
+    <div class="cal-remain">
+      <div class="cal-remain-val" id="calRemain">1,500</div>
+      <div class="cal-remain-lbl" id="calRemainLbl">kcal remaining</div>
+    </div>
+  </div>
+
+  <!-- MACRO BARS -->
+  <div class="macro-bars">
+    <!-- PROTEIN -->
+    <div class="mbar-card">
+      <div class="mbar-top">
+        <div>
+          <span class="mbar-name" style="color:var(--green);">Protein</span>
+          <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--red-light);color:var(--red);border:1px solid var(--red-mid);border-radius:10px;padding:1px 7px;margin-left:6px;">Priority #1</span>
+        </div>
+        <span class="mbar-vals"><strong id="pVal">0</strong>g / <span id="pTarget">130</span>g target</span>
+      </div>
+      <div class="mbar-track"><div class="mbar-fill" id="pBar" style="width:0%;background:var(--green);"></div></div>
+      <div class="mbar-pct" id="pPct" style="margin-top:5px;"></div>
+      <div id="pAdvice" style="font-size:11px;margin-top:5px;color:var(--ink-soft);">Log food to see protein status.</div>
+    </div>
+
+    <!-- NET CARBS -->
+    <div class="mbar-card">
+      <div class="mbar-top">
+        <div>
+          <span class="mbar-name" style="color:var(--navy);">Net Carbs</span>
+          <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#EEF2FF;color:var(--navy);border:1px solid rgba(15,31,61,.15);border-radius:10px;padding:1px 7px;margin-left:6px;">Priority #2 · Ceiling</span>
+        </div>
+        <span class="mbar-vals"><strong id="cVal">0</strong>g / <span id="cTarget">20</span>g ceiling</span>
+      </div>
+      <div class="mbar-track"><div class="mbar-fill" id="cBar" style="width:0%;background:var(--navy);"></div></div>
+      <div class="mbar-pct" id="cPct" style="margin-top:5px;"></div>
+      <div id="cAdvice" style="font-size:11px;margin-top:5px;color:var(--ink-soft);">Log food to see carb status.</div>
+      <div class="nc-note" style="margin-top:6px;">Net carbs = total carbs − fibre. This is a ceiling — under 20g keeps you in ketosis. Eating less is fine.</div>
+    </div>
+
+    <!-- FAT -->
+    <div class="mbar-card">
+      <div class="mbar-top">
+        <div>
+          <span class="mbar-name" style="color:var(--amber);">Fat</span>
+          <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--amber-light);color:var(--amber);border:1px solid var(--amber-mid);border-radius:10px;padding:1px 7px;margin-left:6px;">Flexible</span>
+        </div>
+        <span class="mbar-vals"><strong id="fVal">0</strong>g / <span id="fTarget">70</span>g guide</span>
+      </div>
+      <div class="mbar-track"><div class="mbar-fill" id="fBar" style="width:0%;background:var(--amber);"></div></div>
+      <div class="mbar-pct" id="fPct" style="margin-top:5px;"></div>
+      <div id="fAdvice" style="font-size:11px;margin-top:5px;color:var(--ink-soft);">Log food to see fat status.</div>
+    </div>
+
+    <!-- FIBRE -->
+    <div class="mbar-card">
+      <div class="mbar-top">
+        <div>
+          <span class="mbar-name" style="color:var(--ink-mid);">Fibre</span>
+          <span style="font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--green-light);color:var(--green);border:1px solid var(--green-mid);border-radius:10px;padding:1px 7px;margin-left:6px;">Gut health</span>
+        </div>
+        <span class="mbar-vals"><strong id="fibVal">0</strong>g / 25g</span>
+      </div>
+      <div class="mbar-track"><div class="mbar-fill" id="fibBar" style="width:0%;background:var(--slate);"></div></div>
+      <div class="mbar-pct" id="fibPct" style="margin-top:5px;"></div>
+      <div id="fibAdvice" style="font-size:11px;margin-top:5px;color:var(--ink-soft);">Psyllium husk (1 tbsp) adds 7g instantly.</div>
+    </div>
+  </div>
+
+  <!-- ADD FOOD -->
+  <div class="food-search-box">
+    <h4>Add Food</h4>
+
+    <div class="tab-divider">
+      <button class="td-btn active" id="tabSearch" onclick="switchEntry('search')">Search Database</button>
+      <button class="td-btn" id="tabManual" onclick="switchEntry('manual')">Log Manually</button>
+      <button class="td-btn" id="tabMyFoods" onclick="switchEntry('myfoods')">⭐ My Foods</button>
+    </div>
+
+    <!-- SEARCH PANEL -->
+    <div id="panelSearch">
+      <div class="search-row">
+        <input type="text" id="foodInput" placeholder="Search food (e.g. salmon, chicken, egg, avocado…)" oninput="searchFood(this.value)">
+        <select class="meal-select" id="mealSelectSearch">
+          <option value="Pre-Training">Pre-Training</option>
+          <option value="Break Fast" selected>Break Fast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Snack">Snack</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+
+      <!-- Portion modal -->
+      <div id="portionBox" style="display:none;margin-top:12px;background:var(--green-light);border:1px solid var(--green-mid);border-radius:8px;padding:14px 16px;">
+        <div style="font-weight:700;font-size:13px;color:var(--green);margin-bottom:10px;" id="portionFoodName"></div>
+        <div style="display:flex;gap:8px;align-items:flex-end;">
+          <div style="flex:1;">
+            <label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px;">Amount (grams)</label>
+            <input type="number" id="portionGrams" value="100" min="1" max="2000" style="width:100%;padding:9px 12px;border:1px solid var(--rule);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+          <button class="btn-green" onclick="confirmAdd()">Add to Log</button>
+          <button class="btn-ghost" onclick="cancelPortion()">Cancel</button>
+        </div>
+        <div style="font-size:11px;color:var(--green);margin-top:6px;font-style:italic;" id="portionHint"></div>
+        <div style="font-size:11px;color:var(--ink-soft);margin-top:4px;" id="portionPreview"></div>
+      </div>
+    </div>
+
+    <!-- MANUAL PANEL -->
+    <div id="panelManual" style="display:none;">
+      <div class="manual-grid">
+        <div>
+          <label>Food Name</label>
+          <input type="text" id="mName" placeholder="e.g. Home-made soup">
+        </div>
+        <div>
+          <label>Calories</label>
+          <input type="number" id="mCal" placeholder="250" min="0">
+        </div>
+        <div>
+          <label>Protein (g)</label>
+          <input type="number" id="mProt" placeholder="20" min="0" step="0.1">
+        </div>
+        <div>
+          <label>Fat (g)</label>
+          <input type="number" id="mFat" placeholder="15" min="0" step="0.1">
+        </div>
+        <div>
+          <label>Net Carbs (g)</label>
+          <input type="number" id="mCarb" placeholder="5" min="0" step="0.1">
+        </div>
+        <div>
+          <label>&nbsp;</label>
+          <button class="btn-green" onclick="addManual()">Add</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:10px;">
+        <select class="meal-select" id="mealSelectManual">
+          <option value="Pre-Training">Pre-Training</option>
+          <option value="Break Fast" selected>Break Fast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Snack">Snack</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Other">Other</option>
+        </select>
+        <div style="font-size:11px;color:var(--ink-soft);">Fibre (g): <input type="number" id="mFib" placeholder="0" min="0" step="0.1" style="width:60px;padding:5px 8px;border:1px solid var(--rule);border-radius:4px;font-size:12px;font-family:'Inter',sans-serif;"></div>
+      </div>
+    </div>
+
+    <!-- MY FOODS PANEL -->
+    <div id="panelMyFoods" style="display:none;">
+      <div class="note note-b" style="margin-bottom:14px;font-size:12px;">
+        <span>📦</span>
+        <div><strong>Add from packaging:</strong> Enter values per 100g from the nutrition label. Your food is saved permanently to the database on this device — it will appear in search from now on. To find it, just search its name.</div>
+      </div>
+
+      <!-- ADD NEW FOOD FORM -->
+      <div style="background:var(--page);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;">Add New Food to My Database</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div>
+            <label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px;">Food Name *</label>
+            <input type="text" id="dbName" placeholder="e.g. Meiji Plain Yoghurt" style="width:100%;padding:9px 12px;border:1px solid var(--rule);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+          <div>
+            <label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px;">Brand / Note (optional)</label>
+            <input type="text" id="dbNote" placeholder="e.g. per 100g · refrigerated section" style="width:100%;padding:9px 12px;border:1px solid var(--rule);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+        </div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Macros per 100g (from packaging)</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px;">
+          <div>
+            <label style="font-size:10px;color:var(--ink-soft);display:block;margin-bottom:3px;">Calories</label>
+            <input type="number" id="dbCal" placeholder="0" min="0" style="width:100%;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+          <div>
+            <label style="font-size:10px;color:var(--green);display:block;font-weight:700;margin-bottom:3px;">Protein (g)</label>
+            <input type="number" id="dbProt" placeholder="0" min="0" step="0.1" style="width:100%;padding:8px 10px;border:1px solid var(--green-mid);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+          <div>
+            <label style="font-size:10px;color:var(--amber);display:block;font-weight:700;margin-bottom:3px;">Fat (g)</label>
+            <input type="number" id="dbFat" placeholder="0" min="0" step="0.1" style="width:100%;padding:8px 10px;border:1px solid var(--amber-mid);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+          <div>
+            <label style="font-size:10px;color:var(--navy);display:block;font-weight:700;margin-bottom:3px;">Net Carbs (g)</label>
+            <input type="number" id="dbCarb" placeholder="0" min="0" step="0.1" style="width:100%;padding:8px 10px;border:1px solid rgba(15,31,61,.15);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+          <div>
+            <label style="font-size:10px;color:var(--ink-soft);display:block;margin-bottom:3px;">Fibre (g)</label>
+            <input type="number" id="dbFib" placeholder="0" min="0" step="0.1" style="width:100%;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <div>
+            <label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px;">Default serving (g) — optional</label>
+            <input type="number" id="dbServ" placeholder="e.g. 150 for one tub" min="1" style="width:140px;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;">
+          </div>
+          <div>
+            <label style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px;">Category</label>
+            <select id="dbCat" style="padding:8px 12px;border:1px solid var(--rule);border-radius:6px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);background:var(--page);outline:none;">
+              <option>Protein</option>
+              <option>Dairy</option>
+              <option>Fat</option>
+              <option>Veg</option>
+              <option>Carb (Ph2+)</option>
+              <option>Condiment</option>
+              <option>Beverage</option>
+              <option>Snack</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div style="align-self:flex-end;">
+            <button class="btn-green" onclick="saveToMyFoods()">Save to My Database</button>
+          </div>
+        </div>
+        <div id="dbSaveMsg" style="font-size:12px;margin-top:10px;display:none;padding:8px 12px;border-radius:6px;"></div>
+      </div>
+
+      <!-- MY SAVED FOODS LIST -->
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">My Saved Foods (<span id="myFoodsCount">0</span>)</div>
+      <div id="myFoodsList">
+        <div style="text-align:center;color:var(--ink-faint);font-size:13px;padding:24px;">No custom foods saved yet. Add your first one above.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOD LOG -->
+  <div class="food-log">
+    <div class="log-header">
+      <h4>Today's Food Log</h4>
+      <button onclick="clearLog()" style="background:rgba(248,246,242,.15);border:1px solid rgba(248,246,242,.2);color:var(--page);padding:5px 12px;border-radius:5px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;">Clear All</button>
+    </div>
+    <div id="logBody">
+      <div class="empty-log">No food logged yet — use the search above to add meals</div>
+    </div>
+    <div class="log-totals" id="logTotals" style="display:none;">
+      <div class="lt-label">TOTAL</div>
+      <div class="lt-val" id="totCal">0 kcal</div>
+      <div class="lt-val" id="totProt" style="color:#7DD3A8;">0g P</div>
+      <div class="lt-val" id="totFat" style="color:#F6C87A;">0g F</div>
+      <div class="lt-val" id="totCarb" style="color:#A0B4D6;">0g C</div>
+      <div class="lt-val" id="totFib" style="color:rgba(248,246,242,.5);font-size:11px;">0g Fib</div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- WINE TRACKER -->
+  <div class="card" style="margin-top:14px;">
+    <h3 style="font-size:15px;margin-bottom:12px;">🍷 Wine Tracker</h3>
+    <p style="font-size:12px;color:var(--ink-mid);margin-bottom:12px;">A standard glass of dry red wine (~150ml) = ~125 kcal, ~4g carbs, ~0g protein, ~0g fat. Adds to daily totals.</p>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <button class="btn-green" onclick="addWine('red')">+ Glass Red Wine</button>
+      <button class="btn-ghost" onclick="addWine('white')">+ Glass White Wine</button>
+      <div style="font-size:12px;color:var(--ink-soft);">Glasses today: <strong id="wineCount" style="color:var(--ink);">0</strong> / 2 max</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── FOOD DATABASE (per 100g unless noted) ──
+const FOODS = [
+  // ── BEEF ──
+  {n:'Beef ribeye steak (grilled)',      cal:291, p:24,  f:21,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef sirloin steak (grilled)',     cal:207, p:29,  f:10,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef tenderloin / fillet (grilled)',cal:212,p:29,  f:10,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef striploin (grilled)',         cal:271, p:26,  f:18,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef chuck (braised)',             cal:253, p:28,  f:15,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef brisket (slow cooked)',       cal:288, p:25,  f:20,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef short ribs (braised)',        cal:381, p:18,  f:34,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef mince / ground beef (lean)',  cal:215, p:26,  f:12,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef mince / ground beef (regular)',cal:254,p:24,  f:17,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef shin / shank (braised)',      cal:208, p:30,  f:9,   c:0, fib:0, cat:'Beef'},
+  {n:'Beef oxtail (braised)',            cal:262, p:26,  f:17,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef tongue (cooked)',             cal:284, p:22,  f:21,  c:0, fib:0, cat:'Beef'},
+  {n:'Beef liver (pan-fried)',           cal:175, p:27,  f:5,   c:4, fib:0, cat:'Beef', note:'high carbs from glycogen — limit on keto'},
+  {n:'Beef tripe (cooked)',              cal:85,  p:12,  f:3.7, c:0, fib:0, cat:'Beef'},
+
+  // ── PORK ──
+  {n:'Pork belly (roasted)',             cal:395, p:17,  f:35,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork belly (braised / char siu)',  cal:370, p:16,  f:32,  c:2, fib:0, cat:'Pork', note:'char siu has added sugar — est. net carbs'},
+  {n:'Pork shoulder (roasted)',          cal:259, p:26,  f:17,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork loin chop (grilled)',         cal:212, p:29,  f:10,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork tenderloin (roasted)',        cal:166, p:29,  f:4.5, c:0, fib:0, cat:'Pork'},
+  {n:'Pork ribs — spare ribs (grilled)', cal:320, p:19,  f:27,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork ribs — baby back (grilled)',  cal:292, p:20,  f:23,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork mince / ground pork',         cal:263, p:22,  f:19,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork leg / ham (roasted)',         cal:215, p:28,  f:11,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork knuckle (braised)',           cal:300, p:24,  f:22,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork liver (pan-fried)',           cal:165, p:26,  f:4.4, c:4, fib:0, cat:'Pork', note:'moderate carbs — limit on keto'},
+  {n:'Pork intestines (cooked)',         cal:141, p:14,  f:9,   c:0, fib:0, cat:'Pork'},
+  {n:'Pork trotters / trotter (braised)',cal:280, p:22,  f:21,  c:0, fib:0, cat:'Pork'},
+  {n:'Pork collar / neck (grilled)',     cal:276, p:25,  f:19,  c:0, fib:0, cat:'Pork'},
+  {n:'Bacon (streaky, pan-fried)',       cal:458, p:22,  f:41,  c:0, fib:0, cat:'Pork', note:'high fat — keto friendly but watch sodium'},
+  {n:'Bacon (back/middle, pan-fried)',   cal:365, p:26,  f:28,  c:0, fib:0, cat:'Pork'},
+  {n:'Luncheon meat / spam',             cal:310, p:12,  f:28,  c:3, fib:0, cat:'Pork', note:'processed — limit intake'},
+
+  // ── LAMB ──
+  {n:'Lamb leg (roasted)',               cal:218, p:28,  f:12,  c:0, fib:0, cat:'Lamb'},
+  {n:'Lamb shoulder (braised)',          cal:272, p:24,  f:19,  c:0, fib:0, cat:'Lamb'},
+  {n:'Lamb rack / cutlets (grilled)',    cal:294, p:22,  f:22,  c:0, fib:0, cat:'Lamb'},
+  {n:'Lamb loin chop (grilled)',         cal:263, p:25,  f:18,  c:0, fib:0, cat:'Lamb'},
+  {n:'Lamb ribs (grilled)',              cal:361, p:18,  f:32,  c:0, fib:0, cat:'Lamb'},
+  {n:'Lamb mince / ground lamb',         cal:282, p:20,  f:22,  c:0, fib:0, cat:'Lamb'},
+  {n:'Lamb shank (braised)',             cal:234, p:28,  f:13,  c:0, fib:0, cat:'Lamb'},
+  {n:'Lamb liver (pan-fried)',           cal:172, p:25,  f:5.5, c:3, fib:0, cat:'Lamb', note:'moderate carbs from glycogen'},
+  {n:'Mutton curry (without rice)',      cal:195, p:19,  f:12,  c:4, fib:1, cat:'Lamb', note:'est. with typical curry gravy'},
+
+  // ── CHICKEN ──
+  {n:'Chicken breast (cooked)',          cal:165, p:31,  f:3.6, c:0, fib:0, cat:'Chicken'},
+  {n:'Chicken thigh (cooked, skin on)',  cal:229, p:25,  f:13,  c:0, fib:0, cat:'Chicken'},
+  {n:'Chicken thigh (cooked, skinless)', cal:179, p:26,  f:8,   c:0, fib:0, cat:'Chicken'},
+  {n:'Chicken drumstick (cooked)',       cal:185, p:24,  f:9,   c:0, fib:0, cat:'Chicken'},
+  {n:'Chicken wing (cooked)',            cal:290, p:27,  f:19,  c:0, fib:0, cat:'Chicken'},
+  {n:'Chicken whole leg (cooked)',       cal:217, p:24,  f:13,  c:0, fib:0, cat:'Chicken'},
+  {n:'Chicken mince / ground chicken',   cal:143, p:22,  f:6,   c:0, fib:0, cat:'Chicken'},
+  {n:'Chicken liver (pan-fried)',        cal:167, p:24,  f:6.5, c:1, fib:0, cat:'Chicken'},
+  {n:'Chicken feet (braised)',           cal:215, p:19,  f:14,  c:0, fib:0, cat:'Chicken'},
+  {n:'Rotisserie / roast chicken',       cal:190, p:27,  f:9,   c:0, fib:0, cat:'Chicken'},
+
+  // ── DUCK & OTHER POULTRY ──
+  {n:'Duck breast (cooked, skin on)',    cal:337, p:19,  f:28,  c:0, fib:0, cat:'Poultry'},
+  {n:'Duck breast (cooked, skinless)',   cal:201, p:28,  f:10,  c:0, fib:0, cat:'Poultry'},
+  {n:'Duck leg (braised)',               cal:310, p:22,  f:24,  c:0, fib:0, cat:'Poultry'},
+  {n:'Peking duck (meat only)',          cal:340, p:20,  f:28,  c:2, fib:0, cat:'Poultry', note:'skin adds significant fat'},
+  {n:'Turkey breast (roasted)',          cal:135, p:30,  f:1,   c:0, fib:0, cat:'Poultry'},
+  {n:'Quail (whole, cooked)',            cal:234, p:25,  f:14,  c:0, fib:0, cat:'Poultry'},
+
+  // ── SEAFOOD ──
+  {n:'Salmon (grilled)',                 cal:208, p:20,  f:13,  c:0, fib:0, cat:'Seafood'},
+  {n:'Salmon (raw / sashimi)',           cal:179, p:20,  f:11,  c:0, fib:0, cat:'Seafood'},
+  {n:'Mackerel (grilled)',               cal:239, p:22,  f:17,  c:0, fib:0, cat:'Seafood'},
+  {n:'Sardines (canned in water)',       cal:208, p:25,  f:11,  c:0, fib:0, cat:'Seafood'},
+  {n:'Sardines (canned in olive oil)',   cal:265, p:25,  f:18,  c:0, fib:0, cat:'Seafood'},
+  {n:'Tuna (canned, water)',             cal:116, p:26,  f:1,   c:0, fib:0, cat:'Seafood'},
+  {n:'Tuna steak (grilled)',             cal:184, p:30,  f:6,   c:0, fib:0, cat:'Seafood'},
+  {n:'Cod / batang (steamed)',           cal:82,  p:18,  f:0.7, c:0, fib:0, cat:'Seafood'},
+  {n:'Snapper (steamed)',                cal:100, p:20,  f:1.3, c:0, fib:0, cat:'Seafood'},
+  {n:'Sea bass (grilled)',               cal:124, p:24,  f:3,   c:0, fib:0, cat:'Seafood'},
+  {n:'Pomfret (steamed)',                cal:101, p:19,  f:2.5, c:0, fib:0, cat:'Seafood'},
+  {n:'Prawns / shrimp (cooked)',         cal:99,  p:21,  f:1.1, c:0, fib:0, cat:'Seafood'},
+  {n:'Tiger prawns (grilled)',           cal:105, p:22,  f:1.4, c:0, fib:0, cat:'Seafood'},
+  {n:'Crab (steamed)',                   cal:97,  p:19,  f:1.5, c:0, fib:0, cat:'Seafood'},
+  {n:'Crab meat (canned)',               cal:84,  p:17,  f:1.1, c:0, fib:0, cat:'Seafood'},
+  {n:'Lobster (steamed)',                cal:98,  p:21,  f:0.9, c:0, fib:0, cat:'Seafood'},
+  {n:'Squid / sotong (cooked)',          cal:92,  p:16,  f:1.4, c:3, fib:0, cat:'Seafood'},
+  {n:'Octopus (cooked)',                 cal:164, p:30,  f:2.1, c:4, fib:0, cat:'Seafood'},
+  {n:'Scallop (pan-seared)',             cal:137, p:24,  f:1.3, c:5, fib:0, cat:'Seafood'},
+  {n:'Mussel / clam (cooked)',           cal:148, p:20,  f:4,   c:7, fib:0, cat:'Seafood', note:'higher carbs — watch on keto'},
+  {n:'Oyster (raw)',                     cal:68,  p:7,   f:2.5, c:4, fib:0, cat:'Seafood'},
+  {n:'Anchovy (dried, ikan bilis)',      cal:280, p:55,  f:4,   c:0, fib:0, cat:'Seafood', note:'high protein — common Singapore topping'},
+  {n:'Fish cake (sliced)',               cal:103, p:10,  f:1.5, c:12,fib:0, cat:'Seafood', note:'high carbs from filler — limit on keto'},
+
+  // ── EGGS ──
+  {n:'Egg (whole, large)',               cal:143, p:13,  f:10,  c:0.7,fib:0, cat:'Eggs', note:'per 55g = 1 large egg', srv:55},
+  {n:'Egg white only (large)',           cal:52,  p:11,  f:0.2, c:0.7,fib:0, cat:'Eggs', note:'per 33g = 1 egg white', srv:33},
+  {n:'Egg yolk only (large)',            cal:322, p:16,  f:27,  c:1.8,fib:0, cat:'Eggs', note:'per 17g = 1 yolk', srv:17},
+  {n:'Century egg / preserved egg',     cal:135, p:14,  f:8,   c:1,  fib:0, cat:'Eggs'},
+  {n:'Salted egg (cooked)',              cal:145, p:11,  f:10,  c:2,  fib:0, cat:'Eggs'},
+
+  // ── PROCESSED / DELI (track carefully) ──
+  {n:'Protein powder (whey, unflavoured)',cal:380,p:80,  f:4,   c:5,  fib:0, cat:'Protein', note:'per 100g ≈ 3 scoops'},
+  {n:'Tofu (firm)',                      cal:76,  p:8,   f:4.2, c:1.9,fib:0.3,cat:'Protein'},
+
+  // Dairy
+  {n:'Greek yoghurt (full fat)', cal:97,  p:9,   f:5,   c:3.6, fib:0,  cat:'Dairy'},
+  {n:'Cheddar cheese',           cal:402, p:25,  f:33,  c:1.3, fib:0,  cat:'Dairy'},
+  {n:'Mozzarella',               cal:280, p:22,  f:22,  c:2.2, fib:0,  cat:'Dairy'},
+  {n:'Butter',                   cal:717, p:0.9, f:81,  c:0.1, fib:0,  cat:'Dairy'},
+  {n:'Heavy cream',              cal:340, p:2.1, f:35,  c:3,   fib:0,  cat:'Dairy'},
+
+  // Fats & Oils
+  {n:'Avocado',                  cal:160, p:2,   f:15,  c:2,   fib:7,  cat:'Fat'},
+  {n:'Olive oil',                cal:884, p:0,   f:100, c:0,   fib:0,  cat:'Fat'},
+  {n:'Almonds',                  cal:579, p:21,  f:50,  c:4,   fib:13, cat:'Fat'},
+  {n:'Walnuts',                  cal:654, p:15,  f:65,  c:3,   fib:7,  cat:'Fat'},
+  {n:'Macadamia nuts',           cal:718, p:8,   f:76,  c:2,   fib:9,  cat:'Fat'},
+  {n:'Pumpkin seeds',            cal:559, p:30,  f:49,  c:4,   fib:6,  cat:'Fat'},
+  {n:'Ground flaxseed',          cal:534, p:18,  f:42,  c:2,   fib:27, cat:'Fat', note:'1 tbsp = 10g', srv:10},
+
+  // Vegetables — Leafy & Salad
+  {n:'Spinach (raw)',            cal:23,  p:2.9, f:0.4, c:0.4, fib:2.2, cat:'Veg'},
+  {n:'Rocket (arugula)',         cal:25,  p:2.6, f:0.7, c:2,   fib:1.6, cat:'Veg'},
+  {n:'Kale',                     cal:49,  p:4.3, f:0.9, c:3.6, fib:3.6, cat:'Veg'},
+  {n:'Lettuce (romaine)',        cal:17,  p:1.2, f:0.3, c:1.2, fib:2,   cat:'Veg'},
+  {n:'Lettuce (iceberg)',        cal:14,  p:0.9, f:0.1, c:1.6, fib:1.2, cat:'Veg'},
+  {n:'Bok choy (pak choi)',      cal:13,  p:1.5, f:0.2, c:0.8, fib:1,   cat:'Veg'},
+  {n:'Choy sum',                 cal:17,  p:2,   f:0.3, c:0.8, fib:1.5, cat:'Veg'},
+  {n:'Kangkong (water spinach)', cal:19,  p:2.6, f:0.2, c:0.7, fib:2,   cat:'Veg'},
+  {n:'Kai lan (Chinese broccoli)',cal:28, p:2.4, f:0.5, c:2.2, fib:2,   cat:'Veg'},
+  {n:'Nai bai (Shanghai greens)',cal:14,  p:1.5, f:0.2, c:0.9, fib:1.2, cat:'Veg'},
+  {n:'Watercress',               cal:11,  p:2.3, f:0.1, c:0.4, fib:0.5, cat:'Veg'},
+
+  // Vegetables — Cruciferous
+  {n:'Broccoli',                 cal:34,  p:2.8, f:0.4, c:2,   fib:2.6, cat:'Veg'},
+  {n:'Broccolini',               cal:35,  p:3.7, f:0.5, c:1.8, fib:2.7, cat:'Veg'},
+  {n:'Cauliflower',              cal:25,  p:1.9, f:0.3, c:2,   fib:2,   cat:'Veg'},
+  {n:'Cabbage (green)',          cal:25,  p:1.3, f:0.1, c:3.3, fib:2.5, cat:'Veg'},
+  {n:'Cabbage (red)',            cal:31,  p:1.4, f:0.2, c:4.1, fib:2.1, cat:'Veg'},
+  {n:'Brussels sprouts',         cal:43,  p:3.4, f:0.3, c:5,   fib:3.8, cat:'Veg'},
+
+  // Vegetables — Stem & Pod
+  {n:'Celery',                   cal:16,  p:0.7, f:0.2, c:1.4, fib:1.6, cat:'Veg'},
+  {n:'Asparagus',                cal:20,  p:2.2, f:0.1, c:1.3, fib:2.1, cat:'Veg'},
+  {n:'Green beans (French beans)',cal:31, p:1.8, f:0.1, c:4.5, fib:2.7, cat:'Veg'},
+  {n:'Long beans (yard beans)',  cal:47,  p:2.6, f:0.2, c:7.6, fib:3.6, cat:'Veg'},
+  {n:'Snow peas (mange tout)',   cal:42,  p:2.8, f:0.2, c:5.6, fib:2.6, cat:'Veg'},
+  {n:'Sugar snap peas',          cal:42,  p:2.8, f:0.2, c:6,   fib:2.6, cat:'Veg'},
+  {n:'Baby corn',                cal:26,  p:2,   f:0.3, c:3.5, fib:1.9, cat:'Veg'},
+  {n:'Beansprouts',              cal:30,  p:3,   f:0.2, c:2.9, fib:1.8, cat:'Veg'},
+  {n:'Tofu (silken)',            cal:55,  p:5.3, f:2.7, c:1.4, fib:0,   cat:'Veg'},
+
+  // Vegetables — Allium
+  {n:'Garlic (clove)',           cal:149, p:6.4, f:0.5, c:26,  fib:2.1, cat:'Veg', note:'1 clove ≈ 3g — use sparingly on keto', srv:3},
+  {n:'Onion (white)',            cal:40,  p:1.1, f:0.1, c:7.6, fib:1.7, cat:'Veg', note:'watch carbs on keto'},
+  {n:'Spring onion / scallion',  cal:32,  p:1.8, f:0.2, c:4.4, fib:2.6, cat:'Veg'},
+  {n:'Leek',                     cal:61,  p:1.5, f:0.3, c:11,  fib:1.8, cat:'Veg', note:'higher carb — limit on keto'},
+  {n:'Shallots',                 cal:72,  p:2.5, f:0.1, c:13,  fib:3.2, cat:'Veg', note:'small amounts only on keto'},
+
+  // Vegetables — Gourd & Squash
+  {n:'Zucchini (courgette)',     cal:17,  p:1.2, f:0.3, c:1.8, fib:1,   cat:'Veg'},
+  {n:'Cucumber',                 cal:16,  p:0.7, f:0.1, c:1.7, fib:0.5, cat:'Veg'},
+  {n:'Bitter gourd (bitter melon)',cal:17,p:1,   f:0.2, c:2.1, fib:2.8, cat:'Veg'},
+  {n:'Winter melon (dong gua)',  cal:13,  p:0.4, f:0.2, c:2.2, fib:0.5, cat:'Veg'},
+  {n:'Ladies fingers (okra)',    cal:33,  p:2,   f:0.2, c:4,   fib:3.2, cat:'Veg'},
+  {n:'Eggplant (brinjal)',       cal:25,  p:1,   f:0.2, c:3.5, fib:3,   cat:'Veg'},
+
+  // Vegetables — Root (mostly Ph2+)
+  {n:'Carrot',                   cal:41,  p:0.9, f:0.2, c:7.5, fib:2.8, cat:'Veg', note:'moderate carbs — small amounts on keto'},
+  {n:'Radish (white/daikon)',    cal:18,  p:0.6, f:0.1, c:2.9, fib:1.6, cat:'Veg'},
+  {n:'Turnip',                   cal:28,  p:0.9, f:0.1, c:4.6, fib:1.8, cat:'Veg'},
+
+  // Vegetables — Fungi & Other
+  {n:'Mushrooms (button)',       cal:22,  p:3.1, f:0.3, c:1.4, fib:1,   cat:'Veg'},
+  {n:'Shiitake mushrooms',       cal:34,  p:2.2, f:0.5, c:4.3, fib:2.5, cat:'Veg'},
+  {n:'King oyster mushrooms',    cal:35,  p:3.3, f:0.4, c:4.6, fib:2.3, cat:'Veg'},
+  {n:'Enoki mushrooms',          cal:37,  p:2.7, f:0.3, c:5.1, fib:2.7, cat:'Veg'},
+  {n:'Wood ear fungus (black)',  cal:25,  p:0.5, f:0.2, c:5,   fib:5.8, cat:'Veg'},
+
+  // Vegetables — Tomato & Pepper
+  {n:'Cherry tomatoes',          cal:18,  p:0.9, f:0.2, c:2.6, fib:1.2, cat:'Veg'},
+  {n:'Tomato (whole)',           cal:18,  p:0.9, f:0.2, c:2.7, fib:1.2, cat:'Veg'},
+  {n:'Bell pepper (red)',        cal:31,  p:1,   f:0.3, c:4.2, fib:2.1, cat:'Veg'},
+  {n:'Bell pepper (green)',      cal:20,  p:0.9, f:0.2, c:2.6, fib:1.7, cat:'Veg'},
+  {n:'Chilli (red, fresh)',      cal:40,  p:1.9, f:0.4, c:5.3, fib:1.5, cat:'Veg', note:'used as flavouring — typical serving 5–10g', srv:10},
+
+  // Vegetables — Legumes & Beans
+  {n:'Edamame (shelled)',        cal:121, p:11,  f:5,   c:5,   fib:5,   cat:'Veg'},
+  {n:'Tofu (firm)',              cal:76,  p:8,   f:4.2, c:1.9, fib:0.3, cat:'Veg'},
+
+  // Carbs (Phase 2+)
+  {n:'Sweet potato (baked)',     cal:90,  p:2,   f:0.1, c:18,  fib:3,  cat:'Carb (Ph2+)'},
+  {n:'Oats (dry)',               cal:389, p:17,  f:7,   c:55,  fib:10, cat:'Carb (Ph2+)'},
+  {n:'Brown rice (cooked)',      cal:112, p:2.6, f:0.9, c:22,  fib:1.8,cat:'Carb (Ph2+)'},
+  {n:'Blueberries',              cal:57,  p:0.7, f:0.3, c:10,  fib:2.4,cat:'Carb (Ph2+)'},
+  {n:'Strawberries',             cal:32,  p:0.7, f:0.3, c:5.7, fib:2,  cat:'Carb (Ph2+)'},
+  {n:'Raspberries',              cal:52,  p:1.2, f:0.7, c:5.4, fib:6.5,cat:'Carb (Ph2+)'},
+
+  // Condiments
+  {n:'Soy sauce light (1 tbsp)',  cal:9,  p:1.3, f:0,   c:0.8, fib:0,  cat:'Condiment', note:'per 15ml', srv:15},
+  {n:'Fish sauce (1 tbsp)',       cal:6,  p:0.9, f:0,   c:0.6, fib:0,  cat:'Condiment', note:'per 15ml', srv:15},
+  {n:'Oyster sauce (1 tbsp)',     cal:18, p:0.3, f:0,   c:4,   fib:0,  cat:'Condiment', note:'per 15ml — high carb, limit on keto', srv:15},
+  {n:'Sesame oil (1 tsp)',        cal:40, p:0,   f:4.5, c:0,   fib:0,  cat:'Condiment', note:'per 5ml', srv:5},
+  {n:'Olive oil (1 tbsp)',        cal:119,p:0,   f:13.5,c:0,   fib:0,  cat:'Condiment', note:'per 15ml', srv:15},
+  {n:'Psyllium husk (1 tbsp)',    cal:20, p:0,   f:0,   c:0,   fib:7,  cat:'Supplement', note:'per 10g — type 10 in grams field', srv:10},
+
+  // ── BEVERAGES ──
+  {n:'Espresso — single shot',    cal:2,  p:0.1, f:0,   c:0.3, fib:0,  cat:'Beverage', note:'per 30ml · black only on keto',      srv:30},
+  {n:'Espresso — double shot',    cal:4,  p:0.2, f:0,   c:0.5, fib:0,  cat:'Beverage', note:'per 60ml',                            srv:60},
+  {n:'Flat white (full milk)',    cal:150,p:8,   f:6,   c:15,  fib:0,  cat:'Beverage', note:'per 240ml · breaks fast',             srv:240},
+  {n:'Latte (oat milk)',          cal:130,p:3,   f:3,   c:20,  fib:0.5,cat:'Beverage', note:'per 240ml · high carbs',              srv:240},
+  {n:'Long black / Americano',    cal:5,  p:0.3, f:0,   c:0.8, fib:0,  cat:'Beverage', note:'per 240ml · keto safe',              srv:240},
+  {n:'Green tea',                 cal:1,  p:0,   f:0,   c:0.2, fib:0,  cat:'Beverage', note:'per 240ml · antioxidants',           srv:240},
+  {n:'Chamomile tea',             cal:1,  p:0,   f:0,   c:0.2, fib:0,  cat:'Beverage', note:'per 240ml · good before bed',        srv:240},
+  {n:'Peppermint tea',            cal:2,  p:0,   f:0,   c:0.4, fib:0,  cat:'Beverage', note:'per 240ml',                          srv:240},
+  {n:'Ginger tea (plain)',        cal:4,  p:0,   f:0,   c:0.9, fib:0,  cat:'Beverage', note:'per 240ml',                          srv:240},
+  {n:'Bone broth',                cal:31, p:6,   f:0.5, c:0.4, fib:0,  cat:'Beverage', note:'per 240ml · excellent on keto',      srv:240},
+  {n:'Sparkling water',           cal:0,  p:0,   f:0,   c:0,   fib:0,  cat:'Beverage', note:'per 330ml',                          srv:330},
+  {n:'Coconut water',             cal:46, p:0.5, f:0.5, c:9,   fib:0,  cat:'Beverage', note:'per 240ml · avoid on strict keto',   srv:240},
+
+  // Alcohol
+  {n:'Red wine — dry (glass)',    cal:125,p:0.1, f:0,   c:4,   fib:0,  cat:'Alcohol', note:'per 150ml · Pinot Noir, Merlot',      srv:150},
+  {n:'White wine — dry (glass)',  cal:120,p:0.1, f:0,   c:4.5, fib:0,  cat:'Alcohol', note:'per 150ml · Sauv Blanc, Pinot Grigio',srv:150},
+  {n:'White wine — sweet (glass)',cal:165,p:0.1, f:0,   c:14,  fib:0,  cat:'Alcohol', note:'per 150ml · avoid on keto',           srv:150},
+  {n:'Champagne / Prosecco',      cal:95, p:0.3, f:0,   c:4.5, fib:0,  cat:'Alcohol', note:'per 120ml flute',                     srv:120},
+  {n:'Beer — regular lager',      cal:153,p:1.1, f:0,   c:13,  fib:0,  cat:'Alcohol', note:'per 355ml can · high carbs',          srv:355},
+  {n:'Beer — light lager',        cal:103,p:0.9, f:0,   c:6,   fib:0,  cat:'Alcohol', note:'per 355ml · lower carb',              srv:355},
+  {n:'Tiger Beer (can)',          cal:166,p:1.2, f:0,   c:14,  fib:0,  cat:'Alcohol', note:'per 330ml · SG favourite',            srv:330},
+  {n:'Gin & tonic (standard)',    cal:170,p:0,   f:0,   c:16,  fib:0,  cat:'Alcohol', note:'per serve ~200ml · high sugar tonic',  srv:200},
+  {n:'Gin & soda water',          cal:97, p:0,   f:0,   c:0,   fib:0,  cat:'Alcohol', note:'per serve ~150ml · keto-friendly',    srv:150},
+  {n:'Whisky / bourbon neat',     cal:97, p:0,   f:0,   c:0,   fib:0,  cat:'Alcohol', note:'per 30ml shot · zero carbs',          srv:30},
+  {n:'Vodka neat',                cal:97, p:0,   f:0,   c:0,   fib:0,  cat:'Alcohol', note:'per 30ml shot · zero carbs',          srv:30},
+  {n:'Tequila neat',              cal:97, p:0,   f:0,   c:0,   fib:0,  cat:'Alcohol', note:'per 30ml shot · zero carbs',          srv:30},
+  {n:'Baileys Irish Cream',       cal:160,p:1.9, f:6,   c:19,  fib:0,  cat:'Alcohol', note:'per 50ml · high carbs + fat',         srv:50},
+  {n:'Aperol Spritz',             cal:185,p:0.2, f:0,   c:22,  fib:0,  cat:'Alcohol', note:'per serve ~200ml · avoid on keto',    srv:200},
+  {n:'Mojito',                    cal:220,p:0.3, f:0,   c:30,  fib:0,  cat:'Alcohol', note:'per serve ~220ml · very high sugar',  srv:220},
+  {n:'Margarita',                 cal:200,p:0.1, f:0,   c:24,  fib:0,  cat:'Alcohol', note:'per serve ~180ml · high carbs',       srv:180},
+];
+
+// ── STORAGE HELPERS ──
+const STORE_KEY = 'daniela_tracker_v2';
+
+// In-memory fallback — survives tab refresh only when localStorage is blocked
+let _memStore = {};
+let _storageMode = 'unknown'; // 'local' | 'memory'
+
+function detectStorage() {
+  try {
+    const testKey = '__daniela_test__';
+    localStorage.setItem(testKey, '1');
+    const ok = localStorage.getItem(testKey) === '1';
+    localStorage.removeItem(testKey);
+    _storageMode = ok ? 'local' : 'memory';
+  } catch(e) {
+    _storageMode = 'memory';
+  }
+  return _storageMode;
+}
+
+function todayKey() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+function loadStore() {
+  if (_storageMode === 'local') {
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch(e) { return _memStore; }
+  }
+  return _memStore;
+}
+
+function saveStore(store) {
+  if (_storageMode === 'local') {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(store));
+      return true;
+    } catch(e) {
+      _storageMode = 'memory'; // downgrade silently
+    }
+  }
+  _memStore = store;
+  return false; // memory only
+}
+
+function loadToday() {
+  const store = loadStore();
+  const key = todayKey();
+  return store[key] || { log:[], phase:'keto', wineCount:0 };
+}
+
+function saveToday() {
+  const store = loadStore();
+  store[todayKey()] = { log, phase, wineCount };
+  const keys = Object.keys(store).sort();
+  if (keys.length > 30) keys.slice(0, keys.length - 30).forEach(k => delete store[k]);
+  const saved = saveStore(store);
+  updateStorageBanner(saved);
+}
+
+function listLoggedDates() {
+  const store = loadStore();
+  return Object.keys(store).sort().reverse();
+}
+
+function updateStorageBanner(persistOk) {
+  const banner = document.getElementById('storageBanner');
+  const bannerText = document.getElementById('storageBannerText');
+  if (!banner || !bannerText) return;
+  if (persistOk) {
+    banner.style.background = 'var(--green-light)';
+    banner.style.borderColor = 'var(--green-mid)';
+    banner.style.color = '#1A4A30';
+    bannerText.innerHTML = '✅ <strong>Saved to this device.</strong> Your log will still be here when you reopen the file in this browser.';
+  } else {
+    banner.style.background = 'var(--amber-light)';
+    banner.style.borderColor = 'var(--amber-mid)';
+    banner.style.color = '#6A3A08';
+    bannerText.innerHTML = `⚠️ <strong>Session only — log will clear when you close this tab.</strong> 
+      Your browser is blocking local storage on files opened from your computer. 
+      To get persistent saving: <strong>host this file online free in 30 seconds</strong> — 
+      go to <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--amber);font-weight:700;">netlify.com/drop</a>, 
+      drag this HTML file in, and open the URL it gives you. That URL saves permanently.`;
+  }
+  banner.style.display = 'flex';
+}
+
+// ── STATE ──
+let phase = 'keto';
+let log = [];
+let selectedFood = null;
+let wineCount = 0;
+const TARGETS = {
+  keto:    { cal:1500, p:130, f:70,  c:20  },
+  lowcarb: { cal:1550, p:130, f:60,  c:47  }
+};
+
+// ── INIT — detect storage then load today ──
+(function init() {
+  detectStorage();
+  const today = loadToday();
+  log       = today.log       || [];
+  phase     = today.phase     || 'keto';
+  wineCount = today.wineCount || 0;
+})();
+
+// ── PHASE ──
+function setPhase(p) {
+  phase = p;
+  document.getElementById('btnP1').className = 'pt-btn' + (p==='keto' ? ' active-p1' : '');
+  document.getElementById('btnP2').className = 'pt-btn' + (p==='lowcarb' ? ' active-p2' : '');
+  saveToday();
+  updateBars();
+}
+
+// apply loaded phase and check storage on startup
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btnP1').className = 'pt-btn' + (phase==='keto' ? ' active-p1' : '');
+  document.getElementById('btnP2').className = 'pt-btn' + (phase==='lowcarb' ? ' active-p2' : '');
+  document.getElementById('wineCount').textContent = wineCount;
+  // show storage status immediately
+  updateStorageBanner(_storageMode === 'local');
+  renderLog(); updateBars(); renderDatePicker(); renderMyFoods();
+  const gi = document.getElementById('portionGrams');
+  if (gi) gi.addEventListener('input', updatePreview);
+});
+
+// ── SEARCH ──
+function searchFood(q) {
+  const box = document.getElementById('searchResults');
+  if (!q || q.length < 2) { box.style.display='none'; return; }
+  const ql = q.toLowerCase();
+  // search built-in foods
+  const builtIn = FOODS
+    .map((f, i) => ({ f, i, custom:false }))
+    .filter(({f}) => f.n.toLowerCase().includes(ql))
+    .slice(0, 8);
+  // search custom foods
+  const custom = loadCustomFoods()
+    .map((f, i) => ({ f, i, custom:true }))
+    .filter(({f}) => f.n.toLowerCase().includes(ql))
+    .slice(0, 4);
+  const all = [...custom, ...builtIn].slice(0, 10);
+  if (!all.length) { box.style.display='none'; return; }
+  box.innerHTML = all.map(({f, i, custom}) => `
+    <div class="sr-item" onclick="${custom ? 'selectCustomFood(' + i + ')' : 'selectFood(' + i + ')'}">
+      <div>
+        <div class="sr-name">
+          ${custom ? '<span style="font-size:9px;font-weight:700;background:var(--amber-light);color:var(--amber);border:1px solid var(--amber-mid);border-radius:10px;padding:1px 6px;margin-right:5px;">MY FOOD</span>' : ''}
+          ${f.n}${f.note ? ' <span style="font-size:10px;color:var(--ink-faint);">('+f.note+')</span>' : ''}
+        </div>
+        <div class="sr-macros">${f.cal} kcal · ${f.p}g P · ${f.f}g F · ${f.c}g C per 100g</div>
+      </div>
+      <div class="sr-add">Select →</div>
+    </div>`).join('');
+  box.style.display='block';
+}
+
+function selectCustomFood(idx) {
+  const foods = loadCustomFoods();
+  const food = foods[idx];
+  if (!food) return;
+  // wrap as a temporary selectedFood-compatible object with customIdx
+  selectedFood = { ...food, customIdx: idx };
+  document.getElementById('searchResults').style.display='none';
+  document.getElementById('foodInput').value = food.n;
+  document.getElementById('portionFoodName').textContent = food.n;
+  document.getElementById('portionBox').style.display='block';
+  const defaultGrams = food.srv || 100;
+  document.getElementById('portionGrams').value = defaultGrams;
+  document.getElementById('portionHint').textContent = food.srv
+    ? `Default set to ${food.srv}g (${food.note || 'your saved serving'}). Change if needed.`
+    : 'Enter grams for your portion.';
+  updatePreview();
+}
+
+function selectFood(idx) {
+  selectedFood = FOODS[idx];
+  document.getElementById('searchResults').style.display='none';
+  document.getElementById('foodInput').value = selectedFood.n;
+  document.getElementById('portionFoodName').textContent = selectedFood.n;
+  document.getElementById('portionBox').style.display='block';
+  // pre-fill with default serving size if defined, otherwise 100g
+  const defaultGrams = selectedFood.srv || 100;
+  document.getElementById('portionGrams').value = defaultGrams;
+  // show serving hint
+  const hint = selectedFood.srv
+    ? `Default set to ${selectedFood.srv}g (${selectedFood.note || 'typical serving'}). Change if needed.`
+    : 'Enter grams for your portion (default 100g).';
+  document.getElementById('portionHint').textContent = hint;
+  updatePreview();
+}
+
+
+
+function updatePreview() {
+  if (!selectedFood) return;
+  const g = parseFloat(document.getElementById('portionGrams').value) || 0;
+  const r = g/100;
+  document.getElementById('portionPreview').innerHTML =
+    `Preview: <strong>${Math.round(selectedFood.cal*r)} kcal</strong> · 
+     <strong style="color:var(--green)">${(selectedFood.p*r).toFixed(1)}g P</strong> · 
+     <strong style="color:var(--amber)">${(selectedFood.f*r).toFixed(1)}g F</strong> · 
+     <strong style="color:var(--navy)">${(selectedFood.c*r).toFixed(1)}g C</strong>`;
+}
+
+function confirmAdd() {
+  if (!selectedFood) return;
+  const g = parseFloat(document.getElementById('portionGrams').value) || 0;
+  if (!g) return;
+  const r = g/100;
+  const meal = document.getElementById('mealSelectSearch').value;
+  const isCustom = selectedFood.customIdx !== undefined;
+  const entry = {
+    name: selectedFood.n,
+    portion: g + 'g',
+    cal: Math.round(selectedFood.cal*r),
+    p:   parseFloat((selectedFood.p*r).toFixed(1)),
+    f:   parseFloat((selectedFood.f*r).toFixed(1)),
+    c:   parseFloat((selectedFood.c*r).toFixed(1)),
+    fib: parseFloat(((selectedFood.fib||0)*r).toFixed(1)),
+    meal, grams: g
+  };
+  if (isCustom) {
+    entry.customIdx = selectedFood.customIdx;
+  } else {
+    entry.foodIdx = FOODS.indexOf(selectedFood);
+  }
+  log.push(entry);
+  cancelPortion();
+  document.getElementById('foodInput').value='';
+  saveToday(); renderLog(); updateBars();
+}
+
+function cancelPortion() {
+  selectedFood = null;
+  document.getElementById('portionBox').style.display='none';
+}
+
+// ── MANUAL ──
+function addManual() {
+  const name = document.getElementById('mName').value.trim();
+  if (!name) { document.getElementById('mName').focus(); return; }
+  const cal  = parseFloat(document.getElementById('mCal').value)  || 0;
+  const p    = parseFloat(document.getElementById('mProt').value) || 0;
+  const f    = parseFloat(document.getElementById('mFat').value)  || 0;
+  const c    = parseFloat(document.getElementById('mCarb').value) || 0;
+  const fib  = parseFloat(document.getElementById('mFib').value)  || 0;
+  const meal = document.getElementById('mealSelectManual').value;
+  log.push({ name, portion:'custom', cal, p, f, c, fib, meal });
+  ['mName','mCal','mProt','mFat','mCarb','mFib'].forEach(id => document.getElementById(id).value='');
+  saveToday(); renderLog(); updateBars();
+}
+
+// ── WINE ──
+function addWine(type) {
+  if (wineCount >= 2) {
+    alert('You\'ve hit your 2-glass limit for today. Stay on track! 🍷');
+    return;
+  }
+  const isRed = type === 'red';
+  log.push({
+    name: isRed ? 'Red wine (glass ~150ml)' : 'White wine (glass ~150ml)',
+    portion: '150ml',
+    cal: isRed ? 125 : 120,
+    p: 0.1, f: 0,
+    c: isRed ? 4 : 4.5,
+    fib: 0, meal: 'Dinner'
+  });
+  wineCount++;
+  document.getElementById('wineCount').textContent = wineCount;
+  saveToday(); renderLog(); updateBars();
+}
+
+// ── LOG RENDER ──
+const MEAL_ORDER = ['Pre-Training','Break Fast','Lunch','Snack','Dinner','Other'];
+
+function renderLog() {
+  const body = document.getElementById('logBody');
+  const totRow = document.getElementById('logTotals');
+  if (!log.length) {
+    body.innerHTML = '<div class="empty-log">No food logged yet — use the search above to add meals</div>';
+    totRow.style.display='none';
+    return;
+  }
+  const mealOpts = MEAL_ORDER.map(m => `<option value="${m}">${m}</option>`).join('');
+  let html = '';
+  MEAL_ORDER.forEach(mealName => {
+    const items = log.filter(i => i.meal === mealName);
+    if (!items.length) return;
+    html += `<div class="log-section-hdr">${mealName}</div>`;
+    items.forEach(item => {
+      const gi = log.indexOf(item);
+      // determine if it's a db food (has original grams we can back-calculate) or manual
+      const isManual = item.portion === 'custom';
+      html += `
+        <div class="log-item" id="logrow-${gi}">
+          <div><div class="li-name">${item.name}</div><div class="li-portion">${item.portion}</div></div>
+          <div class="li-macro">${item.cal} kcal</div>
+          <div class="li-macro prot">${item.p}g P</div>
+          <div class="li-macro fat">${item.f}g F</div>
+          <div class="li-macro carb">${item.c}g C</div>
+          <button class="li-edit" onclick="toggleEdit(${gi})" title="Edit">✏️</button>
+          <button class="li-del"  onclick="removeItem(${gi})"  title="Delete">×</button>
+        </div>
+        <div class="edit-row" id="editrow-${gi}" style="display:none;">
+          ${isManual ? `
+            <div><label>Name</label><input id="en-${gi}" value="${item.name}" style="width:140px;"></div>
+            <div><label>Calories</label><input type="number" id="ec-${gi}" value="${item.cal}" style="width:70px;" min="0"></div>
+            <div><label>Protein g</label><input type="number" id="ep-${gi}" value="${item.p}" style="width:60px;" min="0" step="0.1"></div>
+            <div><label>Fat g</label><input type="number" id="ef-${gi}" value="${item.f}" style="width:60px;" min="0" step="0.1"></div>
+            <div><label>Net Carbs g</label><input type="number" id="ecarb-${gi}" value="${item.c}" style="width:60px;" min="0" step="0.1"></div>
+            <div><label>Meal</label><select id="em-${gi}" style="width:120px;">${mealOpts.replace(`value="${item.meal}"`, `value="${item.meal}" selected`)}</select></div>
+          ` : `
+            <div><label>Grams</label><input type="number" id="eg-${gi}" value="${item.grams || 100}" min="1" max="2000" style="width:80px;"></div>
+            <div><label>Meal</label><select id="em-${gi}" style="width:130px;">${mealOpts.replace(`value="${item.meal}"`, `value="${item.meal}" selected`)}</select></div>
+            <div class="edit-preview" id="eprev-${gi}"></div>
+          `}
+          <div style="display:flex;gap:6px;align-self:flex-end;">
+            <button class="btn-green" style="padding:7px 14px;font-size:11px;" onclick="saveEdit(${gi})">Save</button>
+            <button class="btn-ghost" style="padding:7px 12px;font-size:11px;" onclick="toggleEdit(${gi})">Cancel</button>
+          </div>
+        </div>`;
+    });
+  });
+  body.innerHTML = html;
+  totRow.style.display='grid';
+  const T = totals();
+  const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  setText('totCal',  T.cal  + ' kcal');
+  setText('totProt', T.p    + 'g P');
+  setText('totFat',  T.f    + 'g F');
+  setText('totCarb', T.c    + 'g C');
+  setText('totFib',  T.fib  + 'g Fib');
+}
+
+function removeItem(idx) {
+  // check if wine to decrement count
+  if (log[idx] && log[idx].name.includes('wine')) wineCount = Math.max(0, wineCount-1);
+  log.splice(idx,1);
+  document.getElementById('wineCount').textContent = wineCount;
+  saveToday(); renderLog(); updateBars();
+}
+
+function clearLog() {
+  if (!log.length) return;
+  if (!confirm('Clear all logged food for today?')) return;
+  log = []; wineCount = 0;
+  document.getElementById('wineCount').textContent = '0';
+  saveToday(); renderLog(); updateBars();
+}
+
+// ── TOTALS & BARS ──
+function totals() {
+  return log.reduce((a,i) => ({
+    cal: a.cal + i.cal,
+    p:   parseFloat((a.p + i.p).toFixed(1)),
+    f:   parseFloat((a.f + i.f).toFixed(1)),
+    c:   parseFloat((a.c + i.c).toFixed(1)),
+    fib: parseFloat((a.fib + i.fib).toFixed(1))
+  }), {cal:0,p:0,f:0,c:0,fib:0});
+}
+
+function updateBars() {
+  const t = TARGETS[phase];
+  const T = totals();
+
+  // ── CALORIE CARD ──
+  const remain = t.cal - T.cal;
+  document.getElementById('calConsumed').textContent  = T.cal;
+  document.getElementById('calTarget').textContent    = t.cal.toLocaleString();
+  document.getElementById('calRemain').textContent    = Math.abs(remain);
+  document.getElementById('calRemainLbl').textContent = remain >= 0 ? 'kcal remaining' : 'kcal OVER target';
+  document.getElementById('calRemain').className = 'cal-remain-val' + (remain < 0 ? ' over' : '');
+
+  // update target labels
+  document.getElementById('pTarget').textContent = t.p + 'g';
+  document.getElementById('fTarget').textContent = t.f + 'g';
+  document.getElementById('cTarget').textContent = t.c + 'g';
+
+  // ── PROTEIN — Priority #1 ──
+  const pPct = Math.min((T.p / t.p) * 100, 100);
+  document.getElementById('pVal').textContent = T.p;
+  document.getElementById('pBar').style.width = pPct + '%';
+  document.getElementById('pPct').textContent = Math.round(pPct) + '% of daily target';
+  const pEl = document.getElementById('pAdvice');
+  if (!log.length) {
+    pEl.style.color = 'var(--ink-soft)'; pEl.textContent = 'Log food to see protein status.';
+  } else if (T.p >= t.p) {
+    document.getElementById('pBar').style.background = '#1A7A3A';
+    pEl.style.color = 'var(--green)'; pEl.textContent = '✅ Target hit — muscle is protected today.';
+  } else if (T.p >= t.p * 0.75) {
+    document.getElementById('pBar').style.background = 'var(--green)';
+    const gap = (t.p - T.p).toFixed(0);
+    pEl.style.color = 'var(--amber)'; pEl.textContent = `⚠️ ${gap}g short — add a protein source before bed. Greek yoghurt + scoop of whey = ~40g.`;
+  } else if (T.p >= t.p * 0.5) {
+    document.getElementById('pBar').style.background = 'var(--amber)';
+    const gap = (t.p - T.p).toFixed(0);
+    pEl.style.color = 'var(--amber)'; pEl.textContent = `⚠️ ${gap}g short — prioritise protein at your next two meals. Chicken breast (200g) = 62g.`;
+  } else {
+    document.getElementById('pBar').style.background = 'var(--red)';
+    const gap = (t.p - T.p).toFixed(0);
+    pEl.style.color = 'var(--red)'; pEl.textContent = `🚨 ${gap}g short — significantly under. Muscle loss risk at perimenopause. Make protein the focus of every remaining meal today.`;
+  }
+
+  // ── NET CARBS — ceiling not target ──
+  const cPct = Math.min((T.c / t.c) * 100, 150);
+  document.getElementById('cVal').textContent = T.c;
+  document.getElementById('cBar').style.width = Math.min(cPct, 100) + '%';
+  document.getElementById('cPct').textContent = T.c + 'g used of ' + t.c + 'g daily ceiling';
+  const cEl = document.getElementById('cAdvice');
+  if (!log.length) {
+    document.getElementById('cBar').style.background = 'var(--navy)';
+    cEl.style.color = 'var(--ink-soft)'; cEl.textContent = 'Log food to see carb status.';
+  } else if (T.c > t.c) {
+    document.getElementById('cBar').style.background = 'var(--red)';
+    cEl.style.color = 'var(--red)'; cEl.textContent = `🚨 Over limit by ${(T.c - t.c).toFixed(1)}g — ketosis is broken for today. No more carbs. Resume strict keto tomorrow.`;
+  } else if (T.c > t.c * 0.8) {
+    document.getElementById('cBar').style.background = '#C17A24';
+    cEl.style.color = 'var(--amber)'; cEl.textContent = `⚠️ Getting close — only ${(t.c - T.c).toFixed(1)}g remaining. Be careful with dinner. Avoid sauces, avoid veg with hidden carbs.`;
+  } else {
+    document.getElementById('cBar').style.background = 'var(--navy)';
+    cEl.style.color = 'var(--green)'; cEl.textContent = `✅ In ketosis — ${(t.c - T.c).toFixed(1)}g remaining today.`;
+  }
+
+  // ── FAT — flexible ──
+  const fPct = Math.min((T.f / t.f) * 100, 120);
+  document.getElementById('fVal').textContent = T.f;
+  document.getElementById('fBar').style.width = Math.min(fPct, 100) + '%';
+  document.getElementById('fPct').textContent = Math.round(fPct) + '% of guide target';
+  const fEl = document.getElementById('fAdvice');
+  if (!log.length) {
+    document.getElementById('fBar').style.background = 'var(--amber)';
+    fEl.style.color = 'var(--ink-soft)'; fEl.textContent = 'Log food to see fat status.';
+  } else if (T.f > t.f * 1.15) {
+    document.getElementById('fBar').style.background = 'var(--red)';
+    fEl.style.color = 'var(--red)'; fEl.textContent = `Over guide — ${T.f}g dietary fat reduces how much stored body fat you burn today. Not critical, but worth noting.`;
+  } else if (T.f < 30 && log.length > 1) {
+    document.getElementById('fBar').style.background = '#C17A24';
+    fEl.style.color = 'var(--amber)'; fEl.textContent = `Under 30g — quite low. Add olive oil or avocado to help absorb fat-soluble vitamins (D3, K2) and stay satiated.`;
+  } else {
+    document.getElementById('fBar').style.background = 'var(--amber)';
+    fEl.style.color = 'var(--ink-soft)'; fEl.textContent = `Good range — body fat is filling the energy gap. This is the design.`;
+  }
+
+  // ── FIBRE ──
+  const fibPct = Math.min((T.fib / 25) * 100, 100);
+  document.getElementById('fibVal').textContent = T.fib;
+  document.getElementById('fibBar').style.width = fibPct + '%';
+  document.getElementById('fibPct').textContent = Math.round(fibPct) + '% of 25g target';
+  const fibEl = document.getElementById('fibAdvice');
+  if (T.fib >= 20) {
+    fibEl.style.color = 'var(--green)'; fibEl.textContent = '✅ Good fibre intake — gut health and cholesterol both benefiting.';
+  } else if (T.fib >= 10) {
+    fibEl.style.color = 'var(--ink-soft)'; fibEl.textContent = 'Decent — add psyllium husk (7g) or ground flaxseed (3g) to close the gap.';
+  } else {
+    fibEl.style.color = 'var(--amber)'; fibEl.textContent = 'Low — keto can cause constipation with insufficient fibre. Psyllium husk 1 tbsp daily is the easy fix.';
+  }
+}
+
+// ── SWITCH ENTRY ──
+function switchEntry(mode) {
+  document.getElementById('panelSearch').style.display  = mode==='search'  ? 'block' : 'none';
+  document.getElementById('panelManual').style.display  = mode==='manual'  ? 'block' : 'none';
+  document.getElementById('panelMyFoods').style.display = mode==='myfoods' ? 'block' : 'none';
+  document.getElementById('tabSearch').className   = 'td-btn' + (mode==='search'  ? ' active' : '');
+  document.getElementById('tabManual').className   = 'td-btn' + (mode==='manual'  ? ' active' : '');
+  document.getElementById('tabMyFoods').className  = 'td-btn' + (mode==='myfoods' ? ' active' : '');
+  if (mode === 'myfoods') renderMyFoods();
+}
+
+// ── CUSTOM FOODS DATABASE ──
+const CUSTOM_DB_KEY = 'daniela_custom_foods_v1';
+
+function loadCustomFoods() {
+  if (_storageMode === 'local') {
+    try {
+      const raw = localStorage.getItem(CUSTOM_DB_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e) { return []; }
+  }
+  return window._customFoodsMemory || [];
+}
+
+function saveCustomFoods(foods) {
+  if (_storageMode === 'local') {
+    try {
+      localStorage.setItem(CUSTOM_DB_KEY, JSON.stringify(foods));
+      return true;
+    } catch(e) {}
+  }
+  window._customFoodsMemory = foods;
+  return false;
+}
+
+function saveToMyFoods() {
+  const name = document.getElementById('dbName').value.trim();
+  if (!name) {
+    showDbMsg('Please enter a food name.', false); return;
+  }
+  const cal  = parseFloat(document.getElementById('dbCal').value)  || 0;
+  const p    = parseFloat(document.getElementById('dbProt').value) || 0;
+  const f    = parseFloat(document.getElementById('dbFat').value)  || 0;
+  const c    = parseFloat(document.getElementById('dbCarb').value) || 0;
+  const fib  = parseFloat(document.getElementById('dbFib').value)  || 0;
+  const srv  = parseFloat(document.getElementById('dbServ').value) || null;
+  const note = document.getElementById('dbNote').value.trim();
+  const cat  = document.getElementById('dbCat').value;
+
+  const foods = loadCustomFoods();
+  // check for duplicate name
+  if (foods.find(f => f.n.toLowerCase() === name.toLowerCase())) {
+    showDbMsg(`"${name}" already exists in your database. Use a different name or delete the existing one first.`, false);
+    return;
+  }
+  const entry = { n:name, cal, p, f, c, fib, cat, custom:true };
+  if (note) entry.note = note;
+  if (srv)  entry.srv  = srv;
+  foods.push(entry);
+  const saved = saveCustomFoods(foods);
+  // clear form
+  ['dbName','dbNote','dbCal','dbProt','dbFat','dbCarb','dbFib','dbServ'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  showDbMsg(`✅ "${name}" saved to your database. Search for it anytime.`, true);
+  renderMyFoods();
+}
+
+function showDbMsg(msg, ok) {
+  const el = document.getElementById('dbSaveMsg');
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.style.background = ok ? 'var(--green-light)' : 'var(--red-light)';
+  el.style.color = ok ? '#1A4A30' : '#6A0D1A';
+  el.style.border = ok ? '1px solid var(--green-mid)' : '1px solid var(--red-mid)';
+  setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+
+function renderMyFoods() {
+  const foods = loadCustomFoods();
+  const countEl = document.getElementById('myFoodsCount');
+  const listEl  = document.getElementById('myFoodsList');
+  if (!countEl || !listEl) return;
+  countEl.textContent = foods.length;
+  if (!foods.length) {
+    listEl.innerHTML = '<div style="text-align:center;color:var(--ink-faint);font-size:13px;padding:24px;">No custom foods saved yet. Add your first one above.</div>';
+    return;
+  }
+  listEl.innerHTML = foods.map((food, idx) => `
+    <div style="display:grid;grid-template-columns:1fr 55px 55px 55px 55px 80px;gap:6px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--rule);font-size:12px;background:var(--paper);border-radius:${idx===0?'8px 8px':idx===foods.length-1?'0 0 8px 8px':'0'};">
+      <div>
+        <div style="font-weight:700;color:var(--ink);">${food.n}</div>
+        <div style="font-size:10px;color:var(--ink-soft);">${food.cat}${food.note ? ' · ' + food.note : ''}${food.srv ? ' · default ' + food.srv + 'g' : ''}</div>
+      </div>
+      <div style="text-align:right;color:var(--ink-mid);">${food.cal} kcal</div>
+      <div style="text-align:right;color:var(--green);font-weight:600;">${food.p}g P</div>
+      <div style="text-align:right;color:var(--amber);font-weight:600;">${food.f}g F</div>
+      <div style="text-align:right;color:var(--navy);font-weight:600;">${food.c}g C</div>
+      <div style="display:flex;gap:5px;justify-content:flex-end;">
+        <button onclick="addCustomToLog(${idx})" style="padding:4px 8px;font-size:10px;font-weight:700;background:var(--green-light);color:var(--green);border:1px solid var(--green-mid);border-radius:4px;cursor:pointer;">+ Log</button>
+        <button onclick="deleteMyFood(${idx})" style="padding:4px 8px;font-size:10px;background:none;color:var(--ink-soft);border:1px solid var(--rule);border-radius:4px;cursor:pointer;" title="Delete">×</button>
+      </div>
+    </div>`).join('');
+}
+
+function deleteMyFood(idx) {
+  const foods = loadCustomFoods();
+  const name = foods[idx] ? foods[idx].n : 'this food';
+  if (!confirm(`Remove "${name}" from your database?`)) return;
+  foods.splice(idx, 1);
+  saveCustomFoods(foods);
+  renderMyFoods();
+}
+
+function addCustomToLog(idx) {
+  const foods = loadCustomFoods();
+  const food = foods[idx];
+  if (!food) return;
+  // if it has a default serving, use it; else 100g
+  const g = food.srv || 100;
+  const r = g / 100;
+  const meal = document.getElementById('mealSelectSearch')
+    ? document.getElementById('mealSelectSearch').value : 'Other';
+  log.push({
+    name: food.n,
+    portion: g + 'g',
+    cal: Math.round(food.cal * r),
+    p:   parseFloat((food.p * r).toFixed(1)),
+    f:   parseFloat((food.f * r).toFixed(1)),
+    c:   parseFloat((food.c * r).toFixed(1)),
+    fib: parseFloat(((food.fib||0) * r).toFixed(1)),
+    meal,
+    grams: g,
+    customIdx: idx  // flag as custom so edit knows
+  });
+  saveToday(); renderLog(); updateBars();
+  showDbMsg(`✅ Added ${food.n} (${g}g) to ${meal}.`, true);
+}
+
+// ── EDIT FUNCTIONS ──
+function toggleEdit(idx) {
+  const editRow = document.getElementById('editrow-' + idx);
+  const logRow  = document.getElementById('logrow-'  + idx);
+  if (!editRow) return;
+  const opening = editRow.style.display === 'none';
+  // close any other open edit rows first
+  document.querySelectorAll('.edit-row').forEach(r => r.style.display = 'none');
+  editRow.style.display = opening ? 'flex' : 'none';
+  // live preview for db items
+  if (opening && log[idx] && log[idx].foodIdx !== undefined) {
+    updateEditPreview(idx);
+    const gInput = document.getElementById('eg-' + idx);
+    if (gInput) gInput.addEventListener('input', () => updateEditPreview(idx));
+  }
+}
+
+function updateEditPreview(idx) {
+  const item = log[idx];
+  if (!item || item.foodIdx === undefined) return;
+  const food = FOODS[item.foodIdx];
+  if (!food) return;
+  const gInput = document.getElementById('eg-' + idx);
+  const prev   = document.getElementById('eprev-' + idx);
+  if (!gInput || !prev) return;
+  const g = parseFloat(gInput.value) || 0;
+  const r = g / 100;
+  prev.innerHTML = `→ <strong>${Math.round(food.cal*r)} kcal</strong> · 
+    <span style="color:var(--green)">${(food.p*r).toFixed(1)}g P</span> · 
+    <span style="color:var(--amber)">${(food.f*r).toFixed(1)}g F</span> · 
+    <span style="color:var(--navy)">${(food.c*r).toFixed(1)}g C</span>`;
+}
+
+function saveEdit(idx) {
+  const item = log[idx];
+  if (!item) return;
+  const mealEl = document.getElementById('em-' + idx);
+  if (mealEl) item.meal = mealEl.value;
+
+  if (item.portion === 'custom') {
+    // manual entry — update each field individually
+    const nameEl  = document.getElementById('en-'   + idx);
+    const calEl   = document.getElementById('ec-'   + idx);
+    const pEl     = document.getElementById('ep-'   + idx);
+    const fEl     = document.getElementById('ef-'   + idx);
+    const carbEl  = document.getElementById('ecarb-'+ idx);
+    if (nameEl) item.name = nameEl.value.trim() || item.name;
+    if (calEl)  item.cal  = parseFloat(calEl.value)  || 0;
+    if (pEl)    item.p    = parseFloat(pEl.value)    || 0;
+    if (fEl)    item.f    = parseFloat(fEl.value)    || 0;
+    if (carbEl) item.c    = parseFloat(carbEl.value) || 0;
+  } else {
+    // db item — recalculate from new grams
+    const gInput = document.getElementById('eg-' + idx);
+    if (gInput) {
+      const g = parseFloat(gInput.value) || item.grams || 100;
+      const r = g / 100;
+      // find source food — built-in or custom
+      let food = null;
+      if (item.foodIdx !== undefined) food = FOODS[item.foodIdx];
+      else if (item.customIdx !== undefined) food = loadCustomFoods()[item.customIdx];
+      if (food) {
+        item.grams   = g;
+        item.portion = g + 'g';
+        item.cal  = Math.round(food.cal * r);
+        item.p    = parseFloat((food.p   * r).toFixed(1));
+        item.f    = parseFloat((food.f   * r).toFixed(1));
+        item.c    = parseFloat((food.c   * r).toFixed(1));
+        item.fib  = parseFloat(((food.fib||0) * r).toFixed(1));
+      }
+    }
+  }
+  // close edit row
+  const editRow = document.getElementById('editrow-' + idx);
+  if (editRow) editRow.style.display = 'none';
+  saveToday(); renderLog(); updateBars();
+}
+
+// ── HISTORY / DATE NAVIGATION ──
+function renderDatePicker() {
+  const dates = listLoggedDates();
+  const picker = document.getElementById('historyPicker');
+  if (!picker) return;
+  if (!dates.length) { picker.innerHTML = '<option value="">No history yet</option>'; return; }
+  const today = todayKey();
+  picker.innerHTML = dates.map(d =>
+    `<option value="${d}" ${d===today?'selected':''}>${d === today ? '📅 Today — '+d : d}</option>`
+  ).join('');
+}
+
+function loadDate(dateKey) {
+  if (!dateKey) return;
+  const store = loadStore();
+  const entry = store[dateKey] || { log:[], phase:'keto', wineCount:0 };
+  log       = entry.log       || [];
+  phase     = entry.phase     || 'keto';
+  wineCount = entry.wineCount || 0;
+  document.getElementById('wineCount').textContent = wineCount;
+  document.getElementById('btnP1').className = 'pt-btn' + (phase==='keto' ? ' active-p1' : '');
+  document.getElementById('btnP2').className = 'pt-btn' + (phase==='lowcarb' ? ' active-p2' : '');
+  // show readonly note if not today
+  const isToday = dateKey === todayKey();
+  const note = document.getElementById('historyNote');
+  if (note) note.style.display = isToday ? 'none' : 'flex';
+  renderLog(); updateBars();
+}
+
+function returnToToday() {
+  const picker = document.getElementById('historyPicker');
+  const today = todayKey();
+  if (picker) picker.value = today;
+  loadDate(today);
+}
+
+// close search results on outside click
+document.addEventListener('click', e => {
+  const box = document.getElementById('searchResults');
+  const inp = document.getElementById('foodInput');
+  if (box && inp && !box.contains(e.target) && e.target !== inp) {
+    box.style.display='none';
+  }
+});
+</script>
+
+</div><!-- end main -->
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showPhase(p, el) {
+  document.querySelectorAll('.phase-seg').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
