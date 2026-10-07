@@ -629,7 +629,7 @@ body {
     <div class="hero-stats">
       <div class="hero-stat"><div class="hs-val">59kg</div><div class="hs-lbl">Start Weight</div></div>
       <div class="hero-stat"><div class="hs-val">27%</div><div class="hs-lbl">Start Body Fat</div></div>
-      <div class="hero-stat"><div class="hs-val">54–55kg</div><div class="hs-lbl">Target Weight</div></div>
+      <div class="hero-stat"><div class="hs-val">54–56kg</div><div class="hs-lbl">Target Weight</div></div>
       <div class="hero-stat"><div class="hs-val">22–24%</div><div class="hs-lbl">Target Body Fat</div></div>
       <div class="hero-stat"><div class="hs-val">47F</div><div class="hs-lbl">Perimenopause</div></div>
     </div>
@@ -1349,9 +1349,9 @@ body {
         <div class="mc-note">Strict keto threshold</div>
       </div>
       <div class="macro-card" style="border-top:3px solid var(--red);">
-        <div class="mc-val" style="color:var(--red);">~1,500</div>
+        <div class="mc-val" style="color:var(--red);">~1,400</div>
         <div class="mc-lbl">Calories daily</div>
-        <div class="mc-note">Slight deficit for fat loss</div>
+        <div class="mc-note">Calibrated for 3 sessions + cycling</div>
       </div>
     </div>
 
@@ -1454,9 +1454,9 @@ body {
         <div class="mc-note">Enough for training performance</div>
       </div>
       <div class="macro-card" style="border-top:3px solid var(--red);">
-        <div class="mc-val" style="color:var(--red);">~1,550</div>
+        <div class="mc-val" style="color:var(--red);">~1,450</div>
         <div class="mc-lbl">Calories daily</div>
-        <div class="mc-note">Slight deficit maintained</div>
+        <div class="mc-note">Calibrated for 3 sessions + cycling</div>
       </div>
     </div>
     <div style="font-size:13px;color:var(--ink-mid);line-height:1.9;margin-top:4px;">
@@ -2045,11 +2045,11 @@ body {
   <div class="phase-toggle">
     <button class="pt-btn active-p1" id="btnP1" onclick="setPhase('keto')">
       🥑 Phase 1 · Strict Keto<br>
-      <span style="font-size:10px;font-weight:400;text-transform:none;">&lt;20g net carbs · 130g protein · 65–75g fat · 1,500 kcal</span>
+      <span style="font-size:10px;font-weight:400;text-transform:none;">&lt;20g net carbs · 130g protein · 65g fat · 1,400 kcal</span>
     </button>
     <button class="pt-btn" id="btnP2" onclick="setPhase('lowcarb')">
       🍗 Phase 2–3 · Low Carb<br>
-      <span style="font-size:10px;font-weight:400;text-transform:none;">40–55g net carbs · 130g protein · 55–65g fat · 1,550 kcal</span>
+      <span style="font-size:10px;font-weight:400;text-transform:none;">40–55g net carbs · 130g protein · 55g fat · 1,450 kcal</span>
     </button>
   </div>
 
@@ -2327,6 +2327,33 @@ body {
       <button class="btn-green" onclick="addWine('red')">+ Glass Red Wine</button>
       <button class="btn-ghost" onclick="addWine('white')">+ Glass White Wine</button>
       <div style="font-size:12px;color:var(--ink-soft);">Glasses today: <strong id="wineCount" style="color:var(--ink);">0</strong> / 2 max</div>
+    </div>
+  </div>
+
+  <!-- EXPORT / IMPORT -->
+  <div class="card" style="margin-top:14px;">
+    <h3 style="font-size:15px;margin-bottom:6px;">💾 Backup & Restore</h3>
+    <p style="font-size:12px;color:var(--ink-mid);margin-bottom:16px;">Export your food log history and custom foods as a backup file. Import it on any device or after clearing your browser to restore everything.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <!-- EXPORT -->
+      <div style="background:var(--green-light);border:1px solid var(--green-mid);border-radius:8px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px;">⬇ Export Backup</div>
+        <p style="font-size:12px;color:#1A4A30;margin-bottom:12px;line-height:1.6;">Downloads a <code style="background:rgba(45,106,79,.15);padding:1px 5px;border-radius:3px;font-size:11px;">.json</code> file containing your food log history (up to 30 days) and your saved custom foods. Keep this file somewhere safe.</p>
+        <button class="btn-green" onclick="exportBackup()" style="width:100%;">Export All Data</button>
+        <div id="exportMsg" style="font-size:11px;color:var(--green);margin-top:8px;display:none;"></div>
+      </div>
+
+      <!-- IMPORT -->
+      <div style="background:var(--amber-light);border:1px solid var(--amber-mid);border-radius:8px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:700;color:var(--amber);margin-bottom:6px;">⬆ Import Backup</div>
+        <p style="font-size:12px;color:#6A3A08;margin-bottom:12px;line-height:1.6;">Select a previously exported <code style="background:rgba(193,122,36,.15);padding:1px 5px;border-radius:3px;font-size:11px;">.json</code> backup file. This will <strong>merge</strong> with your existing data — existing days are not overwritten, only new days and new custom foods are added.</p>
+        <label style="display:block;width:100%;">
+          <input type="file" id="importFile" accept=".json" onchange="importBackup(this)" style="display:none;">
+          <span onclick="document.getElementById('importFile').click()" class="btn-ghost" style="display:block;text-align:center;cursor:pointer;padding:9px 18px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;">Select Backup File</span>
+        </label>
+        <div id="importMsg" style="font-size:11px;margin-top:8px;display:none;padding:6px 10px;border-radius:5px;"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -2667,8 +2694,8 @@ let log = [];
 let selectedFood = null;
 let wineCount = 0;
 const TARGETS = {
-  keto:    { cal:1500, p:130, f:70,  c:20  },
-  lowcarb: { cal:1550, p:130, f:60,  c:47  }
+  keto:    { cal:1400, p:130, f:65,  c:20  },
+  lowcarb: { cal:1450, p:130, f:55,  c:47  }
 };
 
 // ── INIT — detect storage then load today ──
@@ -3032,6 +3059,94 @@ function updateBars() {
   } else {
     fibEl.style.color = 'var(--amber)'; fibEl.textContent = 'Low — keto can cause constipation with insufficient fibre. Psyllium husk 1 tbsp daily is the easy fix.';
   }
+}
+
+// ── EXPORT / IMPORT ──
+function exportBackup() {
+  const foodLog  = loadStore();
+  const myFoods  = loadCustomFoods();
+  const payload  = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    foodLog,
+    myFoods
+  };
+  const json = JSON.stringify(payload, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const date = new Date().toISOString().slice(0,10);
+  a.href     = url;
+  a.download = `daniela-fitness-backup-${date}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  const msg = document.getElementById('exportMsg');
+  const days = Object.keys(foodLog).length;
+  const foods = myFoods.length;
+  msg.textContent = `✅ Exported ${days} day${days!==1?'s':''} of food log + ${foods} custom food${foods!==1?'s':''}.`;
+  msg.style.display = 'block';
+  setTimeout(() => msg.style.display = 'none', 5000);
+}
+
+function importBackup(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const msg = document.getElementById('importMsg');
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.version || !data.foodLog) {
+        throw new Error('Invalid backup file format.');
+      }
+      // merge food log — don't overwrite existing days
+      const existingStore = loadStore();
+      let daysAdded = 0;
+      Object.keys(data.foodLog).forEach(dateKey => {
+        if (!existingStore[dateKey]) {
+          existingStore[dateKey] = data.foodLog[dateKey];
+          daysAdded++;
+        }
+      });
+      saveStore(existingStore);
+
+      // merge custom foods — don't add duplicates by name
+      let foodsAdded = 0;
+      if (Array.isArray(data.myFoods) && data.myFoods.length) {
+        const existing = loadCustomFoods();
+        const existingNames = new Set(existing.map(f => f.n.toLowerCase()));
+        data.myFoods.forEach(food => {
+          if (!existingNames.has(food.n.toLowerCase())) {
+            existing.push(food);
+            foodsAdded++;
+          }
+        });
+        saveCustomFoods(existing);
+      }
+
+      // reload today's data
+      const today = loadToday();
+      log       = today.log       || [];
+      phase     = today.phase     || 'keto';
+      wineCount = today.wineCount || 0;
+      document.getElementById('wineCount').textContent = wineCount;
+
+      msg.style.background = 'var(--green-light)';
+      msg.style.color = '#1A4A30';
+      msg.textContent = `✅ Imported ${daysAdded} new day${daysAdded!==1?'s':''} of food log + ${foodsAdded} new custom food${foodsAdded!==1?'s':''}.`;
+      msg.style.display = 'block';
+      renderLog(); updateBars(); renderDatePicker(); renderMyFoods();
+    } catch(err) {
+      msg.style.background = 'var(--red-light)';
+      msg.style.color = '#6A0D1A';
+      msg.textContent = `❌ ${err.message || 'Could not read file. Make sure it is a valid backup.'}`;
+      msg.style.display = 'block';
+    }
+    // reset file input so same file can be re-selected
+    input.value = '';
+    setTimeout(() => msg.style.display = 'none', 6000);
+  };
+  reader.readAsText(file);
 }
 
 // ── SWITCH ENTRY ──
