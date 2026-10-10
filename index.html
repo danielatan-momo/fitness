@@ -391,6 +391,33 @@ body {
   text-transform: uppercase;
   color: var(--amber);
 }
+/* A/B rotation divider */
+.ab-hdr td {
+  background: #EEF4FB;
+  padding: 5px 10px 5px 12px !important;
+  border-left: 2px solid var(--navy-soft);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--navy-soft);
+}
+.ab-label { text-transform: uppercase; }
+.ex-n.ab-a {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--navy-soft);
+  padding-top: 14px !important;
+}
+.ex-n.ab-b {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #5A7FA8;
+  padding-top: 14px !important;
+}
 
 /* core block header */
 .core-hdr {
@@ -674,7 +701,7 @@ body {
 <div class="section active" id="overview">
   <div class="sec-h">
     <h2>Programme Overview</h2>
-    <p>3 weights sessions + 1 cycling + 3 rest/active days. Train 10am fasted. All weights at home.</p>
+    <p>3 weights sessions + 3 rest/active days · Phase 1 (Oct): cycling optional Thursday · Phase 2 (Nov+): cycling mandatory Thursday. Train 10am fasted. All weights at home.</p>
   </div>
 
   <div class="note note-r">
@@ -693,14 +720,14 @@ body {
       <div class="wday lower"><div class="wd-day">Mon</div><div class="wd-name">Lower</div><div class="wd-sub">Glutes · Quads · Hamstrings · Core</div></div>
       <div class="wday rest"><div class="wd-day">Tue</div><div class="wd-name">Rest</div><div class="wd-sub">Walk + Yoga</div></div>
       <div class="wday upper"><div class="wd-day">Wed</div><div class="wd-name">Upper</div><div class="wd-sub">Pull · Push · Arms · Core</div></div>
-      <div class="wday cycle"><div class="wd-day">Thu</div><div class="wd-name">Cycling</div><div class="wd-sub">Zone 2 · 45–75 min</div></div>
+      <div class="wday cycle"><div class="wd-day">Thu</div><div class="wd-name">Cycling</div><div class="wd-sub">Ph1: Optional · Ph2: Mandatory</div></div>
       <div class="wday full"><div class="wd-day">Fri</div><div class="wd-name">Full Body</div><div class="wd-sub">Compound · Integrated</div></div>
       <div class="wday rest"><div class="wd-day">Sat</div><div class="wd-name">Rest</div><div class="wd-sub">Walk + Yoga</div></div>
       <div class="wday rest"><div class="wd-day">Sun</div><div class="wd-name">Full Rest</div><div class="wd-sub">Recovery</div></div>
     </div>
     <div class="note note-g" style="margin-bottom:0;">
       <span>💡</span>
-      <div><strong>DOMS logic:</strong> Mon lower → worst DOMS hits Tue (rest ✅). Wed upper → worst DOMS hits Thu (cycling = upper body resting ✅). Fri full body → worst DOMS hits Sat (rest ✅). Cycling Thu morning — upper body recovering from Wed, legs fresh from Mon.</div>
+      <div><strong>DOMS logic:</strong> Mon lower → worst DOMS hits Tue (rest ✅). Wed upper → worst DOMS hits Thu (cycling optional Ph1 — upper body resting ✅). Fri full body → worst DOMS hits Sat (rest ✅). <strong>Phase 1:</strong> If tired Thursday, skip cycling — walk + yoga instead. <strong>Phase 2 (Nov):</strong> Thursday cycling becomes mandatory as keto adaptation stabilises and work capacity increases.</div>
     </div>
   </div>
 
@@ -754,12 +781,17 @@ body {
 <div class="section" id="lower">
   <div class="sec-h">
     <h2>Lower Body — Monday</h2>
-    <p>Glutes, quads, hamstrings, calves · Home · 50–60 min · Largest muscle groups first in the week for maximum metabolic impact</p>
+    <p>Glutes, quads, hamstrings · Home · 55–65 min · No supersets — straight sets with full rest</p>
   </div>
 
   <div class="note note-a">
     <span>🔥</span>
-    <div><strong>Phase progression:</strong> Ph1 (Wk1–4): Learn movements, strict form, lighter load. Ph2 (Wk5–8): Increase load, introduce split squats. Ph3 (Wk9–13): Heavier load, pauses, tempo work, barbell where possible. Exercise variations noted per phase.</div>
+    <div><strong>Phase progression:</strong> Ph1 (Wk1–4): 2 working sets on compounds — reduced volume intentionally to manage DOMS. Ph2 (Wk5–8): Progress to 3 sets, increase load, introduce split squats. Ph3 (Wk9–13): 4 sets, heavier load, tempo work. <strong>DOMS note:</strong> If legs still sore Wednesday, skip any exercise that causes pain — do glute bridges and band work only. Never train through sciatic flare.</div>
+  </div>
+
+  <div class="note note-g" style="margin-top:8px;">
+    <span>🔄</span>
+    <div><strong>Variety — A/B rotation:</strong> Alternate between A and B versions week to week. Same muscles, different stimulus. Keeps it fresh without changing the training effect.</div>
   </div>
 
   <div class="session">
@@ -767,7 +799,7 @@ body {
       <div class="s-num lo">M</div>
       <div>
         <div class="s-name">Lower Body · Glute, Quad & Hamstring Focus</div>
-        <div class="s-meta">Home · Barbell + DBs + bands · 50–60 min · All 3 phases</div>
+        <div class="s-meta">Home · Barbell + DBs + bands · 55–65 min · Straight sets · No supersets</div>
       </div>
       <span class="s-tag tag-lo">Lower · Mon</span>
     </div>
@@ -788,110 +820,99 @@ body {
         <tr class="ex-row">
           <td class="ex-n">1</td>
           <td>
-            <div class="ex-name">Goblet Squat → Barbell Front Squat (Ph2+)</div>
-            <div class="ex-cue">Ph1: DB goblet squat. Hold DB at chest, sit down between legs, 2-sec pause at bottom. Heels flat. Chest tall throughout. Ph2+: Progress to barbell front squat when goblet feels controlled at RPE 7.<br>
-            <span class="ax">🎯 AX: "The DB counterbalances your weight forward — teaches correct squat mechanics before loading the spine. Don't rush to the barbell."</span><br>
-            <span class="ll">💜 LL: "Squat pattern is your main lower movement. Build it patiently."</span></div>
+            <div class="ex-name">Squat — Week A: Goblet Squat · Week B: Sumo Squat (wide stance DB)</div>
+            <div class="ex-cue"><strong>Week A — Goblet:</strong> Hold DB at chest, sit down between legs, 2-sec pause at bottom. Heels flat, chest tall. Ph2+: progress to barbell front squat.<br>
+            <strong>Week B — Sumo:</strong> Wide stance, toes out 45°. Hold one heavy DB between legs. Same depth. Shifts emphasis to inner thigh and glute med — changes the feel completely.<br>
+            <span class="ax">🎯 AX: "The pause at the bottom is non-negotiable in Ph1. It kills momentum and forces the muscle to do the work."</span></div>
           </td>
-          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-sets">Wk1–4: <strong>2 × 12</strong><br>Wk5+: 3 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 7–8 · 90s rest</small></td>
           <td class="ex-wt">
-            <div class="wt-badge">Ph1: 12–16kg DB</div>
-            <div class="prog">Ph2: 18–22kg DB or barbell<br>Ph3: <strong>Barbell 25–30kg</strong></div>
+            <div class="wt-badge">Now: 10kg DB</div>
+            <div class="prog">Wk3: 12kg · Wk5: 14kg<br>Ph2: <strong>16–20kg</strong></div>
           </td>
         </tr>
 
         <tr class="ex-row">
           <td class="ex-n">2</td>
           <td>
-            <div class="ex-name">Romanian Deadlift (DB) → Barbell RDL (Ph2+)</div>
-            <div class="ex-cue">DBs at sides. Hinge at hip — push glutes back, flat back. Lower to mid-shin. 4-sec lowering. Drive hips forward to stand. Safe for sciatica: DBs at sides = zero axial spinal compression. Your primary hip hinge and posterior chain builder. Replaces conventional deadlift permanently.<br>
-            <span class="ax">🎯 AX: "Feel the hamstring stretch at the bottom — if you don't feel it, push your hips further back rather than lowering the weights deeper."</span></div>
+            <div class="ex-name">Hip Hinge — Week A: DB Romanian Deadlift · Week B: KB/DB Sumo Deadlift</div>
+            <div class="ex-cue"><strong>Week A — RDL:</strong> DBs at sides. Hinge at hip — push glutes back, flat back. Lower to mid-shin, 4-sec lowering. Drive hips forward to stand. Safe for sciatica: zero axial spinal compression.<br>
+            <strong>Week B — Sumo Deadlift:</strong> Wide stance, toes out. One heavy DB held between legs. Hinge and pull — more glute med, less hamstring. Same sciatica-safe spinal position.<br>
+            <span class="ax">🎯 AX: "Feel the hamstring stretch at the bottom of RDL — if you don't, push hips further back rather than going deeper."</span></div>
           </td>
-          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-sets">Wk1–4: <strong>2 × 10</strong><br>Wk5+: 3 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 7–8 · 90s rest</small></td>
           <td class="ex-wt">
-            <div class="wt-badge">Ph1: 10–14kg DBs</div>
-            <div class="prog">Ph2: 14–18kg DBs<br>Ph3: <strong>Barbell 25–35kg</strong></div>
+            <div class="wt-badge">Now: 8–10kg DBs</div>
+            <div class="prog">Wk3: 10–12kg<br>Ph2: <strong>14–18kg DBs</strong></div>
           </td>
-        </tr>
-
-        <tr class="ss-div"><td colspan="4">Superset — Hip Isolation. No rest between. 75s after both.</td></tr>
-
-        <tr class="ex-row">
-          <td class="ex-n ss">A</td>
-          <td>
-            <div class="ex-name">Seated Band Hip Abduction</div>
-            <div class="ex-cue">Sit on bench edge, short band above knees. Push knees apart. Lean slightly forward — shifts load from TFL to glute med. 2-sec hold, 3-sec return.<br>
-            <span class="ax">🎯 AX: "Forward lean is the key. Feel it move from the side of the hip to the back of the hip — that's glute med engaging."</span></div>
-          </td>
-          <td class="ex-sets">3 × 20</td>
-          <td class="ex-wt"><div class="wt-badge">Medium-heavy band</div></td>
-        </tr>
-
-        <tr class="ex-row">
-          <td class="ex-n ss">B</td>
-          <td>
-            <div class="ex-name">Donkey Kick (All Fours)</div>
-            <div class="ex-cue">Hands and knees, spine neutral. Kick leg straight back — foot flexed, squeeze glute 1-sec at hip level. Don't raise above hip. Horizontal spine = QL cannot compensate. Pure glute max isolation.<br>
-            <span class="ax">🎯 AX: "Hip level is the ceiling. The moment you go higher, your lower back arches. You lose the glute and gain a back injury."</span></div>
-          </td>
-          <td class="ex-sets">3 × 20 ea</td>
-          <td class="ex-wt"><div class="wt-badge">BW → ankle band Ph2</div></td>
         </tr>
 
         <tr class="ex-row">
           <td class="ex-n">3</td>
           <td>
-            <div class="ex-name">Bulgarian Split Squat (DB) → Ph2 introduction</div>
-            <div class="ex-cue">Ph1: Reverse lunge (bodyweight only — learn pattern). Ph2+: Rear foot on bench, DBs at sides. Upright torso = quad emphasis. 3-sec lowering. The most effective single-leg compound exercise with home equipment. Doubles effective load — 14kg DBs feel like 28kg squat.<br>
-            <span class="ll">💜 LL: "Split squats are your best friend with limited equipment. Unilateral load is the solution to not having heavy enough weights."</span></div>
+            <div class="ex-name">Hip Abduction — Week A: Seated Band · Week B: Side-Lying Abduction (band)</div>
+            <div class="ex-cue"><strong>Week A — Seated Band:</strong> Sit on bench edge, band above knees. Push knees apart, lean slightly forward. 2-sec hold, 3-sec return. Forward lean shifts load from TFL to glute med.<br>
+            <strong>Week B — Side-Lying:</strong> Lie on side, band above knees. Raise top leg to 45°, hold 2-sec, lower 3-sec. Isolates glute med in a different plane — complements the seated version.<br>
+            <span class="ax">🎯 AX: "If you feel it in the side of your hip rather than the back, lean forward more (seated) or flex your top hip slightly (side-lying)."</span></div>
           </td>
-          <td class="ex-sets">3 × 10 ea<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
-          <td class="ex-wt">
-            <div class="wt-badge">Ph1: BW reverse lunge</div>
-            <div class="prog">Ph2: 8–12kg DBs<br>Ph3: <strong>14–18kg DBs</strong></div>
-          </td>
+          <td class="ex-sets">3 × 20<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt"><div class="wt-badge">Medium-heavy band</div></td>
         </tr>
 
         <tr class="ex-row">
           <td class="ex-n">4</td>
           <td>
-            <div class="ex-name">Single-Leg Glute Bridge → Elevated (Ph2+)</div>
-            <div class="ex-cue">Ph1: Back flat, one foot on floor. Drive through heel. 2-sec hold at top, 4-sec lowering. Ph2: Foot elevated on bench — greater range. Ph3: Add DB across hips. Zero spinal compression — the safe hip thrust alternative for sciatica history.<br>
-            <span class="ax">🎯 AX: "Pelvis level throughout — non-working hip must not drop. That drop signals glute weakness, not hamstring weakness."</span></div>
+            <div class="ex-name">Glute Isolation — Week A: Donkey Kick · Week B: Fire Hydrant</div>
+            <div class="ex-cue"><strong>Week A — Donkey Kick:</strong> All fours, spine neutral. Kick leg straight back, foot flexed, squeeze 1-sec at hip level. Don't raise above hip — higher = lower back arching.<br>
+            <strong>Week B — Fire Hydrant:</strong> All fours. Raise knee out to the side (like a dog at a hydrant) to hip height. 2-sec hold, 3-sec lower. Hits glute med from a lateral angle — completely different from donkey kick.<br>
+            <span class="ax">🎯 AX: "Hip level is the ceiling on both. The moment you go higher, you've shifted to your lower back."</span></div>
           </td>
-          <td class="ex-sets">3 × 12 ea</td>
-          <td class="ex-wt">
-            <div class="wt-badge">Ph1: Bodyweight</div>
-            <div class="prog">Ph2: Foot elevated<br>Ph3: <strong>+ 8–12kg DB</strong></div>
-          </td>
+          <td class="ex-sets">3 × 15 ea<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt"><div class="wt-badge">BW → ankle band Ph2</div></td>
         </tr>
 
         <tr class="ex-row">
           <td class="ex-n">5</td>
           <td>
-            <div class="ex-name">Lying DB Hamstring Curl</div>
-            <div class="ex-cue">Face down on mat. Hold DB between both feet (ankle grip). Curl heels toward glutes — 2-sec hold, 4-sec lowering. Dorsiflex feet throughout (toes toward shins) — isolates hamstring, removes gastrocnemius. Start lighter than you think — the leverage is awkward until you find the grip.<br>
-            <span class="ax">🎯 AX: "4-second lowering. Dropping the weight means the concentric was vanity. The eccentric is where the muscle adapts."</span></div>
+            <div class="ex-name">Single-Leg Work — Ph1: Reverse Lunge · Ph2: Bulgarian Split Squat</div>
+            <div class="ex-cue"><strong>Ph1 (Oct) — Reverse Lunge BW:</strong> Step back, lower knee to just above floor. Push through front foot to return. Learn the single-leg pattern safely before adding load.<br>
+            <strong>Ph2 (Nov+) — Bulgarian Split Squat:</strong> Rear foot on bench, DBs at sides. 3-sec lowering. Upright torso. The most effective unilateral leg exercise — 10kg DBs feel like a 20kg squat.<br>
+            <span class="ll">💜 LL: "Don't rush the Bulgarian. One week of reverse lunge first — then add the bench."</span></div>
           </td>
-          <td class="ex-sets">3 × 12</td>
+          <td class="ex-sets">Wk1–4: <strong>2 × 10 ea</strong><br>Wk5+: 3 × 10 ea<br><small style="font-size:10px;color:var(--ink-soft);">RPE 7 · 90s rest</small></td>
           <td class="ex-wt">
-            <div class="wt-badge">Ph1: 4–6kg DB</div>
+            <div class="wt-badge">Ph1: Bodyweight</div>
+            <div class="prog">Ph2: 6–8kg DBs<br>Ph3: <strong>10–14kg DBs</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">6</td>
+          <td>
+            <div class="ex-name">Hamstring — Week A: Lying DB Curl · Week B: Nordic Curl Negative</div>
+            <div class="ex-cue"><strong>Week A — Lying DB Curl:</strong> Face down on mat. Hold DB between both feet. Curl heels toward glutes, 2-sec hold, 4-sec lowering. Dorsiflex feet (toes toward shins).<br>
+            <strong>Week B — Nordic Negative:</strong> Kneel, feet anchored under sofa. Slowly lower chest toward floor (3–5 sec). Catch yourself with hands. The most effective hamstring eccentric exercise — very hard, very effective at preventing hamstring injury.<br>
+            <span class="ax">🎯 AX: "The 4-sec lowering on the DB curl is everything. Dropping the weight means the concentric was vanity."</span></div>
+          </td>
+          <td class="ex-sets">3 × 10–12<br><small style="font-size:10px;color:var(--ink-soft);">90s rest</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Now: 4–6kg DB</div>
             <div class="prog">Ph2: 6–8kg<br>Ph3: <strong>8–10kg</strong></div>
           </td>
         </tr>
 
         <!-- CORE FINISHER -->
         <tr><td colspan="4">
-          <div class="core-hdr"><div class="core-hdr-dot"></div><div class="core-hdr-txt">Core Finisher — Anti-Extension · 10 min</div></div>
+          <div class="core-hdr"><div class="core-hdr-dot"></div><div class="core-hdr-txt">Core Finisher — Anti-Extension · 8 min</div></div>
         </td></tr>
 
         <tr class="ex-row">
           <td class="ex-n">C1</td>
           <td>
-            <div class="ex-name">Dead Bug — Double Leg</div>
-            <div class="ex-cue">Both legs at 90°. Lower both legs toward floor simultaneously — stop when lower back lifts. Press back firmly into floor the entire time. Harder than alternating version. Build the range over weeks.</div>
+            <div class="ex-name">Dead Bug — Alternating</div>
+            <div class="ex-cue">On back, arms up, legs at 90°. Lower opposite arm + leg simultaneously. Press lower back into floor throughout. Build to double-leg version in Ph2.</div>
           </td>
-          <td class="ex-sets">3 × 8</td>
+          <td class="ex-sets">3 × 8 ea</td>
           <td class="ex-wt"><div class="wt-badge">Bodyweight</div></td>
         </tr>
 
@@ -899,20 +920,19 @@ body {
           <td class="ex-n">C2</td>
           <td>
             <div class="ex-name">Ab Wheel Rollout (from knees)</div>
-            <div class="ex-cue">Kneel on mat, grip wheel. Roll forward — back stays completely flat. Pull back using lats and core. Start with a small range — only go as far as you can without arching. Build range weekly. Most honest anti-extension exercise available.<br>
-            <span class="ax">🎯 AX: "The moment your lower back arches, your core has failed. That is your current limit. Stop there and build from it."</span></div>
+            <div class="ex-cue">Roll forward only as far as your lower back stays flat. Pull back with lats. Start with small range — 30cm forward is fine in week 1. Build weekly.</div>
           </td>
-          <td class="ex-sets">3 × 8–10</td>
-          <td class="ex-wt"><div class="wt-badge">Bodyweight</div><div class="prog">Ph3: <strong>Full range</strong></div></td>
+          <td class="ex-sets">3 × 6–8</td>
+          <td class="ex-wt"><div class="wt-badge">Bodyweight</div></td>
         </tr>
 
         <tr class="ex-row">
           <td class="ex-n">C3</td>
           <td>
-            <div class="ex-name">Farmer's Carry (Heavy DBs)</div>
-            <div class="ex-cue">Heaviest DBs available. Walk 30 steps. Stand tall — don't lean. Core braces to protect spine under bilateral vertical load. Trains deep stabilisers that static exercises can't reach.</div>
+            <div class="ex-name">Farmer's Carry</div>
+            <div class="ex-cue">Heaviest DBs available. Walk 20–30 steps. Stand tall. Core stabilises spine under bilateral vertical load.</div>
           </td>
-          <td class="ex-sets">3 × 30 steps</td>
+          <td class="ex-sets">3 × 20 steps</td>
           <td class="ex-wt"><div class="wt-badge">Heaviest available</div></td>
         </tr>
       </table>
@@ -932,7 +952,7 @@ body {
       <div class="s-num up">W</div>
       <div>
         <div class="s-name">Upper Body · Pull Dominant + Shoulder Health</div>
-        <div class="s-meta">Home · Pull-up bar + pulley + DBs + bands + bench · 50–60 min</div>
+        <div class="s-meta">Home · Pull-up bar + pulley + DBs + bands + bench · 50–60 min · Straight sets · No supersets · A/B weekly rotation</div>
       </div>
       <span class="s-tag tag-up">Upper · Wed</span>
     </div>
@@ -954,15 +974,15 @@ body {
         <tr class="ex-row">
           <td class="ex-n">1</td>
           <td>
-            <div class="ex-name">Lat Pulldown (Pull-up Bar Pulley) → Assisted Pull-Up (Ph3)</div>
-            <div class="ex-cue">Scapula depresses FIRST before arms pull. Pull bar to upper chest. Chest tall. 3-sec lowering. Ph3: Attempt band-assisted pull-ups — set 1 assisted, sets 2–4 pulldown. Primary lat builder — track this weight every session.<br>
+            <div class="ex-name">Lat Pulldown (Pull-up Bar Pulley)</div>
+            <div class="ex-cue">Scapula depresses FIRST before arms pull. Pull bar to upper chest. Chest tall. 3-sec lowering. Ph3: Attempt band-assisted pull-ups — set 1 assisted, sets 2–3 pulldown. Primary lat builder — track weight every session.<br>
             <span class="ax">🎯 AX: "Elbows to hips, not hands to chest. Arms are hooks — lats do the work."</span><br>
-            <span class="ll">💜 LL: "When all 4 sets feel RPE 7 or below — add weight next session. Don't wait until it feels easy."</span></div>
+            <span class="ll">💜 LL: "When all sets feel RPE 7 or below — add weight next session."</span></div>
           </td>
-          <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-sets">Ph1: 3×10<br>Ph2–3: 4×10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8 · 90s rest</small></td>
           <td class="ex-wt">
-            <div class="wt-badge">Ph1: 15–20kg</div>
-            <div class="prog">Ph2: 20–25kg<br>Ph3: <strong>25–32kg</strong></div>
+            <div class="wt-badge">Now: 20kg</div>
+            <div class="prog">Ph2: 22–25kg<br>Ph3: <strong>25–30kg</strong></div>
           </td>
         </tr>
 
@@ -973,80 +993,134 @@ body {
             <div class="ex-cue">Bench at 30°. Lie face down. Arms hang fully between reps — full lat stretch. Row DBs to hips. Squeeze shoulder blades at top. 3-sec lowering. Zero lower back involvement — the safest bilateral row for sciatica history.<br>
             <span class="ax">🎯 AX: "Full lat stretch between reps — don't hold tension at the bottom. The stretch is half the exercise."</span></div>
           </td>
-          <td class="ex-sets">4 × 12<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-sets">Ph1: 3×12<br>Ph2–3: 4×12<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8 · 90s rest</small></td>
           <td class="ex-wt">
-            <div class="wt-badge">Ph1: 5–7kg ea</div>
-            <div class="prog">Ph2: 7–10kg<br>Ph3: <strong>10–14kg</strong></div>
+            <div class="wt-badge">Now: 5.5kg ea</div>
+            <div class="prog">Ph2: 7–9kg<br>Ph3: <strong>10–13kg</strong></div>
           </td>
         </tr>
 
-        <tr class="ss-div"><td colspan="4">Superset — Shoulder complex. 90s after both.</td></tr>
+        <tr class="ab-hdr"><td colspan="4"><span class="ab-label">3 &amp; 4 — A/B weekly rotation · deltoid · Week A = DB, Week B = band variation</span></td></tr>
 
         <tr class="ex-row">
-          <td class="ex-n ss">A</td>
+          <td class="ex-n ab-a">3A</td>
           <td>
-            <div class="ex-name">Seated DB Lateral Raise</div>
+            <div class="ex-name">Seated DB Lateral Raise <span style="font-size:10px;color:var(--ink-soft);">(Week A)</span></div>
             <div class="ex-cue">Seated — zero momentum. Slight forward lean (10°). Raise to shoulder height only. Lead with pinkies (slight pronation). 3-sec lowering. Seated removes all cheating.<br>
             <span class="ax">🎯 AX: "Pour water from a jug at the top — that wrist rotation maximises medial deltoid."</span></div>
           </td>
-          <td class="ex-sets">3 × 15</td>
+          <td class="ex-sets">3 × 15<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
           <td class="ex-wt">
             <div class="wt-badge">Ph1: 3–4kg</div>
-            <div class="prog">Ph2: 4–5kg<br>Ph3: <strong>5–7kg</strong></div>
+            <div class="prog">Ph2: 4–5kg<br>Ph3: <strong>5–6kg</strong></div>
           </td>
         </tr>
 
         <tr class="ex-row">
-          <td class="ex-n ss">B</td>
+          <td class="ex-n ab-b">3B</td>
           <td>
-            <div class="ex-name">Band Pull-Apart (Shoulder Height)</div>
-            <div class="ex-cue">Arms fully straight — any elbow bend takes it to biceps. Pull to chest. Rear delt and teres minor — defines the armpit and bra-line area. Pairs with lateral raise to hit all three delt heads in one superset.</div>
+            <div class="ex-name">Band Lateral Raise (Single Arm) <span style="font-size:10px;color:var(--ink-soft);">(Week B)</span></div>
+            <div class="ex-cue">Band anchored low at side. Raise to shoulder height — band keeps tension throughout the range, unlike a DB which loses tension at the bottom. Alternate sides. Same medial delt, different strength curve.<br>
+            <span class="ax">🎯 AX: "The resistance at the bottom is what makes this different. Don't rush that range."</span></div>
           </td>
-          <td class="ex-sets">3 × 20</td>
+          <td class="ex-sets">3 × 15 ea<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt"><div class="wt-badge">Light–medium band</div></td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ab-a">4A</td>
+          <td>
+            <div class="ex-name">Band Pull-Apart (Shoulder Height) <span style="font-size:10px;color:var(--ink-soft);">(Week A)</span></div>
+            <div class="ex-cue">Arms fully straight — any elbow bend takes it to biceps. Pull to chest. Rear delt and teres minor — armpit and bra-line area.<br>
+            <span class="ax">🎯 AX: "Arms stay straight. If you can't pull to chest, use a lighter band."</span></div>
+          </td>
+          <td class="ex-sets">3 × 20<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
           <td class="ex-wt"><div class="wt-badge">Medium band</div></td>
         </tr>
 
         <tr class="ex-row">
-          <td class="ex-n">3</td>
+          <td class="ex-n ab-b">4B</td>
+          <td>
+            <div class="ex-name">Prone DB Rear Delt Raise <span style="font-size:10px;color:var(--ink-soft);">(Week B)</span></div>
+            <div class="ex-cue">Lie face down on bench or bed edge. Arms hang. Raise straight out to shoulder height — elbows soft. Targets same rear delt as pull-aparts but with load — a strength progression.<br>
+            <span class="ax">🎯 AX: "Think 'T' shape at the top. Lead with elbows, not hands."</span></div>
+          </td>
+          <td class="ex-sets">3 × 15<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 2–3kg</div>
+            <div class="prog">Ph2: 3–4kg<br>Ph3: <strong>4–5kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n">5</td>
           <td>
             <div class="ex-name">Seated DB Shoulder Press (Back Supported)</div>
             <div class="ex-cue">Back against wall or bench. Press to full extension. 3-sec lowering. Seated with back support always — standing OHP loads the lumbar under fatigue. Ph2+: Arnold press replaces standard press.<br>
             <span class="ax">🎯 AX: "Press up and slightly in — the natural arc. Straight up creates impingement over time."</span></div>
           </td>
-          <td class="ex-sets">3 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
+          <td class="ex-sets">Ph1: 3×10<br>Ph2–3: 4×10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8 · 90s rest</small></td>
           <td class="ex-wt">
-            <div class="wt-badge">Ph1: 6–8kg ea</div>
-            <div class="prog">Ph2: 8–10kg<br>Ph3: <strong>10–12kg</strong></div>
+            <div class="wt-badge">Now: 5–6kg ea</div>
+            <div class="prog">Ph2: 7–8kg<br>Ph3: <strong>8–10kg</strong></div>
           </td>
         </tr>
 
-        <tr class="ss-div"><td colspan="4">Superset — Arm complex. 90s after both.</td></tr>
+        <tr class="ab-hdr"><td colspan="4"><span class="ab-label">6 &amp; 7 — A/B weekly rotation · arms · Week A = stretch-focus, Week B = contraction-focus</span></td></tr>
 
         <tr class="ex-row">
-          <td class="ex-n ss">A</td>
+          <td class="ex-n ab-a">6A</td>
           <td>
-            <div class="ex-name">Incline DB Curl (45° bench)</div>
-            <div class="ex-cue">Full bicep stretch at bottom — this is the point. Full supination at top. No swing. Jeff's preferred bicep variation for complete long-head development.<br>
+            <div class="ex-name">Incline DB Curl (45° bench) <span style="font-size:10px;color:var(--ink-soft);">(Week A)</span></div>
+            <div class="ex-cue">Full bicep stretch at bottom — this is the point. Full supination at top. No swing. The incline pre-stretches the long head — best stretch-position bicep exercise.<br>
             <span class="ax">🎯 AX: "The stretch at the bottom is the whole point. Feel it or recline the bench further."</span></div>
           </td>
-          <td class="ex-sets">3 × 12</td>
+          <td class="ex-sets">3 × 12<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
           <td class="ex-wt">
             <div class="wt-badge">Ph1: 4–5kg</div>
-            <div class="prog">Ph2: 5–7kg<br>Ph3: <strong>7–9kg</strong></div>
+            <div class="prog">Ph2: 5–6kg<br>Ph3: <strong>6–8kg</strong></div>
           </td>
         </tr>
 
         <tr class="ex-row">
-          <td class="ex-n ss">B</td>
+          <td class="ex-n ab-b">6B</td>
           <td>
-            <div class="ex-name">Overhead DB Tricep Extension</div>
-            <div class="ex-cue">Hold one DB overhead, both hands. Lower behind head — full long-head stretch. Press up. The only exercise that loads the tricep long head in a fully stretched position.<br>
+            <div class="ex-name">Hammer Curl (Standing) <span style="font-size:10px;color:var(--ink-soft);">(Week B)</span></div>
+            <div class="ex-cue">Neutral grip (palms facing each other) the whole way. Curl straight up — no rotation. Hits brachialis and brachioradialis — gives the arm thickness and supports the elbow joint. Heavier than incline curl.<br>
+            <span class="ax">🎯 AX: "Neutral grip the whole way. If you rotate, it becomes a standard curl."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 5–6kg</div>
+            <div class="prog">Ph2: 6–8kg<br>Ph3: <strong>8–10kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ab-a">7A</td>
+          <td>
+            <div class="ex-name">Overhead DB Tricep Extension <span style="font-size:10px;color:var(--ink-soft);">(Week A)</span></div>
+            <div class="ex-cue">Hold one DB overhead, both hands. Lower behind head — elbows point forward, not flared. Full long-head stretch at bottom. Press up. Only exercise that loads tricep long head in a fully stretched position.<br>
             <span class="ax">🎯 AX: "Feel the stretch in the long head at the bottom. Don't rush past it."</span></div>
           </td>
-          <td class="ex-sets">3 × 12</td>
+          <td class="ex-sets">3 × 12<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
           <td class="ex-wt">
             <div class="wt-badge">Ph1: 8–10kg</div>
             <div class="prog">Ph2: 10–12kg<br>Ph3: <strong>12–14kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ab-b">7B</td>
+          <td>
+            <div class="ex-name">Tricep Kickback (Bent Over) <span style="font-size:10px;color:var(--ink-soft);">(Week B)</span></div>
+            <div class="ex-cue">Hinge forward 45°. Upper arm parallel to floor — fixed. Extend forearm back to straight. Squeeze at full extension for 1 sec. Peak contraction focus vs. stretch focus of overhead extension — two angles, same muscle.<br>
+            <span class="ax">🎯 AX: "Upper arm stays parallel to the floor the whole time. If it drops, you've lost it."</span></div>
+          </td>
+          <td class="ex-sets">3 × 15<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 4–5kg</div>
+            <div class="prog">Ph2: 5–7kg<br>Ph3: <strong>7–9kg</strong></div>
           </td>
         </tr>
 
@@ -1102,7 +1176,7 @@ body {
       <div class="s-num fb">F</div>
       <div>
         <div class="s-name">Full Body · Compound Integration + Core Power</div>
-        <div class="s-meta">Home · Barbell + DBs + bands + bench · 55–65 min</div>
+        <div class="s-meta">Home · Barbell + DBs + bands + bench · 55–65 min · Straight sets · No supersets · A/B weekly rotation</div>
       </div>
       <span class="s-tag tag-fb">Full Body · Fri</span>
     </div>
@@ -1130,8 +1204,8 @@ body {
           </td>
           <td class="ex-sets">4 × 10<br><small style="font-size:10px;color:var(--ink-soft);">RPE 8</small></td>
           <td class="ex-wt">
-            <div class="wt-badge">Ph1: ~15–20kg</div>
-            <div class="prog">Ph2: 20–25kg<br>Ph3: <strong>25–32kg</strong></div>
+            <div class="wt-badge">Now: ~10kg (bar+plates)</div>
+            <div class="prog">Ph2: 15–18kg<br>Ph3: <strong>20–25kg</strong></div>
           </td>
         </tr>
 
@@ -1163,16 +1237,16 @@ body {
           </td>
         </tr>
 
-        <tr class="ss-div"><td colspan="4">Superset — Upper arm isolation. 90s after both.</td></tr>
+        <tr class="ab-hdr"><td colspan="4"><span class="ab-label">Exercise 4 — A/B weekly rotation · arms · Week A = Zottman Curl + Skull Crushers, Week B = Hammer Curl + Tricep Dip</span></td></tr>
 
         <tr class="ex-row">
-          <td class="ex-n ss">A</td>
+          <td class="ex-n ab-a">4A</td>
           <td>
-            <div class="ex-name">Zottman Curl</div>
+            <div class="ex-name">Zottman Curl <span style="font-size:10px;color:var(--ink-soft);">(Week A)</span></div>
             <div class="ex-cue">Curl up with palms supinated. At the top — rotate to pronated (palms down). Lower 4-sec in pronated position. Hits biceps up, brachialis and brachioradialis down. Three elbow flexors in one movement.<br>
             <span class="ll">💜 LL: "Most complete arm exercise with a single dumbbell."</span></div>
           </td>
-          <td class="ex-sets">3 × 10</td>
+          <td class="ex-sets">3 × 10<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
           <td class="ex-wt">
             <div class="wt-badge">Ph1: 4–5kg</div>
             <div class="prog">Ph2: 5–7kg<br>Ph3: <strong>7–9kg</strong></div>
@@ -1180,17 +1254,42 @@ body {
         </tr>
 
         <tr class="ex-row">
-          <td class="ex-n ss">B</td>
+          <td class="ex-n ab-a">4A</td>
           <td>
-            <div class="ex-name">Skull Crushers (DB on bench)</div>
+            <div class="ex-name">Skull Crushers (DB on bench) <span style="font-size:10px;color:var(--ink-soft);">(Week A)</span></div>
             <div class="ex-cue">Lie flat. Lower DBs toward forehead — elbows STATIONARY, only forearms move. 3-sec lowering. Tricep long head in stretched position.<br>
             <span class="ax">🎯 AX: "Upper arms vertical and still. If they drift back, you've lost the movement."</span></div>
           </td>
-          <td class="ex-sets">3 × 12</td>
+          <td class="ex-sets">3 × 12<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
           <td class="ex-wt">
             <div class="wt-badge">Ph1: 6–8kg ea</div>
             <div class="prog">Ph2: 8–10kg<br>Ph3: <strong>10–12kg</strong></div>
           </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ab-b">4B</td>
+          <td>
+            <div class="ex-name">Hammer Curl (Standing) <span style="font-size:10px;color:var(--ink-soft);">(Week B)</span></div>
+            <div class="ex-cue">Neutral grip (palms facing each other) the whole way. Curl straight up — no rotation. Hits brachialis and brachioradialis — arm thickness and elbow support. Same target as Zottman, different emphasis.<br>
+            <span class="ax">🎯 AX: "Neutral grip the whole way. If you rotate, it becomes a standard curl."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt">
+            <div class="wt-badge">Ph1: 5–6kg</div>
+            <div class="prog">Ph2: 6–8kg<br>Ph3: <strong>8–10kg</strong></div>
+          </td>
+        </tr>
+
+        <tr class="ex-row">
+          <td class="ex-n ab-b">4B</td>
+          <td>
+            <div class="ex-name">Bench Tricep Dip <span style="font-size:10px;color:var(--ink-soft);">(Week B)</span></div>
+            <div class="ex-cue">Hands on bench behind you, feet on floor (bent knees Ph1, feet extended Ph2+). Lower until elbows 90° — no further. Press up to full extension. Bodyweight tricep compound — harder than kickbacks, easier to scale by bending knees more.<br>
+            <span class="ax">🎯 AX: "Elbows track straight back — not flared out. Flaring stresses the shoulder."</span></div>
+          </td>
+          <td class="ex-sets">3 × 12<br><small style="font-size:10px;color:var(--ink-soft);">60s rest</small></td>
+          <td class="ex-wt"><div class="wt-badge">Bodyweight → weighted lap Ph3</div></td>
         </tr>
 
         <tr class="ex-row">
@@ -1250,7 +1349,7 @@ body {
 <div class="section" id="cycling">
   <div class="sec-h">
     <h2>Cycling — Thursday</h2>
-    <p>Zone 2 aerobic base · 10am morning · Road bike or trainer · 45–75 min</p>
+    <p>Zone 2 aerobic base · Road bike or trainer · <strong>Phase 1: Optional</strong> — ride only if energy allows after 3 strength sessions · <strong>Phase 2 (Nov): Mandatory Thursday session</strong></p>
   </div>
 
   <div class="session">
@@ -1267,18 +1366,22 @@ body {
         <span>🚴</span>
         <div><strong>Why Zone 2:</strong> On keto/low carb, Zone 2 (conversational pace, 60–70% max HR) maximises fat oxidation — you're burning fat as fuel, not glycogen. Going harder pushes you into Zone 3–4 where you need carbs you don't have. Zone 2 also builds mitochondrial density and aerobic base without cortisol spike.</div>
       </div>
+      <div class="note note-a" style="margin-top:12px;">
+        <span>⚡</span>
+        <div><strong>Phase 1 (Oct) — Optional active recovery:</strong> With keto adaptation + 3 strength sessions + work, forcing a Thursday ride adds too much cumulative fatigue. If you feel good, go. If not — skip without guilt. Active rest (walk + yoga) is the alternative. Forcing tired rides raises cortisol and stalls fat loss.</div>
+      </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;font-size:13px;">
         <div class="card" style="margin-bottom:0;">
-          <h3 style="font-size:15px;margin-bottom:10px;">Phase 1 — October</h3>
+          <h3 style="font-size:15px;margin-bottom:10px;">Phase 1 — October <span style="font-size:11px;font-weight:400;color:var(--ink-soft);">(Optional)</span></h3>
           <div style="color:var(--ink-mid);line-height:1.9;">
-            <strong>Duration:</strong> 45–55 min<br>
-            <strong>Intensity:</strong> Zone 2 strictly — you can hold a full conversation<br>
-            <strong>Why shorter:</strong> Keto adaptation means lower energy available. Don't push.<br>
+            <strong>When to go:</strong> Energy feels stable, legs not sore from Monday<br>
+            <strong>When to skip:</strong> Fatigued, DOMS lingering, work week was heavy<br>
+            <strong>If you ride:</strong> 35–45 min max, Zone 2 only, full conversation pace<br>
             <strong>Electrolytes:</strong> Essential before and during — keto depletes sodium fast
           </div>
         </div>
         <div class="card" style="margin-bottom:0;">
-          <h3 style="font-size:15px;margin-bottom:10px;">Phase 2–3 — Nov/Dec</h3>
+          <h3 style="font-size:15px;margin-bottom:10px;">Phase 2–3 — Nov/Dec <span style="font-size:11px;font-weight:400;color:var(--green);">(Mandatory Thursday)</span></h3>
           <div style="color:var(--ink-mid);line-height:1.9;">
             <strong>Duration:</strong> 60–75 min<br>
             <strong>Intensity:</strong> Zone 2 base + one 5-min Zone 3 push mid-ride<br>
@@ -2071,11 +2174,11 @@ body {
     <div style="text-align:center;opacity:.3;font-size:22px;">→</div>
     <div style="text-align:center;">
       <div style="font-size:13px;opacity:.5;margin-bottom:2px;">Target</div>
-      <div style="font-size:20px;font-weight:700;" id="calTarget">1,500</div>
+      <div style="font-size:20px;font-weight:700;" id="calTarget">1,400</div>
     </div>
     <div style="text-align:center;opacity:.3;font-size:22px;">→</div>
     <div class="cal-remain">
-      <div class="cal-remain-val" id="calRemain">1,500</div>
+      <div class="cal-remain-val" id="calRemain">1,400</div>
       <div class="cal-remain-lbl" id="calRemainLbl">kcal remaining</div>
     </div>
   </div>
@@ -2619,8 +2722,12 @@ function detectStorage() {
 }
 
 function todayKey() {
-  const d = new Date();
-  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  // Always use Singapore Time (SGT = UTC+8)
+  const now = new Date();
+  const sgt = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Singapore' }));
+  return sgt.getFullYear() + '-' +
+    String(sgt.getMonth() + 1).padStart(2, '0') + '-' +
+    String(sgt.getDate()).padStart(2, '0');
 }
 
 function loadStore() {
@@ -3075,7 +3182,9 @@ function exportBackup() {
   const blob = new Blob([json], { type: 'application/json' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
-  const date = new Date().toISOString().slice(0,10);
+  const _now = new Date();
+  const _sgt = new Date(_now.toLocaleString('en-US', { timeZone: 'Asia/Singapore' }));
+  const date = _sgt.getFullYear() + '-' + String(_sgt.getMonth()+1).padStart(2,'0') + '-' + String(_sgt.getDate()).padStart(2,'0');
   a.href     = url;
   a.download = `daniela-fitness-backup-${date}.json`;
   a.click();
